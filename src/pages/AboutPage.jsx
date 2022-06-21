@@ -21,7 +21,9 @@ class AboutPage extends Component {
 
                 <Cover 
                     bgColor="bg-dark"
-                    title="About Me"/>
+                    title="About Me"
+                    hasArrowDown
+                    hrefArrowDown="#about-container"/>
                 <About/>
                 <Skill/>
             </Fragment>

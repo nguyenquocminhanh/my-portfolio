@@ -5,8 +5,8 @@ export default function Cover() {
   return (
     <section class="bg-dark py-9 py-xl-12">
         <div class="overlay overlay-advanced mb-xl-n12">
-        <div class="overlay-inner bg-cover" style={{backgroundImage: "url(" + Image + ")"}}></div>
-        <div class="overlay-inner bg-gray-900 opacity-50"></div>
+          <div class="overlay-inner bg-cover" style={{backgroundImage: "url(" + Image + ")"}}></div>
+          <div class="overlay-inner bg-gray-900 opacity-50"></div>
         </div>
         <div class="container my-5 my-xl-9">
             <div class="row">

@@ -22,7 +22,9 @@ class BlogAllPage extends Component {
                 <Cover 
                     bgColor="bg-dark"
                     title="My Blogs"
-                    description="A collection of news, features & interesting things."/>
+                    description="A collection of news, features & interesting things."
+                    hasArrowDown
+                    hrefArrowDown="#blog-all-container"/>
                 <AllBlog/>
             </Fragment>
         );

@@ -23,7 +23,9 @@ class ProjectPage extends Component {
                 <Cover 
                     bgColor="bg-dark"
                     title="My Projects"
-                    description=""/>
+                    description=""
+                    hasArrowDown
+                    hrefArrowDown="#all-project-container"/>
 
                 <AllProject>
                     <ProjectPreview/>

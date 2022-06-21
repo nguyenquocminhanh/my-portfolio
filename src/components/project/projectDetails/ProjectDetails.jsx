@@ -5,7 +5,7 @@ import Avatar from '../../../assets/images/avatar1.jpeg';
 
 export default function ProjectDetails() {
   return (
-    <section class="py-0" id="blog-container">
+    <section class="py-0" id="project-details-container">
         <div class="bg-white px-6 px-lg-9 py-9 py-xl-12 shadow-light-lg rounded">
             <div class="row">
                 <div class="col-lg-8">

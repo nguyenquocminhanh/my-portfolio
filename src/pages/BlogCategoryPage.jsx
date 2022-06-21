@@ -21,7 +21,9 @@ class BlogCategoryPage extends Component {
 
                 <Cover 
                     bgColor="bg-dark"
-                    title="Laravel"/>
+                    title="Laravel"
+                    hasArrowDown
+                    hrefArrowDown="#blog-category-container"/>
                 <AllBlogCategory/>
             </Fragment>
         );

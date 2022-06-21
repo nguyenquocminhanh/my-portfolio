@@ -15,6 +15,9 @@ export default function Cover(props) {
             </div>
             </div>
         </div>
+        {props.hasArrowDown ? 
+          <a class="scrollto text-light" href={props.hrefArrowDown}><i class="fa fa-angle-down arrow"></i></a>
+          : null}
     </section>
   )
 }

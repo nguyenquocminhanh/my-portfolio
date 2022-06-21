@@ -4,7 +4,7 @@ import Avatar from '../../../assets/images/avatar1.jpeg';
 
 export default function AllBlog() {
   return (
-    <section class="pt-9 pb-0">
+    <section class="pt-9 pb-0" id="blog-all-container">
         <div class="bg-white p-6 p-lg-9 shadow-light-lg rounded">
             <div class="row">
                 <div class="col-lg-8">
