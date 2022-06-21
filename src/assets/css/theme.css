@@ -773,6 +773,7 @@ select.form-control.form-control-soft-dark:focus::-ms-value {
 .navbar-brand {
   font-weight: 700;
   transition: all 0.35s ease-out;
+  color: #1d1e29
 }
 .navbar-brand .navbar-brand-text,
 .navbar-brand .navbar-brand-img {

@@ -95,7 +95,7 @@ License: https://themeforest.net/licenses/standard
         dropdown.addEventListener(event, function(e) {
           if (window.innerWidth >= siteNavbar_expand && siteNavbar_dropdownHover === true ) {
             // Hover
-
+ 
             var _this = this;
 
             if( event === 'mouseenter' ){
@@ -571,32 +571,6 @@ License: https://themeforest.net/licenses/standard
 
   }
 
-  // [12. Typed text]
-  function personite_typedText(){
-    var toggle = document.querySelectorAll('[data-toggle="typed"]');
-
-    function init(el) {
-      var elementOptions = el.dataset.options;
-          elementOptions = elementOptions ? JSON.parse(elementOptions) : {};
-      var defaultOptions = {
-        typeSpeed: 40,
-        backSpeed: 40,
-        backDelay: 3000,
-        loop: true
-      }
-      var options = Object.assign(defaultOptions, elementOptions);
-
-      new Typed(el, options);
-    }
-
-    if (typeof Typed !== 'undefined' && toggle) {
-      [].forEach.call(toggle, function(el) {
-        init(el);
-      });
-    }
-
-  }
-
   $(document).ready(function($){
     personite_navigation();
     personite_navOnScroll();
@@ -609,7 +583,6 @@ License: https://themeforest.net/licenses/standard
     personite_subscribeForm();
     personite_contactForm();
     personite_bootstrap();
-    personite_typedText();
   });
 
   $(window).on( 'scroll', function(){

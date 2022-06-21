@@ -39,7 +39,7 @@ class Testimonial extends Component {
              // Testimonial
              <section id="testimonial" class="pt-9">
                 <div class="container">
-                    <div class="row mb-8">
+                    <div class="row mb-3">
                         <div class="col-lg-12 text-center mx-auto">
                             <h2 class="mb-4">Testimonial</h2>
                             {/* <p>What My Client Say About Me</p> */}

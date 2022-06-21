@@ -6,9 +6,9 @@ class NavBar extends Component {
         return (
             // Site navigation
             <nav id="siteNavbar" class="site-navbar site-navbar-transparent navbar navbar-expand-lg bg-white shadow-light fixed-top py-2 navbar-dark" data-navbar-base="navbar-dark" data-navbar-toggled="navbar-light" data-navbar-scrolled="navbar-light">
-                <a class="navbar-brand">
-                    
-                </a>
+                {this.props.history.location.pathname == '/' ? 
+                <a class="navbar-brand" href="#home">Minh Nguyen</a> :
+                <Link to="/" class="navbar-brand">Minh Nguyen</Link> }
 
                 <button class="navbar-toggler-alternative" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="siteNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-alternative-icon">

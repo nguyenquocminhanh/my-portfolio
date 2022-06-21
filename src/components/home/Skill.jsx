@@ -6,13 +6,13 @@ class Skill extends Component {
             // skill
             <section class="py-9 bg-light">
                 <div class="container">
-                    <div class="row mb-8">
+                    <div class="row mb-3">
                         <div class="col-lg-9 text-center text-lg-left">
                             <h2 class="mb-4">Skills</h2>
                             {/* <p>Fusce massa dolor, mattis sed ultrices ut, placerat ut leo. Donec sed fringilla lectus, non vulputate orci. Integer id libero euismod, interdum ligula vel, porttitor magna. Sed euismod maximus finibus.</p> */}
                         </div>
                     </div>
-                    <div class="row mb-9 mb-xl-12">
+                    <div class="row mb-6 mb-xl-9">
                         <div class="col-md-6 mb-4 mb-md-0 ">
                             <p class="h6 mb-2">React JS</p>
                             <div class="progress mb-5 rounded-0 bg-white" style={{height: "7px"}}>
@@ -43,7 +43,7 @@ class Skill extends Component {
                         </div>
                     </div>
 
-                    <div class="row mb-9 mb-xl-12">
+                    <div class="row mb-6 mb-xl-9">
                         <div class="col-md-6 mb-7 mb-md-0">
                             <h5 class="h3 text-center text-lg-left mb-6">Education</h5>
                             <div className='col-md-12 text-center text-lg-left p-0'>
