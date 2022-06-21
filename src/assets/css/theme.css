@@ -2125,7 +2125,7 @@ div.featherlight-iframe .featherlight-content {
   margin-bottom: 1rem;
 }
 .article-comments > li li {
-  margin-top: 1rem;
+  margin-top: 0rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-left: 1rem;

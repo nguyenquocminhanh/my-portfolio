@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom'
 
 class NavBar extends Component {
     render() {
@@ -19,22 +20,41 @@ class NavBar extends Component {
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link scrollto" href="#home">Home</a>
+                            {this.props.history.location.pathname == '/' ? 
+                                <a class="nav-link scrollto" href="#home">Home</a> :
+                                <Link to="/" class={this.props.history.location.pathname == '/' ? "active nav-link scrollto" : "nav-link scrollto"}>Home</Link>
+                            }
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scrollto" href="#about">About</a>
+                            {this.props.history.location.pathname == '/' ? 
+                                <a class="nav-link scrollto" href="#about">About</a> :
+                                <Link to="/about" class={this.props.history.location.pathname == '/about' ? "active nav-link scrollto" : "nav-link scrollto"}>About</Link>
+                            }
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scrollto" href="#testimonial">Testimonial</a>
+                            {this.props.history.location.pathname == '/' ? 
+                                <a class="nav-link scrollto" href="#testimonial">Testimonial</a> :
+                                <Link to="/testimonial" class={this.props.history.location.pathname == '/testimonial' ? "active nav-link scrollto" : "nav-link scrollto"}>Testimonial</Link>
+                            }
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scrollto" href="#project">Project</a>
+                            {this.props.history.location.pathname == '/' ? 
+                                <a class="nav-link scrollto" href="#project">Project</a> :
+                                <Link to="/project" class={this.props.history.location.pathname == '/project' ? "active nav-link scrollto" : "nav-link scrollto"}>Project</Link>
+                            }
+                            
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scrollto" href="#blog">Blog</a>
+                            {this.props.history.location.pathname == '/' ? 
+                                <a class="nav-link scrollto" href="#blog">Blog</a> :
+                                <Link to="/blog" class={this.props.history.location.pathname == '/blog' || this.props.history.location.pathname.includes('/details/blog') ? "active nav-link scrollto" : "nav-link scrollto"}>Blog</Link>
+                            } 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scrollto" href="#contact">Contact</a>
+                            {this.props.history.location.pathname == '/' ? 
+                                <a class="nav-link scrollto" href="#contact">Contact</a> :
+                                <Link to="/contact" class={this.props.history.location.pathname == '/contact' ? "active nav-link scrollto" : "nav-link scrollto"}>Contact</Link>
+                            }                
                         </li>
                     </ul>
                 </div>
@@ -43,4 +63,4 @@ class NavBar extends Component {
     }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

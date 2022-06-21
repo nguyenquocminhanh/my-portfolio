@@ -10,15 +10,16 @@ class App extends Component {
   render() {
     return (
      <Fragment>
-       <NavBar/>
-       
-       <ScrollTopBtn/>
 
        <BrowserRouter>
+        <NavBar/>
+        <ScrollTopBtn/>
+
         <AppRoute/>
+        
+        <Footer/>
        </BrowserRouter>
 
-       <Footer/>
      </Fragment>
     );
   }

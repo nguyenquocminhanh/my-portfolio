@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import SingleBlog from '../components/blog/SingleBlog';
+import SingleBlog from '../components/blog/blogDetails/SingleBlog';
 
 import { Helmet } from "react-helmet";
-import { appendScript } from '../utilities/script';
+import Cover from '../components/blog/blogDetails/Cover';
 
 class BlogSinglePage extends Component {    
     componentDidMount = () => {
@@ -18,6 +18,8 @@ class BlogSinglePage extends Component {
                 <Helmet> 
                     <title>My Title</title>
                 </Helmet>
+                
+                <Cover/>
                 <SingleBlog/>
             </Fragment>
         );

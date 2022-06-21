@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import NotFound from '../components/notfound/NotFound';
 
 import { Helmet } from "react-helmet";
-import { appendScript } from '../utilities/script';
 
 class NotFoundPage extends Component {
     componentDidMount = () => {

@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import AllBlog from '../components/blog/allBlog/AllBlog';
-import Cover from '../components/common/Cover';
-
 import { Helmet } from "react-helmet";
+import Cover from '../components/common/Cover'
+import Testimonial from '../components/testimonial/Testimonial';
 
-class BlogAllPage extends Component {
+class TestimonialPage extends Component {
     componentDidMount = () => {
         window.scrollTo({
             top: 0,
@@ -16,17 +15,18 @@ class BlogAllPage extends Component {
         return (
             <Fragment>
                 <Helmet>
-                    <title>My Blogs</title>
+                    <title>Testimonials</title>
                 </Helmet>
 
                 <Cover 
                     bgColor="bg-dark"
-                    title="My Blogs"
-                    description="A collection of news, features & interesting things."/>
-                <AllBlog/>
+                    title="Testimonials"
+                    description="What My Clients Say About Me"/>
+
+                <Testimonial/>
             </Fragment>
         );
     }
 }
 
-export default BlogAllPage;
+export default TestimonialPage;
