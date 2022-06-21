@@ -20,7 +20,6 @@ export default function ProjectDetails() {
                             <figcaption class="text-center">Here is a caption for this picture</figcaption>
                         </figure>
                         <ul class="blog__post__meta">
-                            <li><i class="fa fa-calendar-alt"></i> 25 january 2021</li>
                             <li class="post-share"><a href="#"><i class="fa fa-share"></i> (18)</a></li>
                         </ul>
                         <h3>This is a headline</h3>
@@ -159,7 +158,7 @@ export default function ProjectDetails() {
                         <div class="widget">
                             <h4 class="widget-title">Categories</h4>
                             <ul class="sidebar__cat">
-                                <li class="sidebar__cat__item"><a href="blog.html">Web Design (6)</a></li>
+                                <Link class="sidebar__cat__item" to={"/category/project/" + 1}><li><a href="blog.html">Web Design (6)</a></li></Link>
                                 <li class="sidebar__cat__item"><a href="blog.html">Web Development (4)</a></li>
                                 <li class="sidebar__cat__item"><a href="blog.html">Product Design (9)</a></li>
                                 <li class="sidebar__cat__item"><a href="blog.html">Animation (6)</a></li>

@@ -7,6 +7,7 @@ import BlogSinglePage from '../pages/BlogSinglePage';
 import ContactPage from '../pages/ContactPage';
 import HomePage from '../pages/HomePage';
 import NotFoundPage from '../pages/NotFoundPage';
+import ProjectCategoryPage from '../pages/ProjectCategoryPage';
 import ProjectDetailsPage from '../pages/ProjectDetailsPage';
 import ProjectPage from '../pages/ProjectPage';
 import TestimonialPage from '../pages/TestimonialPage';
@@ -25,6 +26,7 @@ class AppRoute extends Component {
           {/* project */}
           <Route exact path="/project" render={(props) => <ProjectPage {...props} key={Date.now()}/>}/>
           <Route exact path="/details/project/:id" render={(props) => <ProjectDetailsPage {...props} key={Date.now()}/>}/>
+          <Route exact path="/category/project/:id" render={(props) => <ProjectCategoryPage {...props} key={Date.now()}/>}/>
           {/* blog */}
           <Route exact path="/blog" render={(props) => <BlogAllPage {...props} key={Date.now()}/>}/>
           <Route exact path="/details/blog/:id" render={(props) => <BlogSinglePage {...props} key={Date.now()}/>}/>

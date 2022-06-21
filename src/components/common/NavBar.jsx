@@ -40,7 +40,7 @@ class NavBar extends Component {
                         <li class="nav-item">
                             {this.props.history.location.pathname == '/' ? 
                                 <a class="nav-link scrollto" href="#project">Project</a> :
-                                <Link to="/project" class={this.props.history.location.pathname == '/project' || this.props.history.location.pathname.includes('/details/project') ? "active nav-link scrollto" : "nav-link scrollto"}>Project</Link>
+                                <Link to="/project" class={this.props.history.location.pathname == '/project' || this.props.history.location.pathname.includes('/details/project') || this.props.history.location.pathname.includes('/category/project') ? "active nav-link scrollto" : "nav-link scrollto"}>Project</Link>
                             }
                             
                         </li>

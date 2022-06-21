@@ -219,7 +219,7 @@ export default function SingleBlog() {
                         <div class="widget">
                             <h4 class="widget-title">Categories</h4>
                             <ul class="sidebar__cat">
-                                <li class="sidebar__cat__item"><a href="blog.html">Web Design (6)</a></li>
+                                <Link class="sidebar__cat__item" to={"/category/blog/" + 1}><li><a href="blog.html">Web Design (6)</a></li></Link>
                                 <li class="sidebar__cat__item"><a href="blog.html">Web Development (4)</a></li>
                                 <li class="sidebar__cat__item"><a href="blog.html">Product Design (9)</a></li>
                                 <li class="sidebar__cat__item"><a href="blog.html">Animation (6)</a></li>
