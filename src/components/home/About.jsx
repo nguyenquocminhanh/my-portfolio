@@ -4,7 +4,7 @@ class home extends Component {
     render() {
         return (
           // About Me
-          <section id="about" class="py-9 py-xl-12">
+          <section id="about" class="py-9">
             <div class="container">
               <div class="row">
                 <div class="col-lg-4 mb-6 mb-lg-0">

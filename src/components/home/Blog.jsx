@@ -5,8 +5,8 @@ class Blog extends Component {
     render() {
         return (
             // Blog 
-            <section id="blog" class="py-9 py-xl-12 zindex-2">
-                <div class="container">
+            <section id="blog" class="py-9 zindex-2">
+                <div class="container" style={{maxWidth: '1320px'}}>
                     <div class="row mb-8">
                         <div class="col-lg-12 mx-auto text-center">
                             <h2 class="mb-4">Latest Blog</h2>

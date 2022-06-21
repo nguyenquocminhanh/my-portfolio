@@ -10,13 +10,14 @@ export default function ProjectPreview() {
             </div>
 
             <div class="card-body">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">View <i className='fa fa-eye'></i></button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Code <i className='fa fa-code'></i></button>
-                </div>
-            </div>
+            <h4 className='card-text text-center'>Designer Confirmation API</h4>
+            <p class="card-text text-center">This is a wider card with supporting text</p>
+              <div class="d-flex justify-content-center align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View <i className='fa fa-eye'></i></button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Code <i className='fa fa-code'></i></button>
+                  </div>
+              </div>
             </div>
         </div>
     </div>

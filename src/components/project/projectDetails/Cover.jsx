@@ -12,8 +12,8 @@ export default function Cover() {
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center text-white">
 
-                    <h2 class="h1">How to create successful app</h2>
-                    <p>4 January 2015 - 2 minutes read</p>
+                    <h2 class="h1">Ecommerce App</h2>
+                    <p>Javascript</p>
 
                 </div>
             </div>

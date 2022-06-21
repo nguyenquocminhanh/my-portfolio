@@ -4,7 +4,7 @@ class Skill extends Component {
     render() {
         return (
             // skill
-            <section class="py-9 py-xl-12 bg-light">
+            <section class="py-9 bg-light">
                 <div class="container">
                     <div class="row mb-8">
                         <div class="col-lg-9 text-center text-lg-left">

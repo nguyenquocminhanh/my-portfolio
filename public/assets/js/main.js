@@ -190,7 +190,7 @@ License: https://themeforest.net/licenses/standard
       $siteNavbarToggler = $('.site-navbar .navbar-toggler-alternative');
 
       $siteNavbar.removeClass('navbar-toggled-show');
-      $siteNavbar.addClass('navbar-dark').removeClass('navbar-light');
+      // $siteNavbar.addClass('navbar-dark').removeClass('navbar-light');
       $siteNavbarToggler.blur();
 
       if ( $siteNavbar.hasClass('scrolled') ){
@@ -234,6 +234,15 @@ License: https://themeforest.net/licenses/standard
       $(window).scrollTo(0,800);
 
       $(this).blur();
+    });
+
+    $(document).on('click', '.nav-link', function(e){
+      if (window.innerWidth >= siteNavbar_expand ) {
+        return;
+      } else {
+        e.preventDefault();
+        $siteNavbarToggler.trigger('click');
+      }
     });
 
     // Close nav on click outside of '.sitenav-collapse-inner'

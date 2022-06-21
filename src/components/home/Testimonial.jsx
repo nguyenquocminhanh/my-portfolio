@@ -37,7 +37,7 @@ class Testimonial extends Component {
         };
         return (
              // Testimonial
-             <section id="testimonial" class="pt-9 py-xl-12">
+             <section id="testimonial" class="pt-9">
                 <div class="container">
                     <div class="row mb-8">
                         <div class="col-lg-12 text-center mx-auto">

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import Image from '../../assets/images/photo-11.jpeg'
+import ProjectPreview from '../project/ProjectPreview';
+import { Link } from 'react-router-dom';
 
 class Portfolio extends Component {
     render() {
         return (
-          <section id="project" class="pt-9 pt-xl-12 pb-0 bg-light">
+          <section id="project" class="py-9 pb-0 bg-light">
             <div class="row mb-8">
               <div class="col-lg-10 mx-auto text-center">
                 <h2 class="mb-4">Projects</h2>
@@ -19,12 +20,22 @@ class Portfolio extends Component {
             </div>
           
             <div class="album py-3 bg-light">
-            <div class="container" style={{maxWidth: '1320px'}}>
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
+              <div class="container" style={{maxWidth: '1320px'}}>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                  <ProjectPreview/>
+                  <ProjectPreview/>
+                  <ProjectPreview/>
+                  <ProjectPreview/>
+                  <ProjectPreview/>
+                  <ProjectPreview/>
+                </div>
+              </div>
+              <div class="text-center">
+                <Link to="/project" class="btn btn-dark px-8">View More</Link>
               </div>
             </div>
-          </div>
+
+
           {/* <div class="masonry-container row mt-n6 mx-n4">
 
             <div class="col-sm-6 col-lg-4 px-4 pt-6 masonry-item branding">

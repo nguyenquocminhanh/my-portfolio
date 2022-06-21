@@ -5,7 +5,7 @@ class Contact extends Component {
     render() {
         return (
             // Contact Me
-            <section id="contact" class="py-9 py-xl-10 bg-light">
+            <section id="contact" class="py-9 bg-light">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-10 col-xl-9 mx-auto">

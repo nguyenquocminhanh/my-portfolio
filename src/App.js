@@ -12,12 +12,12 @@ class App extends Component {
      <Fragment>
 
        <BrowserRouter>
-        <NavBar/>
-        <ScrollTopBtn/>
+          <NavBar/>
+          <ScrollTopBtn/>
 
-        <AppRoute/>
-        
-        <Footer/>
+          <AppRoute/>
+          
+          <Footer/>
        </BrowserRouter>
 
      </Fragment>
