@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 export default function AllProject(props) {
   return (
-    <section class="pt-9 pb-0" id="all-project-container">
+    <section class="pt-5 pt-lg-9 pb-0" id="all-project-container">
         <div class="bg-white p-6 p-lg-9 shadow-light-lg rounded">
             <div class="row">
-                <div class="col-lg-8">
-                    <article class="col-12 pb-5">
+                <div class="col-lg-8 px-0">
+                    <article class="col-12 pb-5 px-0 px-lg-3">
                         <div class="card">
                             <div class="card-header p-0 position-relative">
                                 <Link to={"/details/project/" + 1}>
@@ -19,7 +19,7 @@ export default function AllProject(props) {
                                 <Link to={"/details/blog/" + 1} style={{color: '#1d1e29'}}><h4 className='card-text'>Designer Confirmation API</h4></Link>
                                 <p class="card-text text-center">This is a wider card with supporting text</p>
                             </div>
-                            <div class="card-footer text-gray-700 d-sm-flex justify-content-center align-items-center pb-6 pt-0">
+                            <div class="card-footer text-gray-700 d-flex justify-content-center align-items-center pb-6 pt-0">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">View <i className='fa fa-eye'></i></button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary">Code <i className='fa fa-code'></i></button>
@@ -28,7 +28,7 @@ export default function AllProject(props) {
                         </div>
                     </article>
 
-                    <article class="col-12 pb-5">
+                    <article class="col-12 pb-5 px-0 px-lg-3">
                         <div class="card">
                             <Link to={"/details/project/" + 1}>
                                 <img src="assets/images/blog/image-blog-6.jpg" class="card-img" alt=""/>
@@ -37,7 +37,7 @@ export default function AllProject(props) {
                                 <Link to={"/details/blog/" + 1} style={{color: '#1d1e29'}}><h4 className='card-text'>Designer Confirmation API</h4></Link>
                                 <p class="card-text text-center">This is a wider card with supporting text</p>
                             </div>
-                            <div class="card-footer text-gray-700 d-sm-flex justify-content-center align-items-center pb-6 pt-0">
+                            <div class="card-footer text-gray-700 d-flex justify-content-center align-items-center pb-6 pt-0">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">View <i className='fa fa-eye'></i></button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary">Code <i className='fa fa-code'></i></button>
@@ -46,7 +46,7 @@ export default function AllProject(props) {
                         </div>
                     </article>
 
-                    <article class="col-12 pb-5">
+                    <article class="col-12 pb-5 px-0 px-lg-3">
                         <div class="card">
                             <Link to={"/details/blog/" + 1}>
                                 <img src="assets/images/blog/image-blog-6.jpg" class="card-img" alt=""/>
@@ -55,7 +55,7 @@ export default function AllProject(props) {
                                 <Link to={"/details/blog/" + 1} style={{color: '#1d1e29'}}><h4 className='card-text'>Designer Confirmation API</h4></Link>
                                 <p class="card-text text-center">This is a wider card with supporting text</p>
                             </div>
-                            <div class="card-footer text-gray-700 d-sm-flex justify-content-center align-items-center pb-6 pt-0">
+                            <div class="card-footer text-gray-700 d-flex justify-content-center align-items-center pb-6 pt-0">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">View <i className='fa fa-eye'></i></button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary">Code <i className='fa fa-code'></i></button>
@@ -64,7 +64,7 @@ export default function AllProject(props) {
                         </div>
                     </article>
 
-                    <article class="col-12 pb-5">
+                    <article class="col-12 pb-5 px-0 px-lg-3">
                         <div class="card">
                             <Link to={"/details/blog/" + 1}>
                                 <img src="assets/images/blog/image-blog-6.jpg" class="card-img" alt=""/>
@@ -73,7 +73,7 @@ export default function AllProject(props) {
                                 <Link to={"/details/blog/" + 1} style={{color: '#1d1e29'}}><h4 className='card-text'>Designer Confirmation API</h4></Link>
                                 <p class="card-text text-center">This is a wider card with supporting text</p>
                             </div>
-                            <div class="card-footer text-gray-700 d-sm-flex justify-content-center align-items-center pb-6 pt-0">
+                            <div class="card-footer text-gray-700 d-flex justify-content-center align-items-center pb-6 pt-0">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">View <i className='fa fa-eye'></i></button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary">Code <i className='fa fa-code'></i></button>
@@ -82,7 +82,7 @@ export default function AllProject(props) {
                         </div>
                     </article>
 
-                    <article class="col-12 pb-5">
+                    <article class="col-12 pb-5 px-0 px-lg-3">
                         <div class="card">
                             <Link to={"/details/blog/" + 1}>
                                 <img src="assets/images/blog/image-blog-6.jpg" class="card-img" alt=""/>
@@ -91,7 +91,7 @@ export default function AllProject(props) {
                                 <Link to={"/details/blog/" + 1} style={{color: '#1d1e29'}}><h4 className='card-text'>Designer Confirmation API</h4></Link>
                                 <p class="card-text text-center">This is a wider card with supporting text</p>
                             </div>
-                            <div class="card-footer text-gray-700 d-sm-flex justify-content-center align-items-center pb-6 pt-0">
+                            <div class="card-footer text-gray-700 d-flex justify-content-center align-items-center pb-6 pt-0">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">View <i className='fa fa-eye'></i></button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary">Code <i className='fa fa-code'></i></button>

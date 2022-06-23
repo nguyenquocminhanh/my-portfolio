@@ -242,6 +242,11 @@ License: https://themeforest.net/licenses/standard
       } else {
         e.preventDefault();
         $siteNavbarToggler.trigger('click');
+        
+        var currentPos = $(window).scrollTop();
+        if ( currentPos < 250 ) {
+          $siteNavbar.addClass('navbar-dark').removeClass('navbar-light');
+        }
       }
     });
 
@@ -265,7 +270,9 @@ License: https://themeforest.net/licenses/standard
     $siteNavbar = $('.site-navbar');
     if ( $siteNavbar.length > 0 ){
       var currentPos = $(window).scrollTop();
-
+      if ( currentPos > 200 ) {
+        // alert('con');
+      }
       if ( currentPos > 0 ){
         if ( $siteNavbar.hasClass('scrolled') ){
           return;

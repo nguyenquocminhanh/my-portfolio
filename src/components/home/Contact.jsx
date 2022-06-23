@@ -6,7 +6,7 @@ class Contact extends Component {
         return (
             // Contact Me
             <section id="contact" class="py-9 bg-light">
-                <div class="container">
+                <div class="container" style={{maxWidth: '1320px'}}>
                     <div class="row">
                         <div class="col-lg-10 col-xl-9 mx-auto">
                             <h2 class="mb-4 text-center">Contact Me</h2>

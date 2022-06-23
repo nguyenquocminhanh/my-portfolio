@@ -5,54 +5,54 @@ class NavBar extends Component {
     render() {
         return (
             // Site navigation
-            <nav id="siteNavbar" class="site-navbar site-navbar-transparent navbar navbar-expand-lg bg-white shadow-light fixed-top py-2 navbar-dark" data-navbar-base="navbar-dark" data-navbar-toggled="navbar-light" data-navbar-scrolled="navbar-light">
+            <nav id="siteNavbar" className="site-navbar site-navbar-transparent navbar navbar-expand-lg bg-white shadow-light fixed-top py-2 navbar-dark" data-navbar-base="navbar-dark" data-navbar-toggled="navbar-light" data-navbar-scrolled="navbar-light">
                 {this.props.history.location.pathname == '/' ? 
-                <a class="navbar-brand" href="#home">Minh Nguyen</a> :
-                <Link to="/" class="navbar-brand">Minh Nguyen</Link> }
+                <a className="navbar-brand" href="#home">MINH NGUYEN</a> :
+                <Link to="/" className="navbar-brand">MINH NGUYEN</Link> }
 
-                <button class="navbar-toggler-alternative" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="siteNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-alternative-icon">
+                <button className="navbar-toggler-alternative" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="siteNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-alternative-icon">
                     <span></span>
                     </span>
                 </button>
 
-                <div class="navbar-collapse collapse" id="navbarCollapse">
+                <div className="navbar-collapse collapse" id="navbarCollapse">
 
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
+                    <ul className="navbar-nav ml-auto">
+                        <li className="nav-item">
                             {this.props.history.location.pathname == '/' ? 
-                                <a class="nav-link scrollto" href="#home">Home</a> :
+                                <a className="nav-link scrollto" href="#home">Home</a> :
                                 <Link to="/" class={this.props.history.location.pathname == '/' ? "active nav-link scrollto" : "nav-link scrollto"}>Home</Link>
                             }
                         </li>
-                        <li class="nav-item">
+                        <li className="nav-item">
                             {this.props.history.location.pathname == '/' ? 
-                                <a class="nav-link scrollto" href="#about">About</a> :
+                                <a className="nav-link scrollto" href="#about">About</a> :
                                 <Link to="/about" class={this.props.history.location.pathname == '/about' ? "active nav-link scrollto" : "nav-link scrollto"}>About</Link>
                             }
                         </li>
-                        <li class="nav-item">
+                        <li className="nav-item">
                             {this.props.history.location.pathname == '/' ? 
-                                <a class="nav-link scrollto" href="#testimonial">Testimonial</a> :
+                                <a className="nav-link scrollto" href="#testimonial">Testimonial</a> :
                                 <Link to="/testimonial" class={this.props.history.location.pathname == '/testimonial' ? "active nav-link scrollto" : "nav-link scrollto"}>Testimonial</Link>
                             }
                         </li>
-                        <li class="nav-item">
+                        <li className="nav-item">
                             {this.props.history.location.pathname == '/' ? 
-                                <a class="nav-link scrollto" href="#project">Project</a> :
+                                <a className="nav-link scrollto" href="#project">Project</a> :
                                 <Link to="/project" class={this.props.history.location.pathname == '/project' || this.props.history.location.pathname.includes('/details/project') || this.props.history.location.pathname.includes('/category/project') ? "active nav-link scrollto" : "nav-link scrollto"}>Project</Link>
                             }
                             
                         </li>
-                        <li class="nav-item">
+                        <li className="nav-item">
                             {this.props.history.location.pathname == '/' ? 
-                                <a class="nav-link scrollto" href="#blog">Blog</a> :
+                                <a className="nav-link scrollto" href="#blog">Blog</a> :
                                 <Link to="/blog" class={this.props.history.location.pathname == '/blog' || this.props.history.location.pathname.includes('/details/blog') || this.props.history.location.pathname.includes('/category/blog') ? "active nav-link scrollto" : "nav-link scrollto"}>Blog</Link>
                             } 
                         </li>
-                        <li class="nav-item">
+                        <li className="nav-item">
                             {this.props.history.location.pathname == '/' ? 
-                                <a class="nav-link scrollto" href="#contact">Contact</a> :
+                                <a className="nav-link scrollto" href="#contact">Contact</a> :
                                 <Link to="/contact" class={this.props.history.location.pathname == '/contact' ? "active nav-link scrollto" : "nav-link scrollto"}>Contact</Link>
                             }                
                         </li>

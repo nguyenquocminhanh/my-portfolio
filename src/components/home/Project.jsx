@@ -8,7 +8,7 @@ class Portfolio extends Component {
           <section id="project" class="py-9 pb-0 bg-light">
             <div class="row mb-8">
               <div class="col-lg-10 mx-auto text-center">
-                <h2 class="mb-4">Projects</h2>
+                <h2 class="mb-4">My Projects</h2>
                 
                 <nav class="masonry-filter">
                   <a href="#" class="btn btn-sm btn-soft-secondary m-1 px-4 active" data-filter="*">All</a>

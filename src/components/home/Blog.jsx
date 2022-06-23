@@ -9,7 +9,7 @@ class Blog extends Component {
                 <div class="container" style={{maxWidth: '1320px'}}>
                     <div class="row mb-8">
                         <div class="col-lg-12 mx-auto text-center">
-                            <h2 class="mb-4">Latest Blog</h2>
+                            <h2 class="mb-4">Latest Blogs</h2>
                             <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout</p>
                         </div>
                     </div>
@@ -18,31 +18,60 @@ class Blog extends Component {
 
                         <div class="col-md-4 col-sm-6 mb-5 mb-md-0">
                             <div class="card border-0 bg-white shadow-light shadow-lift rounded-3x overflow-hidden">
-                            <img class="card-img-top" src="assets/images/blog/image-blog-6.jpg" alt=""/>
-                            <div class="card-body p-6">
-                                <small class="text-muted d-block mb-3">March 10, 2020</small>
-                                <h5 class="mb-0"><a href="blog-single.html" class="text-dark">Building an enduring online audience</a></h5>
-                            </div>
+                                <Link to={"/details/blog/" + 1}>
+                                    <img class="card-img-top" style={{cursor: 'pointer'}} src="assets/images/blog/image-blog-6.jpg" alt=""/>
+                                </Link>
+                                <div class="card-body">
+                                    {/* <small class="text-muted d-block mb-3">March 10, 2020</small> */}
+                                    <Link to={"/details/blog/" + 1}>
+                                        <h5 class="mb-0"><a href="blog-single.html" class="text-dark">Building an enduring online audience</a></h5>
+                                    </Link>
+                                    <p>Donec volutpat leo eget est venenatis, quis sollicitudin mauris vehicula...</p>
+                                </div>
+                                <div class="card-footer text-gray-700 d-flex justify-content-between text-muted">
+                                    <small>
+                                        <a href="blog-single.html" rel="bookmark" class="text-gray-700"><time datetime="2015-05-04T15:05:34+00:00" style={{color: '#FCAF17'}}>4 May 2015</time></a>
+                                    </small>
+                                    <small><i className='fa fa-clock'></i> 1 minute read</small>
+                                </div>
                             </div>
                         </div>
 
                         <div class="col-md-4 col-sm-6 mb-5 mb-md-0">
                             <div class="card border-0 bg-white shadow-light shadow-lift rounded-3x overflow-hidden">
-                            <img class="card-img-top" src="assets/images/blog/image-blog-1.jpg" alt=""/>
-                            <div class="card-body p-6">
-                                <small class="text-muted d-block  mb-3">April 24, 2020</small>
-                                <h5 class="mb-0"><a href="blog-single.html" class="text-dark">Building a site for your small business</a></h5>
-                            </div>
+                                <img class="card-img-top" style={{cursor: 'pointer'}} src="assets/images/blog/image-blog-1.jpg" alt=""/>
+                                <div class="card-body">
+                                    {/* <small class="text-muted d-block mb-3">March 10, 2020</small> */}
+                                    <Link to={"/details/blog/" + 1}>
+                                        <h5 class="mb-0"><a href="blog-single.html" class="text-dark">Building an enduring online audience</a></h5>
+                                    </Link>
+                                    <p>Donec volutpat leo eget est venenatis, quis sollicitudin mauris vehicula...</p>
+                                </div>
+                                <div className="card-footer text-gray-700 d-flex justify-content-between text-muted">
+                                    <small>
+                                        <a href="blog-single.html" rel="bookmark" class="text-gray-700"><time datetime="2015-05-04T15:05:34+00:00" style={{color: '#FCAF17'}}>4 May 2015</time></a>
+                                    </small>
+                                    <small><i className='fa fa-clock'></i> 1 minute read</small>
+                                </div>
                             </div>
                         </div>
 
                         <div class="col-md-4 col-sm-6">
                             <div class="card border-0 bg-white shadow-light shadow-lift rounded-3x overflow-hidden">
-                            <img class="card-img-top" src="assets/images/blog/image-blog-7.jpg" alt=""/>
-                            <div class="card-body p-6">
-                                <small class="text-muted d-block  mb-3">May 13, 2020</small>
-                                <h5 class="mb-0"><a href="blog-single.html" class="text-dark">A day in the life of a fitness blogger</a></h5>
-                            </div>
+                                <img class="card-img-top" style={{cursor: 'pointer'}} src="assets/images/blog/image-blog-7.jpg" alt=""/>
+                                 <div class="card-body">
+                                    {/* <small class="text-muted d-block mb-3">March 10, 2020</small> */}
+                                    <Link to={"/details/blog/" + 1}>
+                                        <h5 class="mb-0"><a href="blog-single.html" class="text-dark">Building an enduring online audience</a></h5>
+                                    </Link>
+                                    <p>Donec volutpat leo eget est venenatis, quis sollicitudin mauris vehicula...</p>
+                                </div>
+                                <div class="card-footer text-gray-700 d-flex justify-content-between text-muted">
+                                    <small>
+                                        <a href="blog-single.html" rel="bookmark" class="text-gray-700"><time datetime="2015-05-04T15:05:34+00:00" style={{color: '#FCAF17'}}>4 May 2015</time></a>
+                                    </small>
+                                    <small><i className='fa fa-clock'></i> 1 minute read</small>
+                                </div>
                             </div>
                         </div>
                     </div>

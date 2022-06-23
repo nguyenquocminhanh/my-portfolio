@@ -4,11 +4,11 @@ import Avatar from '../../../assets/images/avatar1.jpeg';
 
 export default function AllBlog() {
   return (
-    <section class="pt-9 pb-0" id="blog-all-container">
+    <section class="pt-5 pt-lg-9 pb-0" id="blog-all-container">
         <div class="bg-white p-6 p-lg-9 shadow-light-lg rounded">
             <div class="row">
-                <div class="col-lg-8">
-                    <article class="col-12 pb-5">
+                <div class="col-lg-8 px-0">
+                    <article class="col-12 pb-5 px-0 px-lg-3">
                         <div class="card">
                             <div class="card-header p-0 position-relative">
                                 <Link to={"/details/blog/" + 1}>
@@ -17,10 +17,12 @@ export default function AllBlog() {
                                 <Link to={"/details/blog/" + 1} class="blog__link"><i class="fa fa-arrow-right"></i></Link>
                             </div>
                             <div class="card-body">
-                                <h2 class="h5"><a href="blog-single.html" rel="bookmark" class="text-dark">She was having the most beautiful dream</a></h2>
+                                <Link to={"/details/blog/" + 1}>
+                                    <h2 class="h5"><a href="blog-single.html" rel="bookmark" class="text-dark">She was having the most beautiful dream</a></h2>
+                                </Link>
                                 <p>Donec volutpat leo eget est venenatis, quis sollicitudin mauris vehicula. Etiam molestie placerat elit nec tincidunt. Sed eu venenatis purus, at posuere mi...</p>
                             </div>
-                            <div class="card-footer text-gray-700 d-sm-flex justify-content-between">
+                            <div class="card-footer text-gray-700 d-flex justify-content-between">
                                 <span>
                                     <a href="blog-single.html" rel="bookmark" class="text-gray-700"><time datetime="2015-05-04T15:05:34+00:00">4 May 2015</time></a>
                                 </span>
@@ -29,7 +31,7 @@ export default function AllBlog() {
                         </div>
                     </article>
 
-                    <article class="col-12 pb-5">
+                    <article class="col-12 pb-5 px-0 px-lg-3">
                         <div class="card">
                             <a href="blog-single.html" rel="bookmark">
                                 <img src="assets/images/blog/image-blog-3.jpg" class="card-img" alt=""/>
@@ -38,7 +40,7 @@ export default function AllBlog() {
                                 <h2 class="h5"><a href="blog-single.html" rel="bookmark" class="text-dark">Something that I’ve never told anyone before</a></h2>
                                 <p>Donec volutpat leo eget est venenatis, quis sollicitudin mauris vehicula. Etiam molestie placerat elit nec tincidunt. Sed eu venenatis purus, at posuere mi...</p>
                             </div>
-                            <div class="card-footer text-gray-700 d-sm-flex justify-content-between">
+                            <div class="card-footer text-gray-700 d-flex justify-content-between">
                                 <span>
                                     <a href="blog-single.html" rel="bookmark" class="text-gray-700"><time datetime="2015-05-04T15:05:34+00:00">4 May 2015</time></a>
                                 </span>
@@ -47,7 +49,7 @@ export default function AllBlog() {
                         </div>
                     </article>
 
-                    <article class="col-12 pb-5">
+                    <article class="col-12 pb-5 px-0 px-lg-3">
                         <div class="card">
                             <a href="blog-single.html" rel="bookmark">
                             <img src="assets/images/blog/image-blog-1.jpg" class="card-img" alt=""/>
@@ -56,7 +58,7 @@ export default function AllBlog() {
                             <h2 class="h5"><a href="blog-single.html" rel="bookmark" class="text-dark">Take your music with you everywhere</a></h2>
                             <p>Donec volutpat leo eget est venenatis, quis sollicitudin mauris vehicula. Etiam molestie placerat elit nec tincidunt. Sed eu venenatis purus, at posuere mi...</p>
                             </div>
-                            <div class="card-footer text-gray-700 d-sm-flex justify-content-between">
+                            <div class="card-footer text-gray-700 d-flex justify-content-between">
                             <span>
                                 <a href="blog-single.html" rel="bookmark" class="text-gray-700"><time datetime="2015-05-04T15:05:34+00:00">4 May 2015</time></a>
                             </span>
@@ -65,7 +67,7 @@ export default function AllBlog() {
                         </div>
                     </article>
 
-                    <article class="col-12 pb-5">
+                    <article class="col-12 pb-5 px-0 px-lg-3">
                         <div class="card">
                             <a href="blog-single.html" rel="bookmark">
                             <img src="assets/images/blog/image-blog-7.jpg" class="card-img" alt=""/>
@@ -74,7 +76,7 @@ export default function AllBlog() {
                             <h2 class="h5"><a href="blog-single.html" rel="bookmark" class="text-dark">Why do people think clouds are interesting?</a></h2>
                             <p>Donec volutpat leo eget est venenatis, quis sollicitudin mauris vehicula. Etiam molestie placerat elit nec tincidunt. Sed eu venenatis purus, at posuere mi...</p>
                             </div>
-                            <div class="card-footer text-gray-700 d-sm-flex justify-content-between">
+                            <div class="card-footer text-gray-700 d-flex justify-content-between">
                             <span>
                                 <a href="blog-single.html" rel="bookmark" class="text-gray-700"><time datetime="2015-05-04T15:05:34+00:00">4 May 2015</time></a>
                             </span>
@@ -83,7 +85,7 @@ export default function AllBlog() {
                         </div>
                     </article>
 
-                    <article class="col-12 pb-5">
+                    <article class="col-12 pb-5 px-0 px-lg-3">
                         <div class="card">
                             <a href="blog-single.html" rel="bookmark">
                             <img src="assets/images/blog/image-blog-5.jpg" class="card-img" alt=""/>
@@ -92,7 +94,7 @@ export default function AllBlog() {
                             <h2 class="h5"><a href="blog-single.html" rel="bookmark" class="text-dark">Lessons I’ve learned by staying positive</a></h2>
                             <p>Donec volutpat leo eget est venenatis, quis sollicitudin mauris vehicula. Etiam molestie placerat elit nec tincidunt. Sed eu venenatis purus, at posuere mi...</p>
                             </div>
-                            <div class="card-footer text-gray-700 d-sm-flex justify-content-between">
+                            <div class="card-footer text-gray-700 d-flex justify-content-between">
                             <span>
                                 <a href="blog-single.html" rel="bookmark" class="text-gray-700"><time datetime="2015-05-04T15:05:34+00:00">4 May 2015</time></a>
                             </span>
