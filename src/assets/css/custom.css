@@ -64,12 +64,16 @@
 	transform: scale(1.2);
 }
 
+.navbar-brand, .navbar-brand:hover {
+  outline: none;
+}
+
 /* 03. PRELOADER
 =================================================*/
 
 #preloader {
 	position: fixed;
-	background: #131313;
+	background: #1d1e29;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -121,6 +125,23 @@
 	border-radius: 50%;
 	-webkit-animation: loader-revolve-1 2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
 	animation: loader-revolve-1 2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+}
+
+.fadeOut-on {
+  -webkit-animation: fadeOut 0.75s;
+  animation: fadeOut 0.75s;
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadeOut {
+  0% { opacity: 1;}
+  99% { opacity: 0.01}
+  100% { opacity: 0}
+}  
+@keyframes fadeOut {
+  0% { opacity: 1;}
+  99% { opacity: 0.01}
+  100% { opacity: 0}
 }
 
 @-webkit-keyframes loader-revolve-1 {
@@ -304,6 +325,42 @@
   .navbar {
     padding: 0.5rem 2rem;
   }
+}
+
+/* article link */
+.article a {
+  color: #FCAF17 !important;
+}
+
+/* blog all transition */
+.item-exit {
+  opacity: 1;
+}
+
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-out;
+}
+
+.item-enter {
+  opacity: 0;
+}
+
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+/* badge blog */
+.badge-blog {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.badge-blog:hover {
+  background: #FCAF17 !important; 
+  color: #fff !important
 }
 
 /* all blog side bar */
@@ -571,6 +628,8 @@ flex: 0 0 60%; }
   text-transform: uppercase;
   font-weight: 500;
   color: #68666C;
+  min-width: 75px;
+  text-align: center;
   border: 1px solid rgba(0, 0, 0, 0.2);
   margin: 5px 10px 5px 0; }
   .blog__details__tag a:hover {
@@ -631,12 +690,14 @@ flex: 0 0 40%; }
   font-size: 24px; }
   @media (max-width: 1199.98px) {
     .blog__next__prev__item > .title {
-      font-size: 22px; } }
+      font-size: 22px;
+      color: #FCAF17 !important; } }
   .blog__next__prev__item > .title::before {
     content: "\f100";
     font-family: "Font Awesome 5 Free";
     font-weight: 550;
-    margin-right: 10px; }
+    margin-right: 10px;
+    color: #050CDD !important; }
 @media (max-width: 767.98px) {
   .blog__next__prev__item.next_post {
     margin-top: 25px; } }
@@ -646,6 +707,7 @@ flex: 0 0 40%; }
 .blog__next__prev__item.next_post > .title::before {
   display: none; }
 .blog__next__prev__item.next_post > .title::after {
+  color: #050CDD !important;
   content: "\f101";
   font-family: "Font Awesome 5 Free";
   font-weight: 550;

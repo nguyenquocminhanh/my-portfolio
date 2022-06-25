@@ -1,41 +1,118 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Comment from './comment/Comment';
-import Image from '../../../assets/images/photo-12.jpeg';
-import Avatar from '../../../assets/images/avatar1.jpeg';
-import User from '../../../assets/images/profile-user.png';
 
-export default function SingleBlog() {
+import User from '../../../assets/images/profile-user.png';
+import setTime from '../../../utility/setTime';
+import removeDuplicate from '../../../utility/removeDuplicate';
+import parse from 'html-react-parser';
+
+export default function SingleBlog(props) {
+  let tags = props.blog['tags'] ? props.blog['tags'] : '';
+  let content = props.blog['content'] ? props.blog['content'] : '';
+
+  const furtherReadings = props.blogs.filter(blog => JSON.stringify(blog) !== JSON.stringify(props.blog))
+    .slice(0, 3).map(blog => {
+        return <li class="rc__post__item">
+            <div class="rc__post__thumb">
+                <Link to={"/details/blog/" + blog['id']}><img style={{maxWidth: '100%'}} src={blog['thumbnail_image']} alt=""/></Link>
+            </div>
+            <div class="rc__post__content">
+                <h5 class="title"><Link to={"/details/blog/" + blog['id']}>{blog['title']}</Link></h5>
+                <span class="post-date"><i class="fa fa-calendar-alt"></i> {setTime(blog['created_at'])}</span>
+            </div>
+        </li>
+  })
+
+  const allCategories = props.categories.map(category => {
+    return <li class="sidebar__cat__item" key={category['id']}>
+            <Link to={"/category/blog/" + category['id']}>{category['name']} ({category['blog'].length})</Link>
+      </li>
+  });
+
+  let allTags = [];
+  props.blogs.forEach(blog => {
+      allTags = allTags.concat(blog['tags'].split(','));
+  })
+
+  const popularTags = removeDuplicate(allTags).map((tag, i) => {
+    return <li key={i.toString()}><a style={{cursor: 'pointer'}}>{tag}</a></li>
+  })
+
+  let previousBlog = null;
+  let nextBlog = null;
+
+  if (props.blogs && props.blog) {
+    // NEXT BLOG
+    if (JSON.stringify(props.blogs[props.blogs.length - 1]) === JSON.stringify(props.blog)) {        // last element in array => get next is first element in array
+        nextBlog = props.blogs[0];
+    } else {
+        let index = props.blogs.findIndex(blog => {
+            return blog.id === props.blog['id'];
+        });
+        nextBlog = props.blogs[index + 1];
+    }
+
+    // PREVIOUS BLOG
+    if (JSON.stringify(props.blogs[0]) === JSON.stringify(props.blog)) {        // first element in array => get previous is last element in array
+        previousBlog = props.blogs[props.blogs.length - 1];
+    } else {
+        let index = props.blogs.findIndex(blog => {
+            return blog.id === props.blog['id'];
+        });
+        previousBlog = props.blogs[index + -1];
+    }
+  }
+
+  let prevBlog = previousBlog ? <div className="col-xl-5 col-md-6">
+    <div className="blog__next__prev__item">
+        <h4 className="title"><Link to={"/details/blog/" + previousBlog['id']}>Previous Post</Link></h4>
+        <div className="blog__next__prev__post">
+            <div className="blog__next__prev__thumb">
+                <Link to={"/details/blog/" + previousBlog['id']}><img style={{maxWidth: '100%'}} src={previousBlog['thumbnail_image']} alt=""/></Link>
+            </div>
+            <div className="blog__next__prev__content">
+                <span className="title"><Link to={"/details/blog/" + previousBlog['id']}>{previousBlog['title']}</Link></span>
+            </div>
+        </div>
+    </div>
+  </div> : null;
+
+  let nBlog = nextBlog ? <div className="col-xl-5 col-md-6">
+    <div className="blog__next__prev__item next_post text-end">
+        <h4 className="title text-right"><Link to={"/details/blog/" + nextBlog['id']}>Next Post</Link></h4>
+        <div className="blog__next__prev__post">
+            <div className="blog__next__prev__thumb">
+                <Link to={"/details/blog/" + nextBlog['id']}><img style={{maxWidth: '100%'}} src={nextBlog['thumbnail_image']} alt=""/></Link>
+            </div>
+            <div className="blog__next__prev__content">
+                <span className="title"><Link to={"/details/blog/" + nextBlog['id']}>{nextBlog['title']}</Link></span>
+            </div>
+        </div>
+    </div>
+  </div> : null;
+
   return (
     <section className="py-0" id="blog-container">
-        <div className="bg-white px-6 px-lg-9 py-9 py-xl-12 shadow-light-lg rounded">
+        <div className="bg-white px-6 px-lg-9 py-9 shadow-light-lg rounded">
             <div className="row">
                 <div className="col-lg-8">
 
                     <article className="article">
                         <div className="avatar mr-4">
-                            <img src={Avatar} alt="" className="avatar-img rounded-circle"/>
+                            <img src={props.blog['author_image']} alt="" className="avatar-img rounded-circle"/>
                         </div>
-                        <span>Minh Nguyen</span>
+                        <span>{props.blog['author_name']}</span>
                         <figure className='mt-5'>
-                            <img alt="Blog Article Figure" src="../../assets/images/photos/photo-9.jpg" className="img-fluid rounded-3x"/>
+                            <img alt="Blog Article Figure" src={props.blog['thumbnail_image']} className="img-fluid rounded-3x"/>
                             <figcaption className="text-center">Here is a caption for this picture</figcaption>
                         </figure>
                         <ul className="blog__post__meta">
-                            <li><i className="fa fa-calendar-alt"></i> 25 january 2021</li>
-                            <li><i className="fa fa-comments"></i> <a href="#">Comment (08)</a></li>
-                            <li className="post-share"><a href="#"><i className="fa fa-share"></i> (18)</a></li>
+                            <li><i className="fa fa-calendar-alt"></i> {setTime(props.blog['created_at'])}</li>
+                            <li><i className="fa fa-comments"></i><span className='text-muted'>Comment (08)</span></li>
+                            <li className="post-share"><span className='text-muted'><i className="fa fa-share"></i> ({props.blog['share_count']})</span></li>
                         </ul>
-                        <h3>This is a headline</h3>
-                        <p>Morbi sed turpis sodales ante luctus rhoncus. Vestibulum hendrerit tristique eleifend. Vestibulum vitae magna accumsan, pellentesque orci a, varius augue. Suspendisse quis urna nisi. Morbi eget quam sit amet risus posuere molestie at a arcu. Morbi rhoncus lacus neque. Nam vehicula ultricies mauris. Praesent bibendum quam bibendum, suscipit erat at, vestibulum lorem.</p>
-                        <blockquote>
-                            Nam dignissim nulla cursus maximus pulvinar. Sed eu laoreet erat, sed gravida lacus. Nunc ut nunc id risus luctus egestas. Nullam fringilla ex tellus, ut semper odio fermentum non.
-                        </blockquote>
-                        <p className="mb-7">Quisque finibus est ipsum, nec pharetra lorem tempor eget. Maecenas ullamcorper sapien id augue malesuada, blandit lacinia ligula eleifend. Proin et egestas eros, vel ullamcorper massa. Suspendisse velit ex, cursus vel tincidunt eu, mollis id diam. Aenean tristique mauris at turpis ultricies blandit. Proin luctus metus tortor, non dictum ligula ornare ac. Proin a purus erat.</p>
-                        <p>Mauris vehicula, diam non dapibus accumsan, neque tortor hendrerit leo, eu consequat elit arcu sed nulla. Suspendisse potenti. Vestibulum dignissim fermentum turpis, eget posuere erat placerat et. Curabitur ac turpis imperdiet, ornare diam eu, ultrices libero. Nam in turpis pellentesque, tincidunt erat et, ornare arcu. Suspendisse non nisl nisi. Nullam egestas pulvinar rhoncus. Vestibulum suscipit metus nulla, non consequat nisi luctus quis. Nam non luctus sapien. Etiam orci felis, efficitur ac ornare in, ultrices vitae mauris.</p>
-                        <h3 className="mt-7">This is a headline</h3>
-                        <p>Ut eget metus porttitor, euismod elit quis, luctus leo. Nulla non urna in quam aliquam tincidunt. Morbi lectus est, sagittis vel bibendum vitae, vulputate et mauris. Sed quis gravida elit. Vivamus mauris turpis, fringilla imperdiet mattis id, fringilla id justo. Integer commodo nunc vitae nisl tincidunt, at porttitor arcu porta.</p>
-                        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+                        {parse(content)}
                     </article>
 
                     <hr className="my-7"/>
@@ -44,10 +121,9 @@ export default function SingleBlog() {
                         <ul className="blog__details__tag">
                             <li className="title">Tag:</li>
                             <li className="tags-list">
-                                <a href="#">Business</a>
-                                <a href="#">Design</a>
-                                <a href="#">apps</a>
-                                <a href="#">data</a>
+                                {tags.split(',').map((tag, i) => {
+                                    return <a key={i.toString()}>{tag}</a>
+                                })}
                             </li>
                         </ul>
                         <ul className="blog__details__social">
@@ -65,33 +141,9 @@ export default function SingleBlog() {
 
                     <div className="blog__next__prev">
                         <div className="row justify-content-between">
-                            <div className="col-xl-5 col-md-6">
-                                <div className="blog__next__prev__item">
-                                    <h4 className="title">Previous Post</h4>
-                                    <div className="blog__next__prev__post">
-                                        <div className="blog__next__prev__thumb">
-                                            <a href="blog-details.html"><img style={{maxWidth: '100%'}} src={Image} alt=""/></a>
-                                        </div>
-                                        <div className="blog__next__prev__content">
-                                            <span className="title"><a href="blog-details.html">Digital Marketing Agency Pricing Guide.</a></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-xl-5 col-md-6">
-                                <div className="blog__next__prev__item next_post text-end">
-                                    <h4 className="title">Next Post</h4>
-                                    <div className="blog__next__prev__post">
-                                        <div className="blog__next__prev__thumb">
-                                            <a href="blog-details.html"><img style={{maxWidth: '100%'}} src={Image} alt=""/></a>
-                                        </div>
-                                        <div className="blog__next__prev__content">
-                                            <span className="title"><a href="blog-details.html">App Prototyping
-                                            Types, Example & Usages.</a></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {prevBlog}
+
+                            {nBlog}
                         </div>
                     </div>
 
@@ -191,59 +243,23 @@ export default function SingleBlog() {
                     <aside className="blog__sidebar">
                         
                         <div className="widget">
-                            <h4 className="widget-title">Recent Blogs</h4>
+                            <h4 className="widget-title">Further Readings</h4>
                             <ul className="rc__post">
-                                <li className="rc__post__item">
-                                    <div className="rc__post__thumb">
-                                        <Link to={"/blog/" + 1}><img style={{maxWidth: '100%'}} src={Image} alt=""/></Link>
-                                    </div>
-                                    <div className="rc__post__content">
-                                        <h5 className="title"><Link to={"/blog/" + 1}>Best website traffick booster with
-                                        great tools.</Link></h5>
-                                        <span className="post-date"><i className="fa fa-calendar-alt"></i> 28 january 2021</span>
-                                    </div>
-                                </li>
-                                <li className="rc__post__item">
-                                    <div className="rc__post__thumb">
-                                        <a href="blog-details.html"><img style={{maxWidth: '100%'}} src={Image} alt=""/></a>
-                                    </div>
-                                    <div className="rc__post__content">
-                                        <h5 className="title"><a href="blog-details.html">How to become a best sale marketer
-                                        in a year!</a></h5>
-                                        <span className="post-date"><i className="fa fa-calendar-alt"></i> 28 january 2021</span>
-                                    </div>
-                                </li>
+                                {furtherReadings}
                             </ul>
                         </div>
 
                         <div className="widget">
                             <h4 className="widget-title">Categories</h4>
                             <ul className="sidebar__cat">
-                                <Link className="sidebar__cat__item" to={"/category/blog/" + 1}><li><a href="blog.html">Web Design (6)</a></li></Link>
-                                <li className="sidebar__cat__item"><a href="blog.html">Web Development (4)</a></li>
-                                <li className="sidebar__cat__item"><a href="blog.html">Product Design (9)</a></li>
-                                <li className="sidebar__cat__item"><a href="blog.html">Animation (6)</a></li>
-                                <li className="sidebar__cat__item"><a href="blog.html">Ui/Ux Design (8)</a></li>
-                                <li className="sidebar__cat__item"><a href="blog.html">Branding Design (12)</a></li>
-                                <li className="sidebar__cat__item"><a href="blog.html">Web Design (6)</a></li>
-                                <li className="sidebar__cat__item"><a href="blog.html">Logo Design (6)</a></li>
+                                {allCategories}
                             </ul>
                         </div>
 
                         <div className="widget">
                             <h4 className="widget-title">Popular Tags</h4>
                             <ul className="sidebar__tags">
-                                <li><a href="blog.html">Business</a></li>
-                                <li><a href="blog.html">Design</a></li>
-                                <li><a href="blog.html">apps</a></li>
-                                <li><a href="blog.html">landing page</a></li>
-                                <li><a href="blog.html">data</a></li>
-                                <li><a href="blog.html">website</a></li>
-                                <li><a href="blog.html">book</a></li>
-                                <li><a href="blog.html">Design</a></li>
-                                <li><a href="blog.html">product design</a></li>
-                                <li><a href="blog.html">landing page</a></li>
-                                <li><a href="blog.html">data</a></li>
+                                {popularTags}
                             </ul>
                         </div>
                     </aside>

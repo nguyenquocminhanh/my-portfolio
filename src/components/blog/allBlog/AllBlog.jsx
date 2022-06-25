@@ -1,115 +1,96 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Avatar from '../../../assets/images/avatar1.jpeg';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import parse from 'html-react-parser';
+import truncate from 'truncate-html';
 
-export default function AllBlog() {
+import setTime from '../../../utility/setTime';
+import removeDuplicate from '../../../utility/removeDuplicate';
+
+export default function AllBlog(props) {
+  const allBlogs = props.filteredBlogs.slice(5 * (props.selectedPage - 1), 5 * props.selectedPage).map(blog => {
+    return <CSSTransition key={blog['id']} timeout={700} classNames="item">
+        <article class="col-12 pb-5 px-0 px-lg-3">
+            <div class="card">
+                <div class="card-header p-0 position-relative">
+                    <Link to={"/details/blog/" + blog['id']}>
+                        <img src={blog['thumbnail_image']} class="card-img" alt=""/>
+                    </Link>
+                    <Link to={"/category/blog/" + blog['category']['id']} class="badge badge-light badge-lg badge-blog">{blog['category']['name']}</Link>
+                    <Link to={"/details/blog/" + blog['id']} class="blog__link"><i class="fa fa-arrow-right"></i></Link>
+                </div>
+                <div class="card-body">
+                    <Link to={"/details/blog/" + blog['id']}>
+                        <h2 class="h5"><a href="blog-single.html" rel="bookmark" class="text-dark">{blog['title']}</a></h2>
+                    </Link>
+                    {parse(truncate(blog['content'], 35, { byWords: true }))}
+                </div>
+                <div class="card-footer text-gray-700 d-flex justify-content-between">
+                    <span><i className='fa fa-calendar-alt'></i> &nbsp;{setTime(blog['created_at'])}</span>
+                    <span><i className='fa fa-clock'></i> &nbsp;{blog['duration']} read</span>
+                </div>
+            </div>
+        </article>
+    </CSSTransition>
+  });
+  
+  const allCategories = props.categories.map(category => {
+      return <li class="sidebar__cat__item" key={category['id']}>
+              <Link to={"/category/blog/" + category['id']}>{category['name']} ({category['blog'].length})</Link>
+        </li>
+  });
+
+  let allTags = [];
+  props.allBlogs.forEach(blog => {
+      allTags = allTags.concat(blog['tags'].split(','));
+  })
+
+  const popularTags = removeDuplicate(allTags).map((tag, i) => {
+    return <li key={i.toString()}><a style={{cursor: 'pointer'}}>{tag}</a></li>
+  })
+
+  const recentBlogs = props.allBlogs.slice(0, 3).map(blog => {
+      return <li class="rc__post__item">
+      <div class="rc__post__thumb">
+          <Link to={"/details/blog/" + blog['id']}><img style={{maxWidth: '100%'}} src={blog['thumbnail_image']} alt=""/></Link>
+      </div>
+      <div class="rc__post__content">
+          <h5 class="title"><Link to={"/details/blog/" + blog['id']}>{blog['title']}</Link></h5>
+          <span class="post-date"><i class="fa fa-calendar-alt"></i> {setTime(blog['created_at'])}</span>
+      </div>
+    </li>
+  })
+
+  // pagination
+  const numberOfPage = Math.ceil(props.filteredBlogs.length / 5);
+  let pagination = [];
+  for (var i = 1; i <= numberOfPage; i++) {
+      let selected = i;
+      pagination.push(
+        <li key={i.toString()} class={props.selectedPage == i ? 'page-item active' : 'page-item'}>
+            <a class="page-link scrollto" href="#blog-all-container" onClick={() => props.pageSelected(selected)}>{i}</a>
+        </li>
+        )
+  }
+  let nextPage = numberOfPage == props.selectedPage ? null : <li class="page-item"><a class="page-link px-7 scrollto" onClick={props.nextPageClicked} href="#blog-all-container">Next</a></li>;
+  let previousPage = 1 == props.selectedPage ? null : <li class="page-item"><a class="page-link px-7 scrollto" onClick={props.previousPageClicked} href="#blog-all-container">Previous</a></li>;
+
+  
   return (
-    <section class="pt-5 pt-lg-9 pb-0" id="blog-all-container">
+    <section class="pt-5 pt-lg-6 pb-0" id="blog-all-container">
         <div class="bg-white p-6 p-lg-9 shadow-light-lg rounded">
             <div class="row">
                 <div class="col-lg-8 px-0">
-                    <article class="col-12 pb-5 px-0 px-lg-3">
-                        <div class="card">
-                            <div class="card-header p-0 position-relative">
-                                <Link to={"/details/blog/" + 1}>
-                                    <img src="assets/images/blog/image-blog-6.jpg" class="card-img" alt=""/>
-                                </Link>
-                                <Link to={"/details/blog/" + 1} class="blog__link"><i class="fa fa-arrow-right"></i></Link>
-                            </div>
-                            <div class="card-body">
-                                <Link to={"/details/blog/" + 1}>
-                                    <h2 class="h5"><a href="blog-single.html" rel="bookmark" class="text-dark">She was having the most beautiful dream</a></h2>
-                                </Link>
-                                <p>Donec volutpat leo eget est venenatis, quis sollicitudin mauris vehicula. Etiam molestie placerat elit nec tincidunt. Sed eu venenatis purus, at posuere mi...</p>
-                            </div>
-                            <div class="card-footer text-gray-700 d-flex justify-content-between">
-                                <span>
-                                    <a href="blog-single.html" rel="bookmark" class="text-gray-700"><time datetime="2015-05-04T15:05:34+00:00">4 May 2015</time></a>
-                                </span>
-                                <span>1 minute read</span>
-                            </div>
-                        </div>
-                    </article>
+                    <TransitionGroup className="todo-list">
+                        {allBlogs}
+                    </TransitionGroup>
 
-                    <article class="col-12 pb-5 px-0 px-lg-3">
-                        <div class="card">
-                            <a href="blog-single.html" rel="bookmark">
-                                <img src="assets/images/blog/image-blog-3.jpg" class="card-img" alt=""/>
-                            </a>
-                            <div class="card-body">
-                                <h2 class="h5"><a href="blog-single.html" rel="bookmark" class="text-dark">Something that I’ve never told anyone before</a></h2>
-                                <p>Donec volutpat leo eget est venenatis, quis sollicitudin mauris vehicula. Etiam molestie placerat elit nec tincidunt. Sed eu venenatis purus, at posuere mi...</p>
-                            </div>
-                            <div class="card-footer text-gray-700 d-flex justify-content-between">
-                                <span>
-                                    <a href="blog-single.html" rel="bookmark" class="text-gray-700"><time datetime="2015-05-04T15:05:34+00:00">4 May 2015</time></a>
-                                </span>
-                                <span>1 minute read</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="col-12 pb-5 px-0 px-lg-3">
-                        <div class="card">
-                            <a href="blog-single.html" rel="bookmark">
-                            <img src="assets/images/blog/image-blog-1.jpg" class="card-img" alt=""/>
-                            </a>
-                            <div class="card-body">
-                            <h2 class="h5"><a href="blog-single.html" rel="bookmark" class="text-dark">Take your music with you everywhere</a></h2>
-                            <p>Donec volutpat leo eget est venenatis, quis sollicitudin mauris vehicula. Etiam molestie placerat elit nec tincidunt. Sed eu venenatis purus, at posuere mi...</p>
-                            </div>
-                            <div class="card-footer text-gray-700 d-flex justify-content-between">
-                            <span>
-                                <a href="blog-single.html" rel="bookmark" class="text-gray-700"><time datetime="2015-05-04T15:05:34+00:00">4 May 2015</time></a>
-                            </span>
-                            <span>1 minute read</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="col-12 pb-5 px-0 px-lg-3">
-                        <div class="card">
-                            <a href="blog-single.html" rel="bookmark">
-                            <img src="assets/images/blog/image-blog-7.jpg" class="card-img" alt=""/>
-                            </a>
-                            <div class="card-body">
-                            <h2 class="h5"><a href="blog-single.html" rel="bookmark" class="text-dark">Why do people think clouds are interesting?</a></h2>
-                            <p>Donec volutpat leo eget est venenatis, quis sollicitudin mauris vehicula. Etiam molestie placerat elit nec tincidunt. Sed eu venenatis purus, at posuere mi...</p>
-                            </div>
-                            <div class="card-footer text-gray-700 d-flex justify-content-between">
-                            <span>
-                                <a href="blog-single.html" rel="bookmark" class="text-gray-700"><time datetime="2015-05-04T15:05:34+00:00">4 May 2015</time></a>
-                            </span>
-                            <span>1 minute read</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="col-12 pb-5 px-0 px-lg-3">
-                        <div class="card">
-                            <a href="blog-single.html" rel="bookmark">
-                            <img src="assets/images/blog/image-blog-5.jpg" class="card-img" alt=""/>
-                            </a>
-                            <div class="card-body">
-                            <h2 class="h5"><a href="blog-single.html" rel="bookmark" class="text-dark">Lessons I’ve learned by staying positive</a></h2>
-                            <p>Donec volutpat leo eget est venenatis, quis sollicitudin mauris vehicula. Etiam molestie placerat elit nec tincidunt. Sed eu venenatis purus, at posuere mi...</p>
-                            </div>
-                            <div class="card-footer text-gray-700 d-flex justify-content-between">
-                            <span>
-                                <a href="blog-single.html" rel="bookmark" class="text-gray-700"><time datetime="2015-05-04T15:05:34+00:00">4 May 2015</time></a>
-                            </span>
-                            <span>1 minute read</span>
-                            </div>
-                        </div>
-                    </article>
-
+                    {/* Pagination */}
                     <nav class="mt-8">
                         <ul class="pagination pagination-pill justify-content-center mb-0">
-                            <li class="page-item active" aria-current="page"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link px-7" href="#">Next</a></li>
+                            {previousPage}
+                            {pagination}
+                            {nextPage}
                         </ul>
                     </nav>
 
@@ -120,47 +101,21 @@ export default function AllBlog() {
                     <aside class="blog__sidebar">
                         <div class="widget">
                             <form action="#" class="search-form">
-                                <input type="text" placeholder="Search Blog"/>
+                                <input onChange={props.filterBlog} value={props.searchKeyword} type="text" placeholder="Search Blog"/>
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
                         <div class="widget">
                             <h4 class="widget-title">Recent Blogs</h4>
                             <ul class="rc__post">
-                                <li class="rc__post__item">
-                                    <div class="rc__post__thumb">
-                                        <Link to={"/details/blog/" + 1}><img style={{maxWidth: '100%'}} src="assets/images/blog/image-blog-5.jpg" alt=""/></Link>
-                                    </div>
-                                    <div class="rc__post__content">
-                                        <h5 class="title"><Link to={"/blog/" + 1}>Best website traffick booster with
-                                        great tools.</Link></h5>
-                                        <span class="post-date"><i class="fa fa-calendar-alt"></i> 28 january 2021</span>
-                                    </div>
-                                </li>
-                                <li class="rc__post__item">
-                                    <div class="rc__post__thumb">
-                                        <a href="blog-details.html"><img style={{maxWidth: '100%'}} src="assets/images/blog/image-blog-1.jpg" alt=""/></a>
-                                    </div>
-                                    <div class="rc__post__content">
-                                        <h5 class="title"><a href="blog-details.html">How to become a best sale marketer
-                                        in a year!</a></h5>
-                                        <span class="post-date"><i class="fa fa-calendar-alt"></i> 28 january 2021</span>
-                                    </div>
-                                </li>
+                                {recentBlogs}
                             </ul>
                         </div>
 
                         <div class="widget">
                             <h4 class="widget-title">Categories</h4>
                             <ul class="sidebar__cat">
-                                <Link class="sidebar__cat__item" to={"/category/blog/" + 1}><li><a href="blog.html">Web Design (6)</a></li></Link>
-                                <li class="sidebar__cat__item"><a href="blog.html">Web Development (4)</a></li>
-                                <li class="sidebar__cat__item"><a href="blog.html">Product Design (9)</a></li>
-                                <li class="sidebar__cat__item"><a href="blog.html">Animation (6)</a></li>
-                                <li class="sidebar__cat__item"><a href="blog.html">Ui/Ux Design (8)</a></li>
-                                <li class="sidebar__cat__item"><a href="blog.html">Branding Design (12)</a></li>
-                                <li class="sidebar__cat__item"><a href="blog.html">Web Design (6)</a></li>
-                                <li class="sidebar__cat__item"><a href="blog.html">Logo Design (6)</a></li>
+                                {allCategories}
                             </ul>
                         </div>
 
@@ -189,17 +144,7 @@ export default function AllBlog() {
                         <div class="widget">
                             <h4 class="widget-title">Popular Tags</h4>
                             <ul class="sidebar__tags">
-                                <li><a href="blog.html">Business</a></li>
-                                <li><a href="blog.html">Design</a></li>
-                                <li><a href="blog.html">apps</a></li>
-                                <li><a href="blog.html">landing page</a></li>
-                                <li><a href="blog.html">data</a></li>
-                                <li><a href="blog.html">website</a></li>
-                                <li><a href="blog.html">book</a></li>
-                                <li><a href="blog.html">Design</a></li>
-                                <li><a href="blog.html">product design</a></li>
-                                <li><a href="blog.html">landing page</a></li>
-                                <li><a href="blog.html">data</a></li>
+                                {popularTags}
                             </ul>
                         </div>
                     </aside>
