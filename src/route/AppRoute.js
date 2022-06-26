@@ -30,7 +30,7 @@ class AppRoute extends Component {
           {/* blog */}
           <Route exact path="/blog" render={(props) => <BlogAllPage {...props} key={Date.now()}/>}/>
           <Route exact path="/details/blog/:blogID" render={(props) => <BlogSinglePage {...props} key={Date.now()}/>}/>
-          <Route exact path="/category/blog/:id" render={(props) => <BlogCategoryPage {...props} key={Date.now()}/>}/>
+          <Route exact path="/category/blog/:categoryID" render={(props) => <BlogCategoryPage {...props} key={Date.now()}/>}/>
           {/* contact */}
           <Route exact path="/contact" render={(props) => <ContactPage {...props} key={Date.now()}/>}/>
           {/* 404 */}

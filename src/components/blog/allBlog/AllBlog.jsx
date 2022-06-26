@@ -8,7 +8,8 @@ import setTime from '../../../utility/setTime';
 import removeDuplicate from '../../../utility/removeDuplicate';
 
 export default function AllBlog(props) {
-  const allBlogs = props.filteredBlogs.slice(5 * (props.selectedPage - 1), 5 * props.selectedPage).map(blog => {
+  // blogs
+  const allBlogs = props.filteredBlogs.length > 0 ? props.filteredBlogs.slice(5 * (props.selectedPage - 1), 5 * props.selectedPage).map(blog => {
     return <CSSTransition key={blog['id']} timeout={700} classNames="item">
         <article class="col-12 pb-5 px-0 px-lg-3">
             <div class="card">
@@ -17,7 +18,7 @@ export default function AllBlog(props) {
                         <img src={blog['thumbnail_image']} class="card-img" alt=""/>
                     </Link>
                     <Link to={"/category/blog/" + blog['category']['id']} class="badge badge-light badge-lg badge-blog">{blog['category']['name']}</Link>
-                    <Link to={"/details/blog/" + blog['id']} class="blog__link"><i class="fa fa-arrow-right"></i></Link>
+                    <Link to={"/details/blog/" + blog['id']} class="blog__link" title="Read more"><i class="fa fa-arrow-right"></i></Link>
                 </div>
                 <div class="card-body">
                     <Link to={"/details/blog/" + blog['id']}>
@@ -32,13 +33,27 @@ export default function AllBlog(props) {
             </div>
         </article>
     </CSSTransition>
-  });
+  }) : <CSSTransition timeout={700} classNames="item">
+    <div className='text-center'>
+        <h3 class="text-center">Sorry, but no data available.</h3>
+        <img className='mx-auto' style={{maxWidth: "100%"}} src="https://assets.materialup.com/uploads/b17ea0c7-df76-4ce1-bf82-4a2cf6ae866d/preview.jpg"></img>
+    </div>
+  </CSSTransition>;
   
+  // categories
   const allCategories = props.categories.map(category => {
       return <li class="sidebar__cat__item" key={category['id']}>
               <Link to={"/category/blog/" + category['id']}>{category['name']} ({category['blog'].length})</Link>
         </li>
   });
+
+  // comments
+  const allComments = props.comments ? props.comments.map(comment => {
+    return <li class="sidebar__comment__item">
+        <Link to={"/details/blog/" + comment['blog_id']}>{comment['owner']}</Link>
+        <p>{truncate(comment['content'], 15, { byWords: true })}</p>
+    </li>
+  }) : [];
 
   let allTags = [];
   props.allBlogs.forEach(blog => {
@@ -64,24 +79,31 @@ export default function AllBlog(props) {
   // pagination
   const numberOfPage = Math.ceil(props.filteredBlogs.length / 5);
   let pagination = [];
-  for (var i = 1; i <= numberOfPage; i++) {
-      let selected = i;
-      pagination.push(
-        <li key={i.toString()} class={props.selectedPage == i ? 'page-item active' : 'page-item'}>
-            <a class="page-link scrollto" href="#blog-all-container" onClick={() => props.pageSelected(selected)}>{i}</a>
-        </li>
-        )
-  }
-  let nextPage = numberOfPage == props.selectedPage ? null : <li class="page-item"><a class="page-link px-7 scrollto" onClick={props.nextPageClicked} href="#blog-all-container">Next</a></li>;
-  let previousPage = 1 == props.selectedPage ? null : <li class="page-item"><a class="page-link px-7 scrollto" onClick={props.previousPageClicked} href="#blog-all-container">Previous</a></li>;
+  let nextPage = null;
+  let previousPage = null;
 
+  if (props.filteredBlogs.length > 0) {
+    for (var i = 1; i <= numberOfPage; i++) {
+        let selected = i;
+        pagination.push(
+            <li key={i.toString()} class={props.selectedPage == i ? 'page-item active' : 'page-item'}>
+                <a class="page-link scrollto" href="#blog-all-container" onClick={() => props.pageSelected(selected)}>{i}</a>
+            </li>
+            )
+    }
+    nextPage = numberOfPage == props.selectedPage ? null : <li class="page-item"><a class="page-link px-7 scrollto" onClick={props.nextPageClicked} href="#blog-all-container">Next</a></li>;
+    previousPage = 1 == props.selectedPage ? null : <li class="page-item"><a class="page-link px-7 scrollto" onClick={props.previousPageClicked} href="#blog-all-container">Previous</a></li>;
+  } else {
+      pagination = null
+  }
+  
   
   return (
     <section class="pt-5 pt-lg-6 pb-0" id="blog-all-container">
         <div class="bg-white p-6 p-lg-9 shadow-light-lg rounded">
             <div class="row">
                 <div class="col-lg-8 px-0">
-                    <TransitionGroup className="todo-list">
+                    <TransitionGroup>
                         {allBlogs}
                     </TransitionGroup>
 
@@ -122,22 +144,7 @@ export default function AllBlog(props) {
                         <div class="widget">
                             <h4 class="widget-title">Recent Comments</h4>
                             <ul class="sidebar__comment">
-                                <li class="sidebar__comment__item">
-                                    <a href="blog-details.html">Rasalina Sponde</a>
-                                    <p>There are many variations of passages of lorem ipsum available, but the majority have</p>
-                                </li>
-                                <li class="sidebar__comment__item">
-                                    <a href="blog-details.html">Rasalina Sponde</a>
-                                    <p>There are many variations of passages of lorem ipsum available, but the majority have</p>
-                                </li>
-                                <li class="sidebar__comment__item">
-                                    <a href="blog-details.html">Rasalina Sponde</a>
-                                    <p>There are many variations of passages of lorem ipsum available, but the majority have</p>
-                                </li>
-                                <li class="sidebar__comment__item">
-                                    <a href="blog-details.html">Rasalina Sponde</a>
-                                    <p>There are many variations of passages of lorem ipsum available, but the majority have</p>
-                                </li>
+                                {allComments}
                             </ul>
                         </div>
                         

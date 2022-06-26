@@ -8,6 +8,22 @@ class AppURL {
     }
 
     static AllBlogCategory = this.BaseURL + '/blog/category/all';
+
+    static AllBlogByCategory(id) {
+        return this.BaseURL + '/blog/category/' + id;
+    }
+
+    static AllComment = this.BaseURL + '/comment/all';
+
+    static StoreComment = this.BaseURL + '/comment/store';
+
+    static LikeComment(id) {
+        return this.BaseURL + '/comment/like/' + id;
+    }
+
+    static UnLikeComment(id) {
+        return this.BaseURL + '/comment/unlike/' + id;
+    }
 }
 
 export default AppURL

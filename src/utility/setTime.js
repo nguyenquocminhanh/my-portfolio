@@ -1,4 +1,4 @@
-export default function setTime (date) {
+export default function setTime (date, time = false) {
     var dateObj = new Date(date);
     var month = dateObj.getUTCMonth() + 1; //months from 1-12
     var day = dateObj.getUTCDate();
@@ -29,7 +29,18 @@ export default function setTime (date) {
             break;
         case 12: month = "December";
             break;
-        }
+    }
 
-    return month + " " + day + ", " + year;
+    let withPmAm = '';
+
+    if (time == true) {
+        withPmAm = dateObj.toLocaleTimeString('en-US', {
+            // en-US can be set to 'default' to use user's browser settings
+            hour: '2-digit',
+            minute: '2-digit',
+        });
+        return month + " " + day + ", " + year + ' at ' + withPmAm;
+    } else {
+        return month + " " + day + ", " + year;
+    }
 }

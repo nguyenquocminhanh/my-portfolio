@@ -1,16 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import Comment from './comment/Comment';
 
-import User from '../../../assets/images/profile-user.png';
 import setTime from '../../../utility/setTime';
 import removeDuplicate from '../../../utility/removeDuplicate';
 import parse from 'html-react-parser';
 
 export default function SingleBlog(props) {
-  let tags = props.blog['tags'] ? props.blog['tags'] : '';
-  let content = props.blog['content'] ? props.blog['content'] : '';
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [contentComment, setContent] = useState('');
 
+  // tags
+  let tags = props.blog['tags'] ? props.blog['tags'] : '';
+  // content
+  let content = props.blog['content'] ? props.blog['content'] : '';
+  // comments
+  let commentsElement = null;
+  if(props.blog['comments']) {
+      let comments = props.blog['comments'].filter(com => com['comment_reply_id'] == null);
+      commentsElement = comments.map(comment => {
+        return <Comment comment={comment} reply_id={comment['id']} commentPosted={props.commentPosted} key={comment['id']} likeComment={props.likeComment} unLikeComment={props.unLikeComment}/>
+    })
+  }
+
+  // further readings
   const furtherReadings = props.blogs.filter(blog => JSON.stringify(blog) !== JSON.stringify(props.blog))
     .slice(0, 3).map(blog => {
         return <li class="rc__post__item">
@@ -30,6 +45,7 @@ export default function SingleBlog(props) {
       </li>
   });
 
+  // tags
   let allTags = [];
   props.blogs.forEach(blog => {
       allTags = allTags.concat(blog['tags'].split(','));
@@ -39,6 +55,7 @@ export default function SingleBlog(props) {
     return <li key={i.toString()}><a style={{cursor: 'pointer'}}>{tag}</a></li>
   })
 
+  // previous, next blog
   let previousBlog = null;
   let nextBlog = null;
 
@@ -60,7 +77,7 @@ export default function SingleBlog(props) {
         let index = props.blogs.findIndex(blog => {
             return blog.id === props.blog['id'];
         });
-        previousBlog = props.blogs[index + -1];
+        previousBlog = props.blogs[index - 1];
     }
   }
 
@@ -109,7 +126,7 @@ export default function SingleBlog(props) {
                         </figure>
                         <ul className="blog__post__meta">
                             <li><i className="fa fa-calendar-alt"></i> {setTime(props.blog['created_at'])}</li>
-                            <li><i className="fa fa-comments"></i><span className='text-muted'>Comment (08)</span></li>
+                            <li><i className="fa fa-comments"></i><span className='text-muted'>Comment ({props.blog['comments'] ? props.blog['comments'].length : '0' })</span></li>
                             <li className="post-share"><span className='text-muted'><i className="fa fa-share"></i> ({props.blog['share_count']})</span></li>
                         </ul>
                         {parse(content)}
@@ -122,7 +139,7 @@ export default function SingleBlog(props) {
                             <li className="title">Tag:</li>
                             <li className="tags-list">
                                 {tags.split(',').map((tag, i) => {
-                                    return <a key={i.toString()}>{tag}</a>
+                                    return <a style={{cursor: 'pointer'}} key={i.toString()}>{tag}</a>
                                 })}
                             </li>
                         </ul>
@@ -149,90 +166,27 @@ export default function SingleBlog(props) {
 
                     <hr className="my-7"/>
 
-                    <h4 className="mb-7">(04) Comments</h4>
-                    <ul className="article-comments">
-                        <Comment/>
-
-                        <li className='mb-9'>
-                            <div className="d-flex align-items-center mb-2">
-                                <div className="avatar mr-4">
-                                    <img src={User} alt="" className="avatar-img"/>
-                                </div>
-                                <div>
-                                    <b className="fn">Amanda Rhodes</b>
-                                    <div className="small text-muted">6 January 2020 07:16</div>
-                                </div>
-                            </div>
-                            <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-                            <i className="far fa-thumbs-up"></i> 3 <strong style={{cursor: 'pointer', color: '#FCAF17'}}>Reply</strong>
-                            <ul>
-                                <li>
-
-                                    <div className="d-flex align-items-center mb-2">
-                                    <div className="avatar mr-4">
-                                        <span className="avatar-title rounded">MW</span>
-                                    </div>
-                                    <div>
-                                        <b className="fn">Mark White</b>
-                                        <div className="small text-muted">6 January 2020 07:16</div>
-                                    </div>
-                                    </div>
-                                    <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-                                    <a href="#">Reply</a>
-
-                                    <ul>
-                                    <li>
-
-                                        <div className="d-flex align-items-center mb-2">
-                                        <div className="avatar mr-4">
-                                            <span className="avatar-title rounded">JW</span>
-                                        </div>
-                                        <div>
-                                            <b className="fn">John Work</b>
-                                            <div className="small text-muted">6 January 2020 07:16</div>
-                                        </div>
-                                        </div>
-                                        <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-                                        <a href="#">Reply</a>
-
-                                    </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    <li>
-
-                        <div className="d-flex align-items-center mb-2">
-                            <div className="avatar mr-4">
-                                <span className="avatar-title rounded">AC</span>
-                            </div>
-                            <div>
-                                <b className="fn">Alice Cook</b>
-                                <div className="small text-muted">6 January 2020 07:16</div>
-                            </div>
-                        </div>
-                        <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-                        <a href="#">Reply</a>
-
-                    </li>
+                    <h4 className="mb-7">({props.blog['comments'] ? props.blog['comments'].length : '0' }) Comments</h4>
+                    <ul className="article-comments pl-0 pl-lg-5">
+                        {commentsElement}
                     </ul>
 
                     <hr className="my-7"/>
 
                     <h4 className="mb-5">Add comment</h4>
-                    <form>
+                    <form onSubmit={e => { e.preventDefault(); props.commentPosted(name, email, phone, contentComment, null, null) }} id="submitForm">
                         <div className="form-row">
                             <div className="col-md-6 col-lg-4 form-group">
-                            <input type="text" id="author" className="form-control" name="author" size="30" aria-required='true' placeholder="Name*"/>
+                            <input type="text" className="form-control" onChange={(e) => setName(e.target.value)} name="author" size="30" aria-required='true' placeholder="Name*"/>
                             </div>
                             <div className="col-md-6 col-lg-4 form-group">
-                            <input type="email" id="email" className="form-control" name="cf-email" size="30" aria-required='true' placeholder="E-mail*"/>
+                            <input type="email" className="form-control" onChange={(e) => setEmail(e.target.value)} name="cf-email" size="30" aria-required='true' placeholder="E-mail*"/>
                             </div>
                             <div className="col-lg-4 form-group">
-                            <input type="text" id="url" className="form-control" name="url" size="30" placeholder="Phone Number*"/>
+                            <input type="text" className="form-control" onChange={(e) => setPhone(e.target.value)} name="url" size="30" placeholder="Phone Number*"/>
                             </div>
                             <div className="col-12 form-group">
-                            <textarea id="comment" className="form-control" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment*"></textarea>
+                            <textarea className="form-control" onChange={(e) => setContent(e.target.value)} name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment*"></textarea>
                             </div>
                         </div>
                         <button type="submit" className="btn btn-dark" id="submit" name="submit">Submit</button>

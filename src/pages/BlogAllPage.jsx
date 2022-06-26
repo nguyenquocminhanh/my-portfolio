@@ -14,9 +14,10 @@ class BlogAllPage extends Component {
             blogs: [],
             filteredBlogs: [],
             blogCategories: [],
+            comments: [],
             isLoading: true,
             searchKeyword: "",
-            selectedPage: 1
+            selectedPage: 1,
         }
     }
 
@@ -28,17 +29,20 @@ class BlogAllPage extends Component {
 
         const getBlogs = axios.get(AppURL.AllBlog);
         const getBlogCategories = axios.get(AppURL.AllBlogCategory);
+        const getComments = axios.get(AppURL.AllComment);
 
-        axios.all([getBlogs, getBlogCategories]).then(
+        axios.all([getBlogs, getBlogCategories, getComments]).then(
             axios.spread((...responses) => {
                 const responseOne = responses[0];
                 const responseTwo = responses[1];
+                const responseThree = responses[2];
 
-                if(responseOne.status == 200 & responseTwo.status == 200) {
+                if(responseOne.status == 200 & responseTwo.status == 200 && responseThree.status == 200) {
                     this.setState({
                         blogs: responseOne.data,
                         filteredBlogs: responseOne.data,
                         blogCategories: responseTwo.data,
+                        comments: responseThree.data
                     });
                     setTimeout(() => {
                         this.setState({isLoading: false})
@@ -111,6 +115,8 @@ class BlogAllPage extends Component {
                     searchKeyword={this.state.searchKeyword}
 
                     categories={this.state.blogCategories}
+
+                    comments={this.state.comments}
 
                     selectedPage={this.state.selectedPage}
                     pageSelected={this.pageSelected}
