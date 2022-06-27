@@ -321,15 +321,16 @@
   }
 }
 
+/* article link */
+.article-content a {
+  color: #FCAF17;
+  font-weight: 600;
+}
+
 @media only screen and (min-width: 992px) {
   .navbar {
     padding: 0.5rem 2rem;
   }
-}
-
-/* article link */
-.article a {
-  color: #FCAF17 !important;
 }
 
 /* blog all transition */

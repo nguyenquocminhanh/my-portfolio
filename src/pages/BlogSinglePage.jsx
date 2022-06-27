@@ -144,7 +144,7 @@ class BlogSinglePage extends Component {
         return (
             <Fragment>
                 <Helmet> 
-                    <title>My Title</title>
+                    <title>{this.state.blog ? this.state.blog['title'] + ' - ' + this.state.blog['author_name'] : 'My Blog'}</title>
                 </Helmet>
                 
                 {this.state.isLoading ? <Loader/> : null }

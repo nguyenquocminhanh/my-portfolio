@@ -115,14 +115,14 @@ export default function SingleBlog(props) {
             <div className="row">
                 <div className="col-lg-8">
 
-                    <article className="article">
+                    <article className="article-content">
                         <div className="avatar mr-4">
                             <img src={props.blog['author_image']} alt="" className="avatar-img rounded-circle"/>
                         </div>
                         <span>{props.blog['author_name']}</span>
                         <figure className='mt-5'>
                             <img alt="Blog Article Figure" src={props.blog['thumbnail_image']} className="img-fluid rounded-3x"/>
-                            <figcaption className="text-center">Here is a caption for this picture</figcaption>
+                            <figcaption className="text-center mt-3">{props.blog['thumbnail_caption']}</figcaption>
                         </figure>
                         <ul className="blog__post__meta">
                             <li><i className="fa fa-calendar-alt"></i> {setTime(props.blog['created_at'])}</li>

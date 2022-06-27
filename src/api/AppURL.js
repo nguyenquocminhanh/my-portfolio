@@ -24,6 +24,13 @@ class AppURL {
     static UnLikeComment(id) {
         return this.BaseURL + '/comment/unlike/' + id;
     }
+
+    static GetTestimonial = this.BaseURL + '/testimonial/all';
+    static GetBlogPage = this.BaseURL + '/blog-page/all';
+    static GetContactPage = this.BaseURL + '/contact-page/all';
+    static AllContact = this.BaseURL + '/contact/all';
+
+    static StoreMessage = this.BaseURL + '/message/store';
 }
 
 export default AppURL

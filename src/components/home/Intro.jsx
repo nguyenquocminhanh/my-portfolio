@@ -23,10 +23,10 @@ class Intro extends Component {
                   <ReactTypingEffect
                     className='font-weight-bold'
                     text={["Software Engineer", "Full Stack Developer"]}
-                    speed={60}
-                    eraseSpeed={60}
+                    speed={100}
+                    eraseSpeed={100}
                     eraseDelay={3000}
-                    typingDelay={300}
+                    typingDelay={2000}
                   />
                 </h3>
                 {/* <a href="#!" className="btn btn-primary d-block d-md-inline-block mb-3 mb-md-0">Download CV</a>

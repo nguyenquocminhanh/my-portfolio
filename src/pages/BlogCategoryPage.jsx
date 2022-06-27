@@ -14,6 +14,7 @@ class BlogCategoryPage extends Component {
             categoryID: match.params.categoryID,
             category: '',
             blogs: [],
+            cover: '',
             filteredBlogs: [],
             blogCategories: [],
             comments: [],
@@ -42,6 +43,7 @@ class BlogCategoryPage extends Component {
                 if(responseOne.status == 200 & responseTwo.status == 200 && responseThree.status == 200) {
                     this.setState({
                         category: responseOne.data.name,
+                        cover: responseOne.data.image,
                         blogs: responseOne.data.blog,
                         filteredBlogs: responseOne.data.blog,
                         blogCategories: responseTwo.data,
@@ -99,13 +101,14 @@ class BlogCategoryPage extends Component {
         return (
             <Fragment>
                 <Helmet>
-                    <title>Blogs By Category</title>
+                    <title>{this.state.category ? this.state.category : 'Blogs By Category'}</title>
                 </Helmet>
 
                 {this.state.isLoading ? <Loader/> : null }
 
                 <Cover 
                     bgColor="bg-dark"
+                    coverImage={this.state.cover}
                     title={this.state.category}
                     hasArrowDown
                     hrefArrowDown="#blog-category-container"/>

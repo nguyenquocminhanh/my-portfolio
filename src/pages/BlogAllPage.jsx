@@ -15,6 +15,7 @@ class BlogAllPage extends Component {
             filteredBlogs: [],
             blogCategories: [],
             comments: [],
+            blog_page: null,
             isLoading: true,
             searchKeyword: "",
             selectedPage: 1,
@@ -30,19 +31,22 @@ class BlogAllPage extends Component {
         const getBlogs = axios.get(AppURL.AllBlog);
         const getBlogCategories = axios.get(AppURL.AllBlogCategory);
         const getComments = axios.get(AppURL.AllComment);
+        const getBlogPage = axios.get(AppURL.GetBlogPage);
 
-        axios.all([getBlogs, getBlogCategories, getComments]).then(
+        axios.all([getBlogs, getBlogCategories, getComments, getBlogPage]).then(
             axios.spread((...responses) => {
                 const responseOne = responses[0];
                 const responseTwo = responses[1];
                 const responseThree = responses[2];
+                const responseFour = responses[3];
 
-                if(responseOne.status == 200 & responseTwo.status == 200 && responseThree.status == 200) {
+                if(responseOne.status == 200 & responseTwo.status == 200 && responseThree.status == 200 && responseFour.status == 200) {
                     this.setState({
                         blogs: responseOne.data,
                         filteredBlogs: responseOne.data,
                         blogCategories: responseTwo.data,
-                        comments: responseThree.data
+                        comments: responseThree.data,
+                        blog_page: responseFour.data['blog_page']
                     });
                     setTimeout(() => {
                         this.setState({isLoading: false})
@@ -104,7 +108,8 @@ class BlogAllPage extends Component {
                 <Cover 
                     bgColor="bg-dark"
                     title="My Blogs"
-                    description="A collection of news, features & interesting things."
+                    description={this.state.blog_page ? this.state.blog_page['description'] : null}
+                    coverImage={this.state.blog_page ? this.state.blog_page['cover_image'] : null}
                     hasArrowDown
                     hrefArrowDown="#blog-all-container"/>
                 <AllBlog

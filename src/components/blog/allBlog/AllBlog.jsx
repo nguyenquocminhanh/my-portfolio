@@ -20,7 +20,7 @@ export default function AllBlog(props) {
                     <Link to={"/category/blog/" + blog['category']['id']} class="badge badge-light badge-lg badge-blog">{blog['category']['name']}</Link>
                     <Link to={"/details/blog/" + blog['id']} class="blog__link" title="Read more"><i class="fa fa-arrow-right"></i></Link>
                 </div>
-                <div class="card-body">
+                <div class="card-body article-content">
                     <Link to={"/details/blog/" + blog['id']}>
                         <h2 class="h5"><a href="blog-single.html" rel="bookmark" class="text-dark">{blog['title']}</a></h2>
                     </Link>
