@@ -99,8 +99,8 @@ export default function AllBlog(props) {
   
   
   return (
-    <section class="pt-5 pt-lg-6 pb-0" id="blog-all-container">
-        <div class="bg-white p-6 p-lg-9 shadow-light-lg rounded">
+    <section class="pt-5 pt-lg-0 pb-0" id="blog-all-container">
+        <div class="bg-white p-6 p-lg-9 pt-lg-12 shadow-light-lg rounded">
             <div class="row">
                 <div class="col-lg-8 px-0">
                     <TransitionGroup>

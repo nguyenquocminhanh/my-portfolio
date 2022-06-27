@@ -13,7 +13,7 @@ class ContactForm extends Component {
         message: ''
     }
   }
-
+ 
   componentDidMount = () => {
     axios.get(AppURL.AllContact).then(response => {
         if(response.status == 200) {
@@ -94,9 +94,9 @@ class ContactForm extends Component {
 
                 <hr class="my-8"></hr>
 
-                <div class="contact-form">
-                    <form class="mb-0" id="submitForm" name="cf" onSubmit={this.messageSent} autocomplete="off">
-                        <div class="form-row">
+                <div class="contact-form ">
+                    <form class="mb-0 " id="submitForm" name="cf" onSubmit={this.messageSent} autocomplete="off">
+                        <div class="form-row ">
                             <div class="form-process"></div>
 
                             <div class="col-md-6">

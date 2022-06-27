@@ -29,6 +29,9 @@ class AppURL {
     static GetBlogPage = this.BaseURL + '/blog-page/all';
     static GetContactPage = this.BaseURL + '/contact-page/all';
     static AllContact = this.BaseURL + '/contact/all';
+    static GetAboutPage = this.BaseURL + '/about-page/all';
+
+    static AllSkill = this.BaseURL + '/skill/all'
 
     static StoreMessage = this.BaseURL + '/message/store';
 }
