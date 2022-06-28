@@ -121,7 +121,10 @@ export default function SingleBlog(props) {
                         </div>
                         <span>{props.blog['author_name']}</span>
                         <figure className='mt-5'>
-                            <img alt="Blog Article Figure" src={props.blog['thumbnail_image']} className="img-fluid rounded-3x"/>
+                            <div className='p-0 position-relative'>
+                                <img alt="Blog Article Figure" src={props.blog['thumbnail_image']} className="img-fluid rounded-3x"/>
+                                {props.blog['category'] ? <Link to={"/category/blog/" + props.blog['category']['id']} class="badge badge-light badge-lg badge-blog">{props.blog['category']['name']}</Link> : null}
+                            </div>
                             <figcaption className="text-center mt-3">{props.blog['thumbnail_caption']}</figcaption>
                         </figure>
                         <ul className="blog__post__meta">

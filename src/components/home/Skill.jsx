@@ -47,7 +47,7 @@ class Skill extends Component {
                         <p className="text-muted">{award['description']}</p>
                 </div>});
         let experiences = this.state.experiences.map(ex => {
-            return <div className="col-lg-4 mb-5 mb-lg-0 text-center text-lg-left">
+            return <div className="col-lg-4 mb-5 mb-lg-0 text-center text-lg-left" key={ex['id']}>
                     <p className="h5 mb-0">{ex['duration']}</p>
                     <p className="h6 mb-0">{ex['position']}</p>
                     <br></br>

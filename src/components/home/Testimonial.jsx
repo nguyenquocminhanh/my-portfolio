@@ -35,6 +35,24 @@ class Testimonial extends Component {
                 }
               ]
         };
+        let testimonials = this.props.testimonials.map(testimonial => {
+            return  <div>
+                <div className="w-lg-75 w-xl-50 mx-auto text-center">
+                    <blockquote>
+                        <p className="mb-5"><i className="fa fa-quote-left" style={{color: '#FCAF17'}}></i> {testimonial['content']} <i className="fa fa-quote-right" style={{color: '#FCAF17'}}></i></p>
+                        <footer className="d-flex justify-content-center align-items-center w-lg-50 mx-auto text-left">
+                        <div className="avatar">
+                            <img className="avatar-img rounded-circle" src={testimonial['profile_image']} alt=""/>
+                        </div>
+                        <div className="ml-3">
+                            <h4 className="h6 mb-0">{testimonial['name']}</h4>
+                            <small>{testimonial['position']}</small>
+                        </div>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+        });
         return (
              // Testimonial
              <section id="testimonial" className="pt-9">
@@ -47,56 +65,7 @@ class Testimonial extends Component {
                     </div>
 
                     <Slider {...settings}>
-                        <div>
-                            <div className="w-lg-75 w-xl-50 mx-auto text-center">
-                                <blockquote>
-                                    <p className="mb-5"><i className="fa fa-quote-left" style={{color: '#FCAF17'}}></i> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <i className="fa fa-quote-right" style={{color: '#FCAF17'}}></i></p>
-                                    <footer className="d-flex justify-content-center align-items-center w-lg-50 mx-auto text-left">
-                                    <div className="avatar">
-                                        <img className="avatar-img rounded-circle" src="assets/images/avatars/avatar-2.jpg" alt=""/>
-                                    </div>
-                                    <div className="ml-3">
-                                        <h4 className="h6 mb-0">Jessica Nelson</h4>
-                                        <small>Director Business Planning, Amazon</small>
-                                    </div>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div className="w-lg-75 w-xl-50 mx-auto text-center">
-                                <blockquote>
-                                    <p className="mb-5"><i className="fa fa-quote-left" style={{color: '#FCAF17'}}></i> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <i className="fa fa-quote-right" style={{color: '#FCAF17'}}></i></p>
-                                    <footer className="d-flex justify-content-center align-items-center w-lg-50 mx-auto text-left">
-                                    <div className="avatar">
-                                        <img className="avatar-img rounded-circle" src="assets/images/avatars/avatar-2.jpg" alt=""/>
-                                    </div>
-                                    <div className="ml-3">
-                                        <h4 className="h6 mb-0">Jessica Nelson</h4>
-                                        <small>Director Business Planning, Amazon</small>
-                                    </div>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div className="w-lg-75 w-xl-50 mx-auto text-center">
-                                <blockquote>
-                                    <p className="mb-5"><i className="fa fa-quote-left" style={{color: '#FCAF17'}}></i> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <i className="fa fa-quote-right" style={{color: '#FCAF17'}}></i></p>
-                                    <footer className="d-flex justify-content-center align-items-center w-lg-50 mx-auto text-left">
-                                        <div className="avatar">
-                                            <img className="avatar-img rounded-circle" src="assets/images/avatars/avatar-2.jpg" alt=""/>
-                                        </div>
-                                        <div className="ml-3">
-                                            <h4 className="h6 mb-0">Jessica Nelson</h4>
-                                            <small>Director Business Planning, Amazon</small>
-                                        </div>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                        </div>
+                       {testimonials}
                     </Slider>
 
                     <HireMe/>

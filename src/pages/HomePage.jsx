@@ -6,16 +6,47 @@ import Skill from '../components/home/Skill';
 import Blog from '../components/home/Blog';
 import Testimonial from '../components/home/Testimonial';
 import Project from '../components/home/Project';
+import axios from 'axios';
+import AppURL from '../api/AppURL';
+import Loader from '../components/common/Loader';
 
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 class HomePage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            testimonials: [],
+            blogs: [],
+            home_page: null,
+            isLoading: true,
+        }
+    }
+
     componentDidMount = () => {
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
+
+        axios.get(AppURL.GetHomePage).then(response => {
+            if(response.status == 200) {
+                this.setState({
+                    testimonials: response.data['testimonials'],
+                    blogs: response.data['blogs'],
+                    home_page: response.data['home_page'],
+                });
+                setTimeout(() => {
+                    this.setState({isLoading: false})
+                }, 1500);
+            }
+        }).catch(err => {
+            this.setState({
+                isLoading: false
+            });
+            console.log(err);
+        })
     }
 
     showToast = (status, message) => {
@@ -29,12 +60,18 @@ class HomePage extends Component {
     render() {
         return (
             <Fragment>
-                <Intro/>
+                {this.state.isLoading ? <Loader/> : null }
+
+                <Intro
+                    cover_image={this.state.home_page ? this.state.home_page['cover_image'] : null}
+                    avatar_image={this.state.home_page ? this.state.home_page['avatar_image'] : null}/>
                 <About/>
                 <Skill/>
-                <Testimonial/>
+                <Testimonial
+                    testimonials={this.state.testimonials}/>
                 <Project/>
-                <Blog/>
+                <Blog
+                    blogs={this.state.blogs}/>
                 <Contact showToast={this.showToast}/>
 
                 <ToastContainer

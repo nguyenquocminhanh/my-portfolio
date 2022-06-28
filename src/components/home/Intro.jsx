@@ -7,7 +7,7 @@ class Intro extends Component {
       return (
         <section id="home" className="py-9 py-lg-10 min-vh-100 d-flex">
           <div className="overlay overlay-advanced mb-xl-n12" style={{maxHeight: '100vh'}}>
-            <div className="overlay-inner bg-cover" style={{backgroundImage: "url(" + Image + ")"}}></div>
+            <div className="overlay-inner bg-cover" style={{backgroundImage: "url(" + this.props.cover_image + ")"}}></div>
             <div className="overlay-inner bg-gray-900 opacity-50"></div>
           </div>
           <div className="container align-self-center">
@@ -15,7 +15,7 @@ class Intro extends Component {
               <div className="col-lg-10 col-xl-9 mx-auto text-center text-white">
                 <div className="avatar avatar-xl mb-7">
                   {/* <div className="avatar-shape avatar-shape-rounded mt-n2 mb-n2 mr-n2"></div> */}
-                  <img src="assets/images/avatars/avatar1.jpeg" alt="" style={{border: "3px solid #fff"}} className="avatar-img rounded-circle shadow-light"/>
+                  <img src={this.props.avatar_image} alt="" style={{border: "3px solid #fff"}} className="avatar-img rounded-circle shadow-light"/>
                 </div>
                 <p className="h5 mb-5">Welcome</p>
                 <p className="h1 mb-5"><span className="font-weight-bold">I am Minh Nguyen</span></p>

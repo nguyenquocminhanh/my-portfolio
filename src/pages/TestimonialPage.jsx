@@ -40,7 +40,7 @@ class TestimonialPage extends Component {
         })
     }
 
-    render() {
+    render() { 
         return (
             <Fragment>
                 <Helmet>
