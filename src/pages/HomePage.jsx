@@ -19,6 +19,9 @@ class HomePage extends Component {
         this.state = {
             testimonials: [],
             blogs: [],
+            filteredBlogs: [],
+            blog_categories: [],
+            selected_category: null,
             home_page: null,
             isLoading: true,
         }
@@ -35,6 +38,8 @@ class HomePage extends Component {
                 this.setState({
                     testimonials: response.data['testimonials'],
                     blogs: response.data['blogs'],
+                    filteredBlogs: response.data['blogs'],
+                    blog_categories: response.data['blog_categories'],
                     home_page: response.data['home_page'],
                 });
                 setTimeout(() => {
@@ -56,6 +61,15 @@ class HomePage extends Component {
             toast.error(message);
         }
     }
+
+    blogFilterClicked = (categoryID) => {
+        let allBlogs = this.state.blogs;
+
+        this.setState({
+            filteredBlogs: allBlogs.filter(blog => blog['category_id'] == categoryID),
+            selected_category: categoryID
+        })
+    }
  
     render() {
         return (
@@ -71,7 +85,10 @@ class HomePage extends Component {
                     testimonials={this.state.testimonials}/>
                 <Project/>
                 <Blog
-                    blogs={this.state.blogs}/>
+                    blogs={this.state.filteredBlogs}
+                    blog_categories={this.state.blog_categories}
+                    blogFilterClicked={this.blogFilterClicked}
+                    selected_category={this.state.selected_category}/>
                 <Contact showToast={this.showToast}/>
 
                 <ToastContainer
