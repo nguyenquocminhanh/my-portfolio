@@ -31,7 +31,8 @@ class AppURL {
     static AllContact = this.BaseURL + '/contact/all';
     static GetAboutPage = this.BaseURL + '/about-page/all';
 
-    static AllSkill = this.BaseURL + '/skill/all'
+    static AllSkill = this.BaseURL + '/skill/all';
+    static AllAbout = this.BaseURL + '/about/all';
 
     static StoreMessage = this.BaseURL + '/message/store';
 }

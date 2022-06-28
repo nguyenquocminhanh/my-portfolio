@@ -25,7 +25,7 @@ class HomePage extends Component {
             toast.error(message);
         }
     }
-
+ 
     render() {
         return (
             <Fragment>
