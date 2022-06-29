@@ -55,7 +55,6 @@ class AboutPage extends Component {
                     description={this.state.about_page ? this.state.about_page['description'] : null}
                     hasArrowDown
                     hrefArrowDown="#about"/>
-                    
                 <About/>
                 <Skill/>
             </Fragment>

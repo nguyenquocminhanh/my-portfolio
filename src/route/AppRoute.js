@@ -12,7 +12,6 @@ import ProjectDetailsPage from '../pages/ProjectDetailsPage';
 import ProjectPage from '../pages/ProjectPage';
 import TestimonialPage from '../pages/TestimonialPage';
 
-
 class AppRoute extends Component {
   render() {
     return (

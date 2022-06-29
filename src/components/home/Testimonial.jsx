@@ -68,7 +68,7 @@ class Testimonial extends Component {
                        {testimonials}
                     </Slider>
 
-                    <HireMe/>
+                    <HireMe showToast={this.props.showToast}/>
                 </div>
             </section>
            

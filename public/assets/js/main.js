@@ -433,7 +433,7 @@ License: https://themeforest.net/licenses/standard
 
     $('nav.masonry-filter a').on('click', function(e) {
       e.preventDefault();
-
+ 
       var selector = $(this).attr('data-filter');
       $masonryContainer.isotope({ filter: selector });
       $('nav.masonry-filter a').removeClass('active');
@@ -533,40 +533,7 @@ License: https://themeforest.net/licenses/standard
       });
     }
   }
-
-  // [10. Contact Form]
-  function personite_contactForm(){
-    var $contactForm = $('.contact-form');
-
-    if ( $contactForm.length > 0 ){
-      $contactForm.each( function(){
-        var el = $(this),
-          elResult = el.find('.contact-form-result');
-
-        el.find('form').validate({
-          submitHandler: function(form) {
-            elResult.fadeOut( 500 );
-
-            $(form).ajaxSubmit({
-              target: elResult,
-              dataType: 'json',
-              success: function( data ) {
-                elResult.html( data.message ).fadeIn( 500 );
-                if( data.alert != 'error' ) {
-                  $(form).clearForm();
-                  setTimeout(function(){
-                    elResult.fadeOut( 500 );
-                  }, 5000);
-                };
-              }
-            });
-          }
-        });
-
-      });
-    }
-  }
-
+  
   // [11. Bootstrap]
   function personite_bootstrap(){
 
@@ -588,7 +555,7 @@ License: https://themeforest.net/licenses/standard
     personite_lightbox();
     personite_countdown();
     personite_subscribeForm();
-    personite_contactForm();
+    // personite_contactForm();
     personite_bootstrap();
   });
 

@@ -10,7 +10,8 @@ class ContactForm extends Component {
         name: '',
         email: '',
         subject: '',
-        message: ''
+        message: '',
+        submitBtn: 'Send Message'
     }
   }
  
@@ -38,6 +39,7 @@ class ContactForm extends Component {
         this.props.showToast('error', 'Please enter your message');
     } else {
         let myFormData = new FormData();
+        this.setState({submitBtn: 'Sending...'})
     
         myFormData.append('name', this.state.name);
         myFormData.append('email', this.state.email);
@@ -46,8 +48,11 @@ class ContactForm extends Component {
 
         axios.post(AppURL.StoreMessage, myFormData).then(response => {
             if(response.status === 200) {
-                submitForm.reset();
-                this.props.showToast('success', response.data['message']);
+                setTimeout(() => {
+                    submitForm.reset();
+                    this.setState({submitBtn: 'Send Message'})
+                    this.props.showToast('success', response.data['message']);
+                }, 1000);
             }
         }).catch(error => {
             console.log(error);
@@ -65,7 +70,6 @@ class ContactForm extends Component {
         <div class="row">
             <div class="col-lg-10 mx-auto">
                 <div class="row">
-
                     <div class="col-sm-6 col-md-4 mb-5 mb-md-0 text-center text-lg-left">
                         <div class="icon icon-4x text-dark mb-4">
                         <i class="ti-mobile"></i>
@@ -94,37 +98,37 @@ class ContactForm extends Component {
 
                 <hr class="my-8"></hr>
 
-                <div class="contact-form ">
-                    <form class="mb-0 " id="submitForm" name="cf" onSubmit={this.messageSent} autocomplete="off">
+                <div class="contact-form">
+                    <form class="mb-0" id="submitForm" onSubmit={this.messageSent} autocomplete="off">
                         <div class="form-row ">
                             <div class="form-process"></div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input onChange={(e) => {this.setState({name: e.target.value})}} type="text" id="cf-name" name="cf-name" placeholder="Enter your name*" class="form-control"/>
+                                    <input onChange={(e) => {this.setState({name: e.target.value})}} type="text" placeholder="Enter your name*" class="form-control"/>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                <input onChange={(e) => {this.setState({email: e.target.value})}} type="email" id="cf-email" name="cf-email" placeholder="Enter your email address*" class="form-control"/>
+                                <input onChange={(e) => {this.setState({email: e.target.value})}} type="email" placeholder="Enter your email address*" class="form-control"/>
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="form-group">
-                                <input onChange={(e) => {this.setState({subject: e.target.value})}} type="text" id="cf-subject" name="cf-subject" placeholder="Subject (Optional)" class="form-control"/>
+                                <input onChange={(e) => {this.setState({subject: e.target.value})}} type="text" placeholder="Subject (Optional)" class="form-control"/>
                                 </div>
                             </div>
 
                             <div class="col-12 mb-4">
                                 <div class="form-group">
-                                <textarea onChange={(e) => {this.setState({message: e.target.value})}} name="cf-message" id="cf-message" placeholder="Message*" class="form-control" rows="10"></textarea>
+                                <textarea onChange={(e) => {this.setState({message: e.target.value})}} placeholder="Message*" class="form-control" rows="10"></textarea>
                                 </div>
                             </div>
 
                             <div class="col-12 text-center">
-                                <button class="btn btn-dark" type="submit" id="cf-submit" name="cf-submit">Send Message</button>
+                                <button class="btn btn-dark" type="submit">{this.state.submitBtn}</button>
                             </div>
                         </div>
                     </form>

@@ -6,6 +6,9 @@ import axios from 'axios';
 import AppURL from '../api/AppURL';
 import Loader from '../components/common/Loader';
 
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 class TestimonialPage extends Component {
     constructor(props) {
         super(props);
@@ -40,6 +43,14 @@ class TestimonialPage extends Component {
         })
     }
 
+    showToast = (status, message) => {
+        if (status == 'success') {
+            toast.success(message);
+        } else {
+            toast.error(message);
+        }
+    }
+
     render() { 
         return (
             <Fragment>
@@ -56,7 +67,20 @@ class TestimonialPage extends Component {
                     description={this.state.testimonial_page ? this.state.testimonial_page['description'] : null}/>
 
                 <Testimonial
-                    testimonials={this.state.testimonials}/>
+                    testimonials={this.state.testimonials}
+                    showToast={this.showToast}/>
+
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
             </Fragment>
         );
     }

@@ -1,6 +1,8 @@
 class AppURL {
     static BaseURL = "http://127.0.0.1:8001/api";
 
+    static GetVisitorDetails = this.BaseURL + '/getvisitor';
+
     static AllBlog = this.BaseURL + '/blog/all';
 
     static BlogDetails(id) {
@@ -36,6 +38,7 @@ class AppURL {
     static AllAbout = this.BaseURL + '/about/all';
 
     static StoreMessage = this.BaseURL + '/message/store';
+    static StoreHireMessage = this.BaseURL + '/hire-message/store';
 }
 
 export default AppURL

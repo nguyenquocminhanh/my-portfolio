@@ -8,29 +8,27 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 class Blog extends Component {
     render() {
         let blogs = this.props.blogs.slice(0, 3).map(blog => {
-            return <CSSTransition key={blog['id']} timeout={500} classNames="item">
-                <div class="col-md-4 col-sm-6 mb-5 mb-md-0">
-                    <div class="card border-0 bg-white shadow-light shadow-lift rounded-3x overflow-hidden">
-                        <div class="card-header p-0 position-relative">
-                            <Link to={"/details/blog/" + blog['id']}>
-                                <img class="card-img-top" style={{cursor: 'pointer'}} src={blog['thumbnail_image']} alt=""/>
-                            </Link>
-                            {/* <Link to={"/category/blog/" + blog['category']['id']} class="badge badge-light badge-blog">{blog['category']['name']}</Link> */}
-                        </div>
-                        <div class="card-body">
-                            {/* <small class="text-muted d-block mb-3">March 10, 2020</small> */}
-                            <Link to={"/details/blog/" + blog['id']}>
-                                <h5 class="mb-2 text-dark">{blog['title']}</h5>
-                            </Link>
-                            <p style={{fontSize: '0.9rem'}}>{parse(truncate(blog['content'], 13, { byWords: true }))}</p>
-                        </div>
-                        <div class="card-footer text-gray-700 d-flex justify-content-between text-muted">
+            return <div class="col-md-4 col-sm-6 mb-5 mb-md-0 d-flex flex-column" key={blog['id']}>
+                <div class="card border-0 bg-white shadow-light shadow-lift rounded-3x overflow-hidden h-100">
+                    <div class="card-header p-0 position-relative">
+                        <Link to={"/details/blog/" + blog['id']}>
+                            <img class="card-img-top" style={{cursor: 'pointer', height: '225px'}} src={blog['thumbnail_image']} alt=""/>
+                        </Link>
+                        <Link to={"/category/blog/" + blog['category']['id']} class="badge badge-light badge-blog">{blog['category']['name']}</Link>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-gray-700 d-flex justify-content-between text-muted mb-4">
                             <small><i className='fa fa-calendar-alt'></i> &nbsp;{setTime(blog['created_at'])}</small>
                             <small><i className='fa fa-clock'></i> &nbsp;{blog['duration']} read</small>
                         </div>
+
+                        <Link to={"/details/blog/" + blog['id']}>
+                            <h5 class="mb-2 text-dark">{blog['title']}</h5>
+                        </Link>
+                        {/* <p style={{fontSize: '0.9rem'}}>{parse(truncate(blog['content'], 13, { byWords: true }))}</p> */}
                     </div>
                 </div>
-            </CSSTransition>
+            </div>
         });
 
         let blog_categories = this.props.blog_categories.length > 0 ? this.props.blog_categories.filter(category => category['blog'].length >= 3) : [];
@@ -53,9 +51,9 @@ class Blog extends Component {
                         </div>
                     </div>
 
-                    <TransitionGroup className="row">
+                    <div className="row d-flex flex-wrap">
                         {blogs}
-                    </TransitionGroup>
+                    </div>
                        
                     <div class="mt-6 mt-lg-8 text-center">
                         <Link to="/blog" class="btn btn-dark px-8">View More</Link>

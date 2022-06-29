@@ -33,6 +33,9 @@ class HomePage extends Component {
             behavior: "smooth"
         });
 
+        // get visitor
+        axios.get(AppURL.GetVisitorDetails).then().catch();
+
         axios.get(AppURL.GetHomePage).then(response => {
             if(response.status == 200) {
                 this.setState({
@@ -82,7 +85,8 @@ class HomePage extends Component {
                 <About/>
                 <Skill/>
                 <Testimonial
-                    testimonials={this.state.testimonials}/>
+                    testimonials={this.state.testimonials}
+                    showToast={this.showToast}/>
                 <Project/>
                 <Blog
                     blogs={this.state.filteredBlogs}

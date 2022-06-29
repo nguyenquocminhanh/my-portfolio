@@ -30,7 +30,7 @@ export default function Testimonial(props) {
 
                 </div>
 
-                <HireMe/>
+                <HireMe showToast={props.showToast}/>
 
             </div>
         </section>
