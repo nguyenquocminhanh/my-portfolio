@@ -112,6 +112,7 @@ class BlogCategoryPage extends Component {
                     title={this.state.category}
                     hasArrowDown
                     hrefArrowDown="#blog-category-container"/>
+                    
                 <AllBlogCategory
                     allBlogs={this.state.blogs}
                     category={this.state.category}

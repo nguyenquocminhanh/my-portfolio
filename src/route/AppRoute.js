@@ -24,8 +24,8 @@ class AppRoute extends Component {
           <Route exact path="/testimonial" render={(props) => <TestimonialPage {...props} key={Date.now()}/>}/>
           {/* project */}
           <Route exact path="/project" render={(props) => <ProjectPage {...props} key={Date.now()}/>}/>
-          <Route exact path="/details/project/:id" render={(props) => <ProjectDetailsPage {...props} key={Date.now()}/>}/>
-          <Route exact path="/category/project/:id" render={(props) => <ProjectCategoryPage {...props} key={Date.now()}/>}/>
+          <Route exact path="/details/project/:projectID" render={(props) => <ProjectDetailsPage {...props} key={Date.now()}/>}/>
+          <Route exact path="/category/project/:categoryID" render={(props) => <ProjectCategoryPage {...props} key={Date.now()}/>}/>
           {/* blog */}
           <Route exact path="/blog" render={(props) => <BlogAllPage {...props} key={Date.now()}/>}/>
           <Route exact path="/details/blog/:blogID" render={(props) => <BlogSinglePage {...props} key={Date.now()}/>}/>

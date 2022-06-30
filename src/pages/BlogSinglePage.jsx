@@ -28,11 +28,11 @@ class BlogSinglePage extends Component {
             behavior: "smooth"
         });
 
-        const getBogDetails = axios.get(AppURL.BlogDetails(this.state.blogID));
+        const getBlogDetails = axios.get(AppURL.BlogDetails(this.state.blogID));
         const getBlogs = axios.get(AppURL.AllBlog);
         const getBlogCategories = axios.get(AppURL.AllBlogCategory);
         
-        axios.all([getBogDetails, getBlogs, getBlogCategories]).then(
+        axios.all([getBlogDetails, getBlogs, getBlogCategories]).then(
             axios.spread((...responses) => {
                 const responseOne = responses[0];
                 const responseTwo = responses[1];

@@ -1,3 +1,6 @@
 export default function removeDuplicate(arr) {
-    return arr.filter((item, index) => arr.indexOf(item) === index);
+    var upperArr = arr.map(item => {
+        return item.toUpperCase();
+    })
+    return [...new Set(upperArr)];
 }

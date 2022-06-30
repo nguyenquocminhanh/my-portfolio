@@ -1,4 +1,4 @@
-export default function setTime (date, time = false) {
+export default function setTime (date, time = false, noDay = false) {
     var dateObj = new Date(date);
     var month = dateObj.getUTCMonth() + 1; //months from 1-12
     var day = dateObj.getUTCDate();
@@ -40,6 +40,8 @@ export default function setTime (date, time = false) {
             minute: '2-digit',
         });
         return month + " " + day + ", " + year + ' at ' + withPmAm;
+    } else if (noDay == true) {
+        return month + ", " + year;
     } else {
         return month + " " + day + ", " + year;
     }

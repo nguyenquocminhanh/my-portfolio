@@ -3,14 +3,85 @@ import React, { Component, Fragment } from 'react';
 import { Helmet } from "react-helmet";
 import Cover from '../components/common/Cover';
 import AllProject from '../components/project/allProject/AllProject';
-import ProjectPreview from '../components/project/ProjectPreview';
+import axios from 'axios';
+import AppURL from '../api/AppURL';
+import Loader from '../components/common/Loader';
 
-class ProjectPage extends Component {    
+class ProjectPage extends Component {   
+    constructor(props) {
+        super(props);
+        this.state = {
+            projects: [],
+            filteredProjects: [],
+            projectCategories: [],
+            project_page: null,
+
+            isLoading: true,
+            searchKeyword: "",
+            selectedPage: 1,
+        }
+    }
+
     componentDidMount = () => {
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
+
+        axios.get(AppURL.GeProjectPage).then(response => {
+            if(response.status == 200) {
+                this.setState({
+                    project_page: response.data['project_page'],
+
+                    projects: response.data['projects'],
+                    filteredProjects: response.data['projects'],
+                    projectCategories: response.data['project_categories'],
+                });
+                setTimeout(() => {
+                    this.setState({isLoading: false})
+                }, 1500);
+            }
+        }).catch(err => {
+            this.setState({
+                isLoading: false
+            });
+            console.log(err);
+        })
+    }
+
+    filterProject = (e) => {
+        const keyword = e.target.value;
+
+        if (keyword !== "") {
+            const results = this.state.filteredProjects.filter((project) => {
+              return project['title'].toLowerCase().includes(keyword.toLowerCase());
+            })
+            this.setState({filteredProjects: results, selectedPage: 1});
+        } else {
+            const results = this.state.projects;
+            this.setState({filteredProjects: results})
+        }
+        this.setState({searchKeyword: keyword});
+    }
+
+    pageSelected = (pageNumber) => {
+        this.setState({selectedPage: pageNumber})
+    }
+
+    previousPageClicked = () => {
+        this.setState(prevState => {
+            return {
+                selectedPage: prevState.selectedPage - 1
+            }
+        })
+    }
+
+    nextPageClicked = () => {
+        this.setState(prevState => {
+            return {
+                selectedPage: prevState.selectedPage + 1
+            }
+        })
     }
 
     render() {
@@ -19,19 +90,30 @@ class ProjectPage extends Component {
                 <Helmet> 
                     <title>My Projects</title>
                 </Helmet>
+
+                {this.state.isLoading ? <Loader/> : null }
                 
                 <Cover 
                     bgColor="bg-dark"
                     title="My Projects"
-                    description=""
+                    description={this.state.project_page ? this.state.project_page['description'] : null}
+                    coverImage={this.state.project_page ? this.state.project_page['cover_image'] : null}
                     hasArrowDown
                     hrefArrowDown="#all-project-container"/>
 
-                <AllProject>
-                    <ProjectPreview/>
-                    <ProjectPreview/>
-                    <ProjectPreview/>
-                </AllProject>
+                <AllProject
+                    allProjects={this.state.projects}
+
+                    filteredProjects={this.state.filteredProjects}
+                    filterProject={this.filterProject}
+                    searchKeyword={this.state.searchKeyword}
+
+                    categories={this.state.projectCategories}
+
+                    selectedPage={this.state.selectedPage}
+                    pageSelected={this.pageSelected}
+                    previousPageClicked={this.previousPageClicked}
+                    nextPageClicked={this.nextPageClicked}/>
             </Fragment>
         );
     }

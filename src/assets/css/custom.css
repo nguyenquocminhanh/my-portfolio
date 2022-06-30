@@ -68,6 +68,34 @@
   outline: none;
 }
 
+.close:focus {
+  outline: none;
+}
+
+/* image from backend */
+pre img {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* video project */
+.video-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* 03. PRELOADER
 =================================================*/
 
@@ -434,8 +462,8 @@ color: #191B1E;
 background-size: 0 1px, 100% 1px; }
 
 .rc__post__thumb {
-width: 90px;
-flex: 0 0 90px;
+width: 130px;
+flex: 0 0 130px;
 margin-right: 22px; }
 @media (max-width: 1199.98px) {
 .rc__post__thumb {
@@ -787,10 +815,10 @@ margin-left: 37px; }
 margin-left: 0; } }
 @media (max-width: 991.98px) {
 .services__sidebar {
-margin-top: 115px; } }
+margin-top: 75px; } }
 .services__sidebar .widget {
 border: 2px solid #F7F7F7;
-padding: 35px 35px 40px;
+padding: 35px 35px 30px;
 margin-bottom: 30px; }
 @media (max-width: 1199.98px) {
 .services__sidebar .widget {

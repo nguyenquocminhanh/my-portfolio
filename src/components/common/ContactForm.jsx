@@ -19,7 +19,7 @@ class ContactForm extends Component {
     axios.get(AppURL.AllContact).then(response => {
         if(response.status == 200) {
             this.setState({
-                contactData: response.data
+                contactData: response.data['contact_info']
             });
         }
     }).catch(err => {

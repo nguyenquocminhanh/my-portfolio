@@ -120,7 +120,7 @@ export default function SingleBlog(props) {
                             <img src={props.blog['author_image']} alt="" className="avatar-img rounded-circle"/>
                         </div>
                         <span>{props.blog['author_name']}</span>
-                        <figure className='mt-5'>
+                        <figure className='mt-5 w-sm-100'>
                             <div className='p-0 position-relative'>
                                 <img alt="Blog Article Figure" src={props.blog['thumbnail_image']} className="img-fluid rounded-3x"/>
                                 {props.blog['category'] ? <Link to={"/category/blog/" + props.blog['category']['id']} class="badge badge-light badge-lg badge-blog">{props.blog['category']['name']}</Link> : null}
@@ -139,7 +139,7 @@ export default function SingleBlog(props) {
 
                     <div className="blog__details__bottom">
                         <ul className="blog__details__tag">
-                            <li className="title">Tag:</li>
+                            <li className="title">Tags:</li>
                             <li className="tags-list">
                                 {tags.split(',').map((tag, i) => {
                                     return <a style={{cursor: 'pointer'}} key={i.toString()}>{tag}</a>
@@ -152,7 +152,6 @@ export default function SingleBlog(props) {
                                 <a href="#"><i className="fab fa-facebook"></i></a>
                                 <a href="#"><i className="fab fa-twitter-square"></i></a>
                                 <a href="#"><i className="fab fa-linkedin"></i></a>
-                                <a href="#"><i className="fab fa-pinterest"></i></a>
                             </li>
                         </ul>
                     </div>

@@ -16,7 +16,7 @@ export default function Cover(props) {
                     <p>{setTime(props.blog['created_at'])} - {props.blog['duration']} read</p>
 
                 </div>
-            </div>
+            </div> 
         </div>
         <a class="scrollto text-light" href="#blog-container"><i class="fa fa-angle-down arrow"></i></a>
     </section>
