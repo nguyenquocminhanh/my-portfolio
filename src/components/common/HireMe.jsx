@@ -54,7 +54,7 @@ class HireMe extends Component {
   render() {
     return (
       <div class="bg-light rounded-lg mt-6 mt-lg-8 p-5 p-sm-8 p-lg-10 text-center">
-        <h3 class="mb-5 mb-md-7">Start a project. Get in touch</h3>
+        <h5 class="mb-5 mb-md-7">Start a project. Get in touch</h5>
         <button type="button" onClick={() => this.setState({show: true})} data-toggle="modal" data-target="#hireModal" class="btn btn-dark px-8">Hire Me</button>
 
         <Modal show={this.state.show} onHide={() => this.setState({show: false})}>
