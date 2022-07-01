@@ -244,6 +244,7 @@ License: https://themeforest.net/licenses/standard
     });
 
     $(document).on('click', '.nav-link', function(e){
+      $siteNavbar = $('.site-navbar');
       if (window.innerWidth >= siteNavbar_expand ) {
         return;
       } else {
