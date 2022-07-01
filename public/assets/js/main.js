@@ -183,9 +183,11 @@ License: https://themeforest.net/licenses/standard
       $siteNavbar.addClass('navbar-light', 'bg-white').removeClass('navbar-dark');
       $siteNavbarToggler.blur();
 
-
-
       personite_navChangeClasses('toggled');
+
+      if($siteNavbar.hasClass('scrolled-0')) {
+        $siteNavbar.addClass('navbar-light', 'bg-white').removeClass('navbar-dark');
+      }
     });
 
     $('.site-navbar #navbarCollapse').on('hidden.bs.collapse', function(){
@@ -302,7 +304,7 @@ License: https://themeforest.net/licenses/standard
 
         if($('.site-navbar').hasClass('navbar-toggled-show') ){
           personite_navChangeClasses('toggled');
-          $siteNavbar.addClass('navbar-light').removeClass('navbar-dark');
+          
         } else if( $body.hasClass('flyer-open') ){
           personite_navChangeClasses('flyer');
         } else {
