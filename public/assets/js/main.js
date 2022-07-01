@@ -180,12 +180,10 @@ License: https://themeforest.net/licenses/standard
       $siteNavbarToggler = $('.site-navbar .navbar-toggler-alternative');
 
       $siteNavbar.addClass('navbar-toggled-show');
-      $siteNavbar.addClass('navbar-light').removeClass('navbar-dark');
+      $siteNavbar.addClass('navbar-light', 'bg-white').removeClass('navbar-dark');
       $siteNavbarToggler.blur();
 
-      if($siteNavbar.hasClass('scrolled-0')) {
-        $siteNavbar.addClass('navbar-light', 'bg-white').removeClass('navbar-dark');
-      }
+
 
       personite_navChangeClasses('toggled');
     });
