@@ -187,6 +187,7 @@ License: https://themeforest.net/licenses/standard
 
       if($siteNavbar.hasClass('scrolled-0')) {
         $siteNavbar.addClass('navbar-light', 'bg-white').removeClass('navbar-dark');
+        alert('ok');
       }
     });
 
