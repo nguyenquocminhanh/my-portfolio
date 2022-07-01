@@ -1,10 +1,11 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import Image from '../../assets/images/portfolio.png';
 
 export default function HelmetMetaData(props) {
    let currentURL = props.currentURL;
    let title = props.title;
-   let image = props.image !== null ? props.image : "";
+   let image = props.image !== null ? props.image : Image;
    let description = props.description !== null ? props.description  : "";
 
 return (

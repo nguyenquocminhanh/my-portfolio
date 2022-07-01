@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Image from '../../assets/images/photo-11.jpeg';
-import Avatar from '../../assets/images/avatar1.jpeg';
 import ReactTypingEffect from 'react-typing-effect';
 
 class Intro extends Component {

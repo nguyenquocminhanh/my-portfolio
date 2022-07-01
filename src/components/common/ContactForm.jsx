@@ -52,7 +52,7 @@ class ContactForm extends Component {
                     submitForm.reset();
                     this.setState({submitBtn: 'Send Message'})
                     this.props.showToast('success', response.data['message']);
-                }, 1000);
+                }, 500);
             }
         }).catch(error => {
             console.log(error);

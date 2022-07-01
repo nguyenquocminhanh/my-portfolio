@@ -43,7 +43,7 @@ class HireMe extends Component {
                 // close modal
                 this.setState({show: false})
                 this.props.showToast('success', response.data['message']);
-              }, 1000);
+              }, 500);
             }
         }).catch(error => {
             console.log(error);

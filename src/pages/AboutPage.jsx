@@ -45,8 +45,8 @@ class AboutPage extends Component {
                 <HelmetMetaData
                     currentURL={window.location.href}
                     title="About Me - Minh Nguyen"
-                    description={this.state.testimonial_page ? this.state.testimonial_page['description'] : null}
-                    image={this.state.testimonial_page ? this.state.testimonial_page['cover_image'] : null}/>
+                    description={this.state.about_page ? this.state.about_page['description'] : null}
+                    image={this.state.about_page ? this.state.about_page['cover_image'] : null}/>
 
                 {this.state.isLoading ? <Loader/> : null }
 

@@ -139,20 +139,20 @@ export default function ProjectDetails(props) {
                             </pre>
                         </div> : null}
 
-                        {video_link ? 
-                        <div className='p-0 my-7'>
-                            <h4>Demo Video</h4>
-                            <div class="video-container">
-                                <iframe className='responsive-iframe' src={video_link} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        </div> : null}
-            
                         {db_img ? 
                         <div className='p-0 my-7'>
                             <h4>Database</h4>
                             <pre>
                                 <img src={db_img}/>
                             </pre>
+                        </div> : null}
+
+                        {video_link ? 
+                        <div className='p-0 my-7'>
+                            <h4>Demo Video</h4>
+                            <div class="video-container">
+                                <iframe className='responsive-iframe' src={video_link} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
                         </div> : null}
                     </article>
 
