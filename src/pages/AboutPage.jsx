@@ -21,6 +21,7 @@ class AboutPage extends Component {
             top: 0,
             behavior: "smooth"
         });
+        alert('cc');
 
         axios.get(AppURL.GetAboutPage).then(response => {
             if(response.status == 200) {
