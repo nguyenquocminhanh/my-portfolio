@@ -2,31 +2,15 @@ import React, { Component, Fragment } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 class NavBar extends Component {
-    constructor(props) {
-        super();
-        this.state = {
-            isOpen: false
-        }
-    }
-
-    btnClicked = () => {
-        this.setState(prevStae => {
-            return {
-                ...prevStae,
-                isOpen: !prevStae.isOpen
-            }
-        })
-    }
-
     render() {
         return (
             // Site navigation
-            <nav id="siteNavbar" className={"site-navbar navbar navbar-expand-lg bg-white shadow-light fixed-top py-2" + (this.state.isOpen ? " navbar-light" : " site-navbar-transparent navbar-dark")}  data-navbar-base="navbar-dark" data-navbar-toggled="navbar-light" data-navbar-scrolled="navbar-light">
+            <nav id="siteNavbar" className="site-navbar navbar navbar-expand-lg bg-white shadow-light fixed-top py-2 navbar-dark site-navbar-transparent" data-navbar-base="navbar-dark" data-navbar-toggled="navbar-light" data-navbar-scrolled="navbar-light">
                 {this.props.history.location.pathname == '/' ? 
-                <a className="navbar-brand" href="#home">MINH NGUYENN</a> :
-                <Link to="/" className="navbar-brand">MINH NGUYENN</Link> }
+                <a className="navbar-brand" href="#home">MINH NGUYEN</a> :
+                <Link to="/" className="navbar-brand">MINH NGUYEN</Link> }
 
-                <button onClick={() => this.btnClicked()} className="navbar-toggler-alternative" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="siteNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <button className="navbar-toggler-alternative" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="siteNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-alternative-icon">
                     <span></span>
                     </span>

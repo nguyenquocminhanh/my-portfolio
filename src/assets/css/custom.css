@@ -315,6 +315,23 @@ pre img {
   color: #fff !important;
 }
 
+@media only screen and (max-width: 991px) {
+  .navbar-collapse {
+    background-color: #fff !important;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .navbar-nav .active > .nav-link,
+  .navbar-nav .nav-link.active {
+    color: #050CDD !important;
+  }
+
+  .nav-link {
+    color: #1d1e29 !important;
+  }
+}
+
 @media only screen and (min-width:300px) and (max-width: 640px) {
     .arrow {
         font-size: 2em;
@@ -330,7 +347,7 @@ pre img {
 
   .navbar-nav .active > .nav-link,
   .navbar-nav .nav-link.active {
-    color: #050CDD;
+    color: #050CDD !important;
   }
 }
 

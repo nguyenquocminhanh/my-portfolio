@@ -571,6 +571,7 @@ License: https://themeforest.net/licenses/standard
   });
 
   $(window).on( 'scroll', function(){
+    
     personite_navOnScroll();
     personite_backToTop();
   });
