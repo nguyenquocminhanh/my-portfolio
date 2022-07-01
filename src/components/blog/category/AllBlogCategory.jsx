@@ -97,8 +97,8 @@ export default function AllBlogCategory(props) {
   }
 
   return (
-    <section className="pt-9 pb-0" id="blog-category-container">
-        <div className="bg-white p-6 p-lg-9 shadow-light-lg rounded">
+    <section className="pt-0 pb-0" id="blog-category-container">
+        <div className="bg-white p-6 p-lg-9  pt-9 pt-md-12 pt-xl-12 shadow-light-lg rounded">
             <div className="row">
                 <div className="col-lg-8 px-0">
                     <TransitionGroup className="todo-list">
