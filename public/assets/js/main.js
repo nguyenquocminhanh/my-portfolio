@@ -174,22 +174,6 @@ License: https://themeforest.net/licenses/standard
       });
     });
 
-    // Navigation collapse
-    $('.site-navbar #navbarCollapse').on( 'show.bs.collapse', function(){
-      $siteNavbar = $('.site-navbar');
-      $siteNavbarToggler = $('.site-navbar .navbar-toggler-alternative');
-
-      $siteNavbar.addClass('navbar-toggled-show');
-      $siteNavbar.addClass('navbar-light', 'bg-white').removeClass('navbar-dark');
-      $siteNavbarToggler.blur();
-
-      personite_navChangeClasses('toggled');
-
-      if($siteNavbar.hasClass('scrolled-0')) {
-        $siteNavbar.addClass('navbar-light', 'bg-white').removeClass('navbar-dark');
-      }
-    });
-
     $('.site-navbar #navbarCollapse').on('hidden.bs.collapse', function(){
       $siteNavbar = $('.site-navbar');
       $siteNavbarToggler = $('.site-navbar .navbar-toggler-alternative');
@@ -578,6 +562,22 @@ License: https://themeforest.net/licenses/standard
   $(window).on('resize', function(){
     personite_navOnScroll();
     personite_backToTop();
+  });
+
+   // Navigation collapse
+   $('.site-navbar #navbarCollapse').on( 'show.bs.collapse', function(){
+    $siteNavbar = $('.site-navbar');
+    $siteNavbarToggler = $('.site-navbar .navbar-toggler-alternative');
+
+    $siteNavbar.addClass('navbar-toggled-show');
+    $siteNavbar.addClass('navbar-light', 'bg-white').removeClass('navbar-dark');
+    $siteNavbarToggler.blur();
+
+    personite_navChangeClasses('toggled');
+
+    if($siteNavbar.hasClass('scrolled-0')) {
+      $siteNavbar.addClass('navbar-light', 'bg-white').removeClass('navbar-dark');
+    }
   });
 
 })(jQuery);
