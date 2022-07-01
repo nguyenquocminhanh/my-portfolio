@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Helmet } from "react-helmet";
+import HelmetMetaData from '../components/common/HelmetMetaData';
 import Cover from '../components/common/Cover'
 import Testimonial from '../components/testimonial/Testimonial';
 import axios from 'axios';
@@ -54,9 +54,11 @@ class TestimonialPage extends Component {
     render() { 
         return (
             <Fragment>
-                <Helmet>
-                    <title>Testimonials</title>
-                </Helmet>
+                <HelmetMetaData
+                    currentURL={window.location.href}
+                    title="Minh Nguyen Testimonials"
+                    description={this.state.testimonial_page ? this.state.testimonial_page['description'] : null}
+                    image={this.state.testimonial_page ? this.state.testimonial_page['cover_image'] : null}/>
 
                 {this.state.isLoading ? <Loader/> : null }
 

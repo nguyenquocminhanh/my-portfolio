@@ -56,7 +56,7 @@ class Blog extends Component {
                     </div>
                        
                     <div class="mt-6 mt-lg-8 text-center">
-                        <Link to="/blog" class="btn btn-dark px-8">View More</Link>
+                        <Link to="/blogs" class="btn btn-dark px-8">View More</Link>
                     </div>
                 </div>
             </section>

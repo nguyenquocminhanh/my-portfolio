@@ -3,7 +3,7 @@ import ContactForm from '../components/common/ContactForm';
 import Cover from '../components/common/Cover';
 import axios from 'axios';
 
-import { Helmet } from "react-helmet";
+import HelmetMetaData from '../components/common/HelmetMetaData';
 import AppURL from '../api/AppURL';
 import Loader from '../components/common/Loader';
 
@@ -53,9 +53,11 @@ class ContactPage extends Component {
     render() {
         return (
             <Fragment>
-                <Helmet>
-                    <title>Contact Me</title>
-                </Helmet>
+                <HelmetMetaData
+                    currentURL={window.location.href}
+                    title="Contact Me"
+                    description="Want to know more about me? Give me a call or drop me an email and I will get back to you as soon as I can."
+                    image={this.state.contact_page ? this.state.contact_page['cover_image'] : null}/>
 
                 {this.state.isLoading ? <Loader/> : null }
 

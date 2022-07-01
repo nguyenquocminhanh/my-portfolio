@@ -26,8 +26,8 @@ export default function AllProjectCategory(props) {
                         <p className="card-text text-center" style={{fontSize: '0.9rem'}}>{project['sub_title']}</p>
                         <div className="d-flex justify-content-center align-items-center">
                             <div className="btn-group">
-                                <a href={project['project_link']} target="_blank" className="btn btn-sm btn-outline-secondary">View <i className='fa fa-eye'></i></a>
-                                <a href={project['github_link']} target="_blank" className="btn btn-sm btn-outline-secondary">Code <i className='fa fa-code'></i></a>
+                                <a href={project['project_link']} target="_blank" className="btn btn-sm btn-outline-secondary btnHover">View <i className='fa fa-eye'></i></a>
+                                <a href={project['github_link'] ? "https://" + project['github_link'] : null} target="_blank" className="btn btn-sm btn-outline-secondary btnHover">Code <i className='fa fa-code'></i></a>
                             </div>
                         </div>
                     </div>

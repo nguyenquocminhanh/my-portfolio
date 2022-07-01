@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react';
 
-import { Helmet } from "react-helmet";
+import HelmetMetaData from '../components/common/HelmetMetaData';
 import Cover from '../components/project/projectDetails/Cover';
 import ProjectDetails from '../components/project/projectDetails/ProjectDetails';
 import axios from 'axios';
 import AppURL from '../api/AppURL';
 import Loader from '../components/common/Loader';
+import { withRouter } from 'react-router-dom';
 
 class ProjectDetailsPage extends Component {
     constructor({match}) {
@@ -17,7 +18,8 @@ class ProjectDetailsPage extends Component {
             projectCategories: [],
             isLoading: true,
             contactInfo: null,
-            links: null
+            links: null,
+            currentURL: ''
         }
     }
 
@@ -26,6 +28,8 @@ class ProjectDetailsPage extends Component {
             top: 0,
             behavior: "smooth"
         });
+
+        this.setState({currentURL: window.location.href});
 
         const getProjectDetails = axios.get(AppURL.ProjectDetails(this.state.projectID));
         const getProjects = axios.get(AppURL.AllProject);
@@ -50,22 +54,27 @@ class ProjectDetailsPage extends Component {
                     setTimeout(() => {
                         this.setState({isLoading: false})
                     }, 1500);
-                }          
+                } else {
+                    this.props.history.replace('/404');
+                }
             })
         ).catch(errors => {
             this.setState({
                 isLoading: false
             });
             console.log(errors);
+            this.props.history.replace('/404');
         })
     }
  
     render() {
         return (
             <Fragment>
-                <Helmet> 
-                    <title>{this.state.project ? this.state.project['title'] : 'My Project'}</title>
-                </Helmet>
+                <HelmetMetaData
+                    currentURL={window.location.href}
+                    title={this.state.project ? this.state.project['title'] + ' - Minh Nguyen' : 'My Project'}
+                    description={this.state.project['sub_title']}
+                    image={this.state.project ? this.state.project['thumbnail_image'] : null}/>
 
                 {this.state.isLoading ? <Loader/> : null }
                 
@@ -76,10 +85,11 @@ class ProjectDetailsPage extends Component {
                     project={this.state.project}
                     categories={this.state.projectCategories}
                     contactInfo={this.state.contactInfo}
-                    links={this.state.links}/>
+                    links={this.state.links}
+                    currentURL={this.state.currentURL}/>
             </Fragment>
         );
     }
 }
 
-export default ProjectDetailsPage;
+export default withRouter(ProjectDetailsPage);

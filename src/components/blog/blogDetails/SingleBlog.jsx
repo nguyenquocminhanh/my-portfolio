@@ -5,6 +5,7 @@ import Comment from './comment/Comment';
 import setTime from '../../../utility/setTime';
 import removeDuplicate from '../../../utility/removeDuplicate';
 import parse from 'html-react-parser';
+import {FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon, FacebookMessengerShareButton, FacebookMessengerIcon} from 'react-share';
 
 export default function SingleBlog(props) {
   const [name, setName] = useState('');
@@ -130,7 +131,6 @@ export default function SingleBlog(props) {
                         <ul className="blog__post__meta">
                             <li><i className="fa fa-calendar-alt"></i> {setTime(props.blog['created_at'])}</li>
                             <li><i className="fa fa-comments"></i><span className='text-muted'>Comment ({props.blog['comments'] ? props.blog['comments'].length : '0' })</span></li>
-                            <li className="post-share"><span className='text-muted'><i className="fa fa-share"></i> ({props.blog['share_count']})</span></li>
                         </ul>
                         {parse(content)}
                     </article>
@@ -149,9 +149,39 @@ export default function SingleBlog(props) {
                         <ul className="blog__details__social">
                             <li className="title">Share :</li>
                             <li className="social-icons">
-                                <a href="#"><i className="fab fa-facebook"></i></a>
-                                <a href="#"><i className="fab fa-twitter-square"></i></a>
-                                <a href="#"><i className="fab fa-linkedin"></i></a>
+                                <a>
+                                    <LinkedinShareButton
+                                        url={props.currentURL}
+                                    >
+                                        <LinkedinIcon size={25}/>
+                                        
+                                    </LinkedinShareButton>    
+                                </a>
+                                <a>
+                                    <TwitterShareButton
+                                        url={props.currentURL}
+                                    >
+                                        <TwitterIcon size={25}/>
+                                        
+                                    </TwitterShareButton>    
+                                </a>
+                                <a>
+                                    <FacebookShareButton
+                                        url={props.currentURL}
+                                    >
+                                        <FacebookIcon size={25}/>
+                                        
+                                    </FacebookShareButton>
+                                </a>
+                                <a>
+                                    <FacebookMessengerShareButton
+                                        url={"https://google.com"}
+                                        appId={process.env.REACT_APP_MESSENGER_APP_ID}
+                                    >
+                                        <FacebookMessengerIcon size={25} round/>
+                                        
+                                    </FacebookMessengerShareButton>
+                                </a>
                             </li>
                         </ul>
                     </div>

@@ -39,7 +39,7 @@ class Testimonial extends Component {
             return  <div>
                 <div className="w-lg-75 w-xl-50 mx-auto text-center">
                     <blockquote>
-                        <p className="mb-5"><i className="fa fa-quote-left" style={{color: '#FCAF17'}}></i> {testimonial['content']} <i className="fa fa-quote-right" style={{color: '#FCAF17'}}></i></p>
+                        <p className="mb-5"><i className="fa fa-quote-left"></i> {testimonial['content']} <i className="fa fa-quote-right"></i></p>
                         <footer className="d-flex justify-content-center align-items-center w-lg-50 mx-auto text-left">
                         <div className="avatar">
                             <img className="avatar-img rounded-circle" src={testimonial['profile_image']} alt=""/>

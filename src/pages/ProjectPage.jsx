@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import { Helmet } from "react-helmet";
+import HelmetMetaData from '../components/common/HelmetMetaData';
 import Cover from '../components/common/Cover';
 import AllProject from '../components/project/allProject/AllProject';
 import axios from 'axios';
@@ -87,9 +87,11 @@ class ProjectPage extends Component {
     render() {
         return (
             <Fragment>
-                <Helmet> 
-                    <title>My Projects</title>
-                </Helmet>
+                <HelmetMetaData
+                    currentURL={window.location.href}
+                    title="Minh Nguyen Projects"
+                    description={this.state.project_page ? this.state.project_page['description'] : null}
+                    image={this.state.project_page ? this.state.project_page['cover_image'] : null}/>
 
                 {this.state.isLoading ? <Loader/> : null }
                 

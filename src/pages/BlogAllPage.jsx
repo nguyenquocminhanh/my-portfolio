@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import AllBlog from '../components/blog/allBlog/AllBlog';
 import Cover from '../components/common/Cover';
 
-import { Helmet } from "react-helmet";
+import HelmetMetaData from '../components/common/HelmetMetaData';
 import axios from 'axios';
 import AppURL from '../api/AppURL';
 import Loader from '../components/common/Loader';
@@ -99,9 +99,11 @@ class BlogAllPage extends Component {
     render() {
         return (
             <Fragment>
-                <Helmet>
-                    <title>My Blogs</title>
-                </Helmet>
+                <HelmetMetaData
+                    currentURL={window.location.href}
+                    title="Minh Nguyen Blogs"
+                    description={this.state.blog_page ? this.state.blog_page['description'] : null}
+                    image={this.state.blog_page ? this.state.blog_page['cover_image'] : null}/>
 
                 {this.state.isLoading ? <Loader/> : null }
 

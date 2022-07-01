@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import setTime from '../../../utility/setTime';
 import removeDuplicate from '../../../utility/removeDuplicate';
 import parse from 'html-react-parser';
+import {FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon, FacebookMessengerShareButton, FacebookMessengerIcon} from 'react-share';
 
 export default function ProjectDetails(props) {
   let contactName = props.contactInfo ? props.contactInfo['name'] : '';
@@ -18,7 +19,6 @@ export default function ProjectDetails(props) {
   let github_link = props.project ? props.project['github_link'] : '';
   // content
   let content = props.project['content'] ? props.project['content'] : '';
-  let shareCount = props.project ? props.project['share_count'] : '';
   let video_link = props.project ? props.project['demo_video'] : null;
   let design_img = props.project ? props.project['design_image'] : null;
   let db_img = props.project ? props.project['db_image'] : null;
@@ -119,12 +119,9 @@ export default function ProjectDetails(props) {
                             {props.project['category'] ? <Link to={"/category/project/" + props.project['category']['id']} class="badge badge-light badge-lg badge-blog">{props.project['category']['name']}</Link> : null}
                             </div>
                             <figcaption className="text-center mt-3">
-                                {props.project['thumbnail_caption']}
+                                <small className='text-muted'>{props.project['thumbnail_caption']}</small>
                             </figcaption>
                         </figure>
-                        <ul className="blog__post__meta">
-                            <li className="post-share"><a><i className="fa fa-share"></i> ({shareCount})</a></li>
-                        </ul>
                         {parse(content)}
 
                         <h4 className='mt-7'>Technologies</h4>
@@ -161,21 +158,43 @@ export default function ProjectDetails(props) {
 
                     <hr className="my-7"/>
 
-                    <div className="blog__details__bottom">
-                        <ul className="blog__details__tag">
-                            <li className="title">Technologies:</li>
-                            <li className="tags-list">
-                                {technologies.map((tech, i) => {
-                                    return <a style={{cursor: 'pointer'}} key={i.toString()}>{tech}</a>
-                                })}
-                            </li>
-                        </ul>
+                    <div className="blog__details__bottom justify-content-end">
                         <ul className="blog__details__social">
                             <li className="title">Share :</li>
                             <li className="social-icons">
-                                <a href="#"><i className="fab fa-facebook"></i></a>
-                                <a href="#"><i className="fab fa-twitter-square"></i></a>
-                                <a href="#"><i className="fab fa-linkedin"></i></a>
+                                <a>
+                                    <LinkedinShareButton
+                                        url={props.currentURL}
+                                    >
+                                        <LinkedinIcon size={25}/>
+                                        
+                                    </LinkedinShareButton>    
+                                </a>
+                                <a>
+                                    <TwitterShareButton
+                                        url={props.currentURL}
+                                    >
+                                        <TwitterIcon size={25}/>
+                                        
+                                    </TwitterShareButton>    
+                                </a>
+                                <a>
+                                    <FacebookShareButton
+                                        url={props.currentURL}
+                                    >
+                                        <FacebookIcon size={25}/>
+                                        
+                                    </FacebookShareButton>
+                                </a>
+                                <a>
+                                    <FacebookMessengerShareButton
+                                        url={props.currentURL}
+                                        appId={process.env.REACT_APP_MESSENGER_APP_ID}
+                                    >
+                                        <FacebookMessengerIcon size={25} round/>
+                                        
+                                    </FacebookMessengerShareButton>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -199,7 +218,7 @@ export default function ProjectDetails(props) {
                                 <li><span>Location :</span> {location}</li>
                                 <li><span>Client :</span> {client}</li>
                                 <li><span>Project Link :</span> <a href={project_link} target="_blank">{project_link}</a></li>
-                                <li><span>Github Link :</span> <a href={github_link} target="_blank">shorturl.at/gnBLX</a></li>
+                                <li><span>Github Link :</span> <a href={github_link != '' ? "https://" + github_link : null} target="_blank">{github_link}</a></li>
                             </ul>
                         </div>
                         

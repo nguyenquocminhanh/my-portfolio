@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import About from '../components/home/About';
 import Cover from '../components/common/Cover'
 import Skill from '../components/home/Skill';
-import { Helmet } from 'react-helmet';
+import HelmetMetaData from '../components/common/HelmetMetaData';
 import AppURL from '../api/AppURL';
 import Loader from '../components/common/Loader';
 import axios from 'axios';
@@ -42,9 +42,11 @@ class AboutPage extends Component {
     render() {
         return (
             <Fragment>
-                <Helmet>
-                    <title>About Me</title>
-                </Helmet>
+                <HelmetMetaData
+                    currentURL={window.location.href}
+                    title="About Me - Minh Nguyen"
+                    description={this.state.testimonial_page ? this.state.testimonial_page['description'] : null}
+                    image={this.state.testimonial_page ? this.state.testimonial_page['cover_image'] : null}/>
 
                 {this.state.isLoading ? <Loader/> : null }
 

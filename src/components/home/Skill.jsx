@@ -32,7 +32,7 @@ class Skill extends Component {
         let skills = this.state.skills.map(skill => {
             return <div className='col-md-6' key={skill['id']}>
                     <p className="h6 mb-2">{skill['name']}</p>
-                    <div className="progress mb-5 rounded-0 bg-white" style={{height: "9px", border: 'solid 2px #FCAF17', maxWidth: '80%'}}>
+                    <div className="progress mb-5 rounded-0 bg-white" style={{height: "9px", border: 'solid 2px #050CDD', maxWidth: '80%'}}>
                         <div className="progress-bar" role="progressbar" style={{width: skill['percentage']}} aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>});

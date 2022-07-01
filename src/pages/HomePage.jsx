@@ -19,6 +19,7 @@ class HomePage extends Component {
         this.state = {
             testimonials: [],
             blogs: [],
+            projects: [],
             filteredBlogs: [],
             blog_categories: [],
             selected_category: null,
@@ -44,10 +45,11 @@ class HomePage extends Component {
                     filteredBlogs: response.data['blogs'],
                     blog_categories: response.data['blog_categories'],
                     home_page: response.data['home_page'],
+                    projects: response.data['projects']
                 });
                 setTimeout(() => {
                     this.setState({isLoading: false})
-                }, 1500);
+                }, 1750);
             }
         }).catch(err => {
             this.setState({
@@ -87,7 +89,8 @@ class HomePage extends Component {
                 <Testimonial
                     testimonials={this.state.testimonials}
                     showToast={this.showToast}/>
-                <Project/>
+                <Project
+                    projects={this.state.projects}/>
                 <Blog
                     blogs={this.state.filteredBlogs}
                     blog_categories={this.state.blog_categories}

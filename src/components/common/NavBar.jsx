@@ -40,14 +40,14 @@ class NavBar extends Component {
                         <li className="nav-item">
                             {this.props.history.location.pathname == '/' ? 
                                 <a className="nav-link scrollto" href="#project">Project</a> :
-                                <Link to="/project" class={this.props.history.location.pathname == '/project' || this.props.history.location.pathname.includes('/details/project') || this.props.history.location.pathname.includes('/category/project') ? "active nav-link scrollto" : "nav-link scrollto"}>Project</Link>
+                                <Link to="/projects" class={this.props.history.location.pathname == '/projects' || this.props.history.location.pathname.includes('/details/project') || this.props.history.location.pathname.includes('/category/project') ? "active nav-link scrollto" : "nav-link scrollto"}>Project</Link>
                             }
                             
                         </li>
                         <li className="nav-item">
                             {this.props.history.location.pathname == '/' ? 
                                 <a className="nav-link scrollto" href="#blog">Blog</a> :
-                                <Link to="/blog" class={this.props.history.location.pathname == '/blog' || this.props.history.location.pathname.includes('/details/blog') || this.props.history.location.pathname.includes('/category/blog') ? "active nav-link scrollto" : "nav-link scrollto"}>Blog</Link>
+                                <Link to="/blogs" class={this.props.history.location.pathname == '/blogs' || this.props.history.location.pathname.includes('/details/blog') || this.props.history.location.pathname.includes('/category/blog') ? "active nav-link scrollto" : "nav-link scrollto"}>Blog</Link>
                             } 
                         </li>
                         <li className="nav-item">

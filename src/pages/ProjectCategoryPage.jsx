@@ -2,16 +2,18 @@ import React, { Component, Fragment } from 'react';
 import AllProjectCategory from '../components/project/category/AllProjectCategory';
 import Cover from '../components/common/Cover';
 
-import { Helmet } from "react-helmet";
+import HelmetMetaData from '../components/common/HelmetMetaData';
 import axios from 'axios';
 import AppURL from '../api/AppURL';
 import Loader from '../components/common/Loader';
+import { withRouter } from 'react-router-dom';
 
 class ProjectCategoryPage extends Component {
     constructor({match}) {
         super();
         this.state = {
             categoryID: match.params.categoryID,
+            categoryImg: null,
             category: '',
             projects: [],
             cover: '',
@@ -41,6 +43,7 @@ class ProjectCategoryPage extends Component {
                 if(responseOne.status == 200 & responseTwo.status == 200) {
                     this.setState({
                         category: responseOne.data['name'],
+                        categoryImg: responseOne.data['image'],
                         cover: responseOne.data['image'],
                         projects: responseOne.data['project'],
                         filteredProjects: responseOne.data['project'],
@@ -49,13 +52,16 @@ class ProjectCategoryPage extends Component {
                     setTimeout(() => {
                         this.setState({isLoading: false})
                     }, 1500);
-                }          
+                } else {
+                    this.props.history.replace('/404');
+                }
             })
         ).catch(errors => {
             this.setState({
                 isLoading: false
             });
             console.log(errors);
+            this.props.history.replace('/404');
         })
     }
 
@@ -97,9 +103,11 @@ class ProjectCategoryPage extends Component {
     render() {
         return (
             <Fragment>
-                <Helmet>
-                    <title>{this.state.category ? this.state.category : 'Project Category'}</title>
-                </Helmet>
+                <HelmetMetaData
+                    currentURL={window.location.href}
+                    title={this.state.category ? this.state.category + " - Minh Nguyen Portfolio" : 'Projects By Category'}
+                    description={"Minh Nguyen gives you several Project Categories to select"}
+                    image={this.state.categoryImg}/>
 
                 {this.state.isLoading ? <Loader/> : null }
 
@@ -129,4 +137,4 @@ class ProjectCategoryPage extends Component {
     }
 }
 
-export default ProjectCategoryPage;
+export default withRouter(ProjectCategoryPage);

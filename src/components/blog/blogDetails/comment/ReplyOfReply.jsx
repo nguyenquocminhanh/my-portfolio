@@ -43,7 +43,7 @@ export default function ReplyOfReply(props) {
         <p>
             {isLike ? <i onClick={() => { setLike(false); props.unLikeComment(props.rep['id']) }} style={{cursor: 'pointer'}} class="fa fa-thumbs-up"></i> : <i style={{cursor: 'pointer'}} onClick={() => {setLike(true); props.likeComment(props.rep['id'])}} class="far fa-thumbs-up"></i>}
             &nbsp;{props.rep['like_count']} &nbsp;&nbsp; 
-            <strong onClick={() => setReply(!isReply)} style={{cursor: 'pointer', color: '#FCAF17'}}>Reply</strong>
+            <strong onClick={() => setReply(!isReply)} style={{cursor: 'pointer', color: '#050CDD'}}>Reply</strong>
         </p>
         {isReply ? replyForm : null}
     </li>

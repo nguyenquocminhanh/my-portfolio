@@ -1,14 +1,17 @@
 import React, { Component, Fragment } from 'react';
 import SingleBlog from '../components/blog/blogDetails/SingleBlog';
 
-import { Helmet } from "react-helmet";
+import HelmetMetaData from '../components/common/HelmetMetaData';
 import Cover from '../components/blog/blogDetails/Cover';
 import axios from 'axios';
 import AppURL from '../api/AppURL';
 import Loader from '../components/common/Loader';
+import { withRouter } from 'react-router-dom';
+import truncate from 'truncate-html';
 
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import setTime from '../utility/setTime';
 
 class BlogSinglePage extends Component {   
     constructor({match}) {
@@ -18,7 +21,8 @@ class BlogSinglePage extends Component {
             blog: {},
             blogs: [],
             blogCategories: [],
-            isLoading: true
+            isLoading: true,
+            currentURL: ''
         }
     }
     
@@ -27,6 +31,8 @@ class BlogSinglePage extends Component {
             top: 0,
             behavior: "smooth"
         });
+
+        this.setState({currentURL: window.location.href});
 
         const getBlogDetails = axios.get(AppURL.BlogDetails(this.state.blogID));
         const getBlogs = axios.get(AppURL.AllBlog);
@@ -42,19 +48,22 @@ class BlogSinglePage extends Component {
                     this.setState({
                         blog: responseOne.data,
                         blogs: responseTwo.data,
-                        blogCategories: responseThree.data
+                        blogCategories: responseThree.data,
                     });
                     setTimeout(() => {
                         this.setState({isLoading: false})
                     }, 1500);
-                }          
+                } else {
+                    this.props.history.replace('/404');
+                }
             })
         ).catch(errors => {
             this.setState({
                 isLoading: false
             });
             console.log(errors);
-        })
+            this.props.history.replace('/404');
+        });
     }
 
     commentPosted = (name, email, phone, content, target_name, reply_id) => {
@@ -143,9 +152,11 @@ class BlogSinglePage extends Component {
     render() {
         return (
             <Fragment>
-                <Helmet> 
-                    <title>{this.state.blog ? this.state.blog['title'] + ' - ' + this.state.blog['author_name'] : 'My Blog'}</title>
-                </Helmet>
+                <HelmetMetaData
+                    currentURL={window.location.href}
+                    title={this.state.blog ? this.state.blog['title'] + ' - ' + this.state.blog['author_name'] : 'My Blog'}
+                    description={this.state.blog ? this.state.blog['duration'] + ' read - ' + setTime(this.state.blog['created_at']) + ' - ' + truncate(this.state.blog['description'], 50, { byWords: true }) : null}
+                    image={this.state.blog ? this.state.blog['thumbnail_image'] : null}/>
                 
                 {this.state.isLoading ? <Loader/> : null }
 
@@ -158,7 +169,9 @@ class BlogSinglePage extends Component {
 
                     commentPosted={this.commentPosted}
                     likeComment={this.likeComment}
-                    unLikeComment={this.unLikeComment}/>
+                    unLikeComment={this.unLikeComment}
+                    
+                    currentURL={this.state.currentURL}/>
 
                 <ToastContainer
                     position="top-right"
@@ -176,4 +189,4 @@ class BlogSinglePage extends Component {
     }
 }
 
-export default BlogSinglePage;
+export default withRouter(BlogSinglePage);

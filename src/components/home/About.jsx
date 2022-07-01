@@ -34,7 +34,7 @@ class home extends Component {
 
     let highlights = this.state.highlights.map(highlight => {
       return <div className="col-6 col-md-4 p-4">
-          <p className="h1 mb-2" style={{color: '#FCAF17'}}>{highlight['amount']}</p>
+          <p className="h1 mb-2">{highlight['amount']}</p>
           <p className="h6 mb-0">{highlight['name']}</p>
         </div>
     });

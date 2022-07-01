@@ -16,7 +16,7 @@ export default function Testimonial(props) {
                   </div>
               </footer>
           
-              <p><i class="fa fa-quote-left" style={{color: '#FCAF17'}}></i> {testimonial['content']} <i class="fa fa-quote-right" style={{color: '#FCAF17'}}></i></p>
+              <p><i class="fa fa-quote-left"></i> {testimonial['content']} <i class="fa fa-quote-right"></i></p>
           </div>
       </div>
   });

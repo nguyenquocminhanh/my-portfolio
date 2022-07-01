@@ -1,5 +1,5 @@
 class AppURL {
-    static BaseURL = "http://127.0.0.1:8001/api";
+    static BaseURL = process.env.REACT_APP_API_URL;
 
     // Visitor
     static GetVisitorDetails = this.BaseURL + '/getvisitor';

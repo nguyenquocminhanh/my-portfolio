@@ -2,10 +2,11 @@ import React, { Component, Fragment } from 'react';
 import AllBlogCategory from '../components/blog/category/AllBlogCategory';
 import Cover from '../components/common/Cover';
 
-import { Helmet } from "react-helmet";
+import HelmetMetaData from '../components/common/HelmetMetaData';
 import axios from 'axios';
 import AppURL from '../api/AppURL';
 import Loader from '../components/common/Loader';
+import {withRouter} from 'react-router-dom';
 
 class BlogCategoryPage extends Component {
     constructor({match}) {
@@ -13,6 +14,7 @@ class BlogCategoryPage extends Component {
         this.state = {
             categoryID: match.params.categoryID,
             category: '',
+            categoryImg: null,
             blogs: [],
             cover: '',
             filteredBlogs: [],
@@ -43,6 +45,7 @@ class BlogCategoryPage extends Component {
                 if(responseOne.status == 200 & responseTwo.status == 200 && responseThree.status == 200) {
                     this.setState({
                         category: responseOne.data.name,
+                        categoryImg: responseOne.data.image,
                         cover: responseOne.data.image,
                         blogs: responseOne.data.blog,
                         filteredBlogs: responseOne.data.blog,
@@ -52,13 +55,16 @@ class BlogCategoryPage extends Component {
                     setTimeout(() => {
                         this.setState({isLoading: false})
                     }, 1500);
-                }          
+                } else {
+                    this.props.history.replace('/404');
+                }
             })
         ).catch(errors => {
             this.setState({
                 isLoading: false
             });
             console.log(errors);
+            this.props.history.replace('/404');
         })
     }
 
@@ -100,9 +106,11 @@ class BlogCategoryPage extends Component {
     render() {
         return (
             <Fragment>
-                <Helmet>
-                    <title>{this.state.category ? this.state.category : 'Blogs By Category'}</title>
-                </Helmet>
+                <HelmetMetaData
+                    currentURL={window.location.href}
+                    title={this.state.category ? this.state.category + " - Minh Nguyen Portfolio" : 'Blogs By Category'}
+                    description={"Minh Nguyen gives you several Blogs Categories to select"}
+                    image={this.state.categoryImg}/>
 
                 {this.state.isLoading ? <Loader/> : null }
 
@@ -135,4 +143,4 @@ class BlogCategoryPage extends Component {
     }
 }
 
-export default BlogCategoryPage;
+export default withRouter(BlogCategoryPage);

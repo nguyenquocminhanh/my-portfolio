@@ -7,7 +7,7 @@ class NotFound extends Component {
         super(props);
         this.goBack = this.goBack.bind(this);
     }
-
+    
     goBack(){
         this.props.history.goBack();
     }
