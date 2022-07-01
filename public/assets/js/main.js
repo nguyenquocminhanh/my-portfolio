@@ -302,6 +302,7 @@ License: https://themeforest.net/licenses/standard
 
         if($('.site-navbar').hasClass('navbar-toggled-show') ){
           personite_navChangeClasses('toggled');
+          $siteNavbar.addClass('navbar-light').removeClass('navbar-dark');
         } else if( $body.hasClass('flyer-open') ){
           personite_navChangeClasses('flyer');
         } else {
