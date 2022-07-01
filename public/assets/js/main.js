@@ -182,6 +182,11 @@ License: https://themeforest.net/licenses/standard
       $siteNavbar.addClass('navbar-toggled-show');
       $siteNavbar.addClass('navbar-light').removeClass('navbar-dark');
       $siteNavbarToggler.blur();
+
+      if($siteNavbar.hasClass('scrolled-0')) {
+        $siteNavbar.addClass('navbar-light', 'bg-white').removeClass('navbar-dark');
+      }
+
       personite_navChangeClasses('toggled');
     });
 
@@ -197,6 +202,10 @@ License: https://themeforest.net/licenses/standard
         personite_navChangeClasses('scrolled');
       } else {
         personite_navChangeClasses();
+      }
+
+      if($siteNavbar.hasClass('scrolled-0')) {
+        $siteNavbar.addClass('navbar-dark').removeClass('navbar-light', 'bg-white');
       }
     });
 
