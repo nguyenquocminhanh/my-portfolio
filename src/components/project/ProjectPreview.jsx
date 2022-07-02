@@ -25,7 +25,7 @@ export default function ProjectPreview(props) {
               <div className="d-flex justify-content-center align-items-center">
                   <div className="btn-group">
                     <a href={projectLink} target="_blank" className="btn btn-sm btn-outline-secondary btnHover">View <i className='fa fa-eye'></i></a>
-                    <a href={githubLink ? "https://" + githubLink : null} target="_blank" className="btn btn-sm btn-outline-secondary btnHover">Code <i className='fa fa-code'></i></a>
+                    <a href={githubLink ? githubLink : null} target="_blank" className="btn btn-sm btn-outline-secondary btnHover">Code <i className='fa fa-code'></i></a>
                   </div>
               </div>
             </div>

@@ -218,7 +218,7 @@ export default function ProjectDetails(props) {
                                 <li><span>Location :</span> {location}</li>
                                 <li><span>Client :</span> {client}</li>
                                 <li><span>Project Link :</span> <a href={project_link} target="_blank">{project_link}</a></li>
-                                <li><span>Github Link :</span> <a href={github_link != '' ? "https://" + github_link : null} target="_blank">{github_link}</a></li>
+                                <li><span>Github Link :</span> <a href={github_link != '' ? github_link : null} target="_blank">{github_link}</a></li>
                             </ul>
                         </div>
                         

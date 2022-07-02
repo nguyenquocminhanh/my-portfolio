@@ -27,7 +27,7 @@ export default function AllProject(props) {
                         <div className="d-flex justify-content-center align-items-center">
                             <div className="btn-group">
                                 <a href={project['project_link']} target="_blank" className="btn btn-sm btn-outline-secondary btnHover">View <i className='fa fa-eye'></i></a>
-                                <a href={project['github_link'] ? "https://" + project['github_link'] : null} target="_blank" className="btn btn-sm btn-outline-secondary btnHover">Code <i className='fa fa-code'></i></a>
+                                <a href={project['github_link'] ? project['github_link'] : null} target="_blank" className="btn btn-sm btn-outline-secondary btnHover">Code <i className='fa fa-code'></i></a>
                             </div>
                         </div>
                     </div>

@@ -175,7 +175,7 @@ export default function SingleBlog(props) {
                                 </a>
                                 <a>
                                     <FacebookMessengerShareButton
-                                        url={"https://google.com"}
+                                        url={props.currentURL}
                                         appId={process.env.REACT_APP_MESSENGER_APP_ID}
                                     >
                                         <FacebookMessengerIcon size={25} round/>
