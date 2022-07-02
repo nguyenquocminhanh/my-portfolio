@@ -9,6 +9,7 @@ import Project from '../components/home/Project';
 import axios from 'axios';
 import AppURL from '../api/AppURL';
 import Loader from '../components/common/Loader';
+import Avatar from '../assets/images/avatar.jpeg'
 
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -83,7 +84,7 @@ class HomePage extends Component {
 
                 <Intro
                     cover_image={this.state.home_page ? this.state.home_page['cover_image'] : null}
-                    avatar_image={this.state.home_page ? this.state.home_page['avatar_image'] : null}/>
+                    avatar_image={Avatar}/>
                 <About/>
                 <Skill/>
                 <Testimonial

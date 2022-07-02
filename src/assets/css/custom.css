@@ -80,6 +80,11 @@ pre img {
   height: auto !important;
 }
 
+.kg-image {
+  width: 100% !important;
+  height: auto !important;
+}
+
 /* video project */
 .video-container {
   position: relative;
