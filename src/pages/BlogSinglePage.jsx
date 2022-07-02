@@ -8,7 +8,7 @@ import AppURL from '../api/AppURL';
 import Loader from '../components/common/Loader';
 import { withRouter } from 'react-router-dom';
 
-
+import truncate from 'truncate-html';
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import setTime from '../utility/setTime';
