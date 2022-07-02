@@ -8,22 +8,22 @@ import MaintenacePage from './pages/MaintenacePage';
 
 // ROOT COMPONENT
 class App extends Component {
-  render() {
+  render() { 
+    let content = <BrowserRouter>
+      <NavBar/>
+      <ScrollTopBtn/>
+
+      <AppRoute/>
+        
+      <Footer/>
+    </BrowserRouter>
+    if (process.env.REACT_APP_MAINTENANCE === "true") {
+      content = <MaintenacePage/>;
+    }
     return (
-     <Fragment>
-      {process.env.REACT_APP_MAINTENANCE ? 
-      <MaintenacePage/>
-      :
-      <BrowserRouter>
-        <NavBar/>
-        <ScrollTopBtn/>
-
-        <AppRoute/>
-          
-        <Footer/>
-      </BrowserRouter>}
-
-     </Fragment>
+      <Fragment>
+        {content}
+      </Fragment>
     );
   }
 }
