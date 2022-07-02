@@ -4,6 +4,7 @@ import AppRoute from './route/AppRoute';
 import NavBar from './components/common/NavBar';
 import Footer from './components/common/Footer';
 import ScrollTopBtn from './components/common/ScrollTopBtn';
+import { Helmet } from 'react-helmet';
 
 // ROOT COMPONENT
 class App extends Component {
@@ -11,14 +12,21 @@ class App extends Component {
     return (
      <Fragment>
 
-       <BrowserRouter>
-          <NavBar/>
-          <ScrollTopBtn/>
+      <Helmet>
+        <title>App Title</title>
+        <meta name="description" content="Minh Nguyen Portfolio Website" data-react-helmet="true"/>
+        <meta name="theme-color" content="#008f68" />
+      </Helmet>
 
-          <AppRoute/>
+
+      <BrowserRouter>
+        <NavBar/>
+        <ScrollTopBtn/>
+
+        <AppRoute/>
           
-          <Footer/>
-       </BrowserRouter>
+        <Footer/>
+      </BrowserRouter>
 
      </Fragment>
     );

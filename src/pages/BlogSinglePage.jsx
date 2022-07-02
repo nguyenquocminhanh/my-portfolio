@@ -12,7 +12,6 @@ import truncate from 'truncate-html';
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import setTime from '../utility/setTime';
-import DocumentMeta from 'react-document-meta';
 
 class BlogSinglePage extends Component {   
     constructor({match}) {
@@ -151,29 +150,13 @@ class BlogSinglePage extends Component {
     }
 
     render() {
-        const meta = {
-            title: 'Some Meta Title',
-            description: 'I am a description, and I can create multiple tags',
-            canonical: 'http://example.com/path/to/page',
-            meta: {
-              charset: 'utf-8',
-              name: {
-                keywords: 'react,meta,document,html,tags'
-              }
-            }
-        };
-
         return (
             <Fragment>
-                <DocumentMeta {...meta}/>
-
-                {/* <HelmetMetaData 
+                <HelmetMetaData 
                     currentURL={window.location.href}
                     title={this.state.blog ? this.state.blog['title'] + ' - ' + this.state.blog['author_name'] : 'My Blog'}
                     description={this.state.blog ? this.state.blog['duration'] + ' read - ' + setTime(this.state.blog['created_at']) + ' - ' + truncate(this.state.blog['description'], 50, { byWords: true }) : null}
-                    image={this.state.blog ? this.state.blog['thumbnail_image'] : null}/> */}
-
-                    
+                    image={this.state.blog ? this.state.blog['thumbnail_image'] : null}/>
                 
                 {this.state.isLoading ? <Loader/> : null }
 

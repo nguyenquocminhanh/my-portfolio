@@ -21,7 +21,6 @@ export default function HelmetMetaData(props) {
             <meta property="og:image" content={image} />
             <meta content="image/*" property="og:image:type" />
             <meta property="og:url" content={currentURL} />
-            <meta property="og:site_name" content="CampersTribe" />
             <meta property="og:description" content={description} />    
         </Helmet>
 );
