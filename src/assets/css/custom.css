@@ -331,19 +331,24 @@ pre img {
     color: #1d1e29 !important;
     padding: 0.3rem 1rem;
   }
+
+  .site-navbar {
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+  }
 }
 
 @media only screen and (min-width:300px) and (max-width: 640px) {
-    .arrow {
-        font-size: 2em;
-		bottom: 90px;
+  .arrow {
+    font-size: 2em;
+		bottom: 18px;
 		margin: auto;
 		width: 40px;
 		height: 40px;
     }
 
 	.lift {
-		bottom: 104px;
+		bottom: 30px;
 	}
 
   .navbar-nav .active > .nav-link,
