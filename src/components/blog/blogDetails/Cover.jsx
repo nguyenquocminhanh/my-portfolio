@@ -18,7 +18,7 @@ export default function Cover(props) {
                 </div>
             </div> 
         </div>
-        <a class="scrollto text-light" href="#blog-container"><i class="fa fa-angle-down arrow"></i></a>
+        <a class="scrollto text-light" href="#blog-container"><i class="fa fa-angle-down arrow2"></i></a>
     </section>
   )
 }

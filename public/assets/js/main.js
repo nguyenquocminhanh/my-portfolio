@@ -53,6 +53,18 @@ License: https://themeforest.net/licenses/standard
 
   setInterval(arrowBounce, 800);
 
+  var arrowBounce2 = function () {
+    var arrow = $(".arrow2");
+    if (arrow.hasClass("lift2")) {
+      arrow.removeClass("lift2");
+    } else {
+      arrow.addClass("lift2");
+
+    }
+  };
+
+  setInterval(arrowBounce2, 800);
+
   function getWindowWidth(){
     return Math.max($(window).width(), window.innerWidth);
   }
