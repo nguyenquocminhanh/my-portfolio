@@ -1,41 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import axios from 'axios';
-import AppURL from '../api/AppURL';
+import Image from '../../src/assets/images/maintenance.jpeg';
 
 class MaintenacePage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            home_page: null,
-        }
-    }
-
-    componentDidMount = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-        // get visitor
-        axios.get(AppURL.GetVisitorDetails).then().catch();
-
-        axios.get(AppURL.GetHomePage).then(response => {
-            if(response.status == 200) {
-                this.setState({
-                    home_page: response.data['home_page']
-                });
-            }
-        }).catch(err => {
-            console.log(err);
-        })
-    }
-
     render() {
         return (
             <Fragment>
                 <section class="py-0">
                     <div className="overlay overlay-advanced mb-xl-n12" style={{maxHeight: '100vh'}}>
-                        <div className="overlay-inner bg-cover" style={{backgroundImage: "url(" + (this.state.home_page ? this.state.home_page['cover_image'] : null) + ")"}}></div>
+                        <div className="overlay-inner bg-cover" style={{backgroundImage: "url(" + Image + ")"}}></div>
                         <div className="overlay-inner bg-gray-900 opacity-50"></div>
                     </div>
                     <div class="container min-vh-100 d-flex flex-column justify-content-between text-center py-7 py-md-8">
