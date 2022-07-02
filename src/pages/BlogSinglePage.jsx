@@ -152,7 +152,7 @@ class BlogSinglePage extends Component {
     render() {
         return (
             <Fragment>
-                <HelmetMetaData
+                <HelmetMetaData 
                     currentURL={window.location.href}
                     title={this.state.blog ? this.state.blog['title'] + ' - ' + this.state.blog['author_name'] : 'My Blog'}
                     description={this.state.blog ? this.state.blog['duration'] + ' read - ' + setTime(this.state.blog['created_at']) + ' - ' + truncate(this.state.blog['description'], 50, { byWords: true }) : null}

@@ -9,6 +9,7 @@ import '../src/assets/css/custom.css';
 import '../src/assets/css/animate.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <App />
 );
