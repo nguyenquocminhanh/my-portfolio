@@ -4,21 +4,16 @@ import AppRoute from './route/AppRoute';
 import NavBar from './components/common/NavBar';
 import Footer from './components/common/Footer';
 import ScrollTopBtn from './components/common/ScrollTopBtn';
-import { Helmet } from 'react-helmet';
+import MaintenacePage from './pages/MaintenacePage';
 
 // ROOT COMPONENT
 class App extends Component {
   render() {
     return (
      <Fragment>
-
-      <Helmet>
-        <title>App Title</title>
-        <meta name="description" content="Minh Nguyen Portfolio Website" data-react-helmet="true"/>
-        <meta name="theme-color" content="#008f68" />
-      </Helmet>
-
-
+      {process.env.REACT_APP_MAINTENANCE ? 
+      <MaintenacePage/>
+      :
       <BrowserRouter>
         <NavBar/>
         <ScrollTopBtn/>
@@ -26,7 +21,7 @@ class App extends Component {
         <AppRoute/>
           
         <Footer/>
-      </BrowserRouter>
+      </BrowserRouter>}
 
      </Fragment>
     );
