@@ -32,6 +32,7 @@ class BlogSinglePage extends Component {
             top: 0,
             behavior: "smooth"
         });
+        document.title = "dfsdfsdfsd";
 
         this.setState({currentURL: window.location.href});
 
@@ -159,13 +160,13 @@ class BlogSinglePage extends Component {
                     description={this.state.blog ? this.state.blog['duration'] + ' read - ' + setTime(this.state.blog['created_at']) + ' - ' + truncate(this.state.blog['description'], 50, { byWords: true }) : null}
                     image={this.state.blog ? this.state.blog['thumbnail_image'] : null}/> */}
 
-        <Helmet>
+        {/* <Helmet>
             <title>{'oh yeah'}</title>
-            {/* <meta property="url" content={currentURL} /> */}
+    
             <meta property="title" content={'oh yeah'} />
             <meta name="description" content={'oh no'} />
             <meta property="og:description" content={'oh yeah'} />    
-        </Helmet>
+        </Helmet> */}
 
                 
                 {this.state.isLoading ? <Loader/> : null }
