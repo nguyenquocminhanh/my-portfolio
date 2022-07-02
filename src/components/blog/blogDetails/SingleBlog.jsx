@@ -169,6 +169,7 @@ export default function SingleBlog(props) {
                                 </a>
                                 <a>
                                     <FacebookShareButton
+                                        title={props.blog['title']}
                                         url={props.currentURL}
                                     >
                                         <FacebookIcon size={25}/>
