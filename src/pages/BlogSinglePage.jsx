@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import SingleBlog from '../components/blog/blogDetails/SingleBlog';
 
 import HelmetMetaData from '../components/common/HelmetMetaData';
+import { Helmet } from "react-helmet";
 import Cover from '../components/blog/blogDetails/Cover';
 import axios from 'axios';
 import AppURL from '../api/AppURL';
@@ -152,11 +153,20 @@ class BlogSinglePage extends Component {
     render() {
         return (
             <Fragment>
-                <HelmetMetaData 
+                {/* <HelmetMetaData 
                     currentURL={window.location.href}
                     title={this.state.blog ? this.state.blog['title'] + ' - ' + this.state.blog['author_name'] : 'My Blog'}
                     description={this.state.blog ? this.state.blog['duration'] + ' read - ' + setTime(this.state.blog['created_at']) + ' - ' + truncate(this.state.blog['description'], 50, { byWords: true }) : null}
-                    image={this.state.blog ? this.state.blog['thumbnail_image'] : null}/>
+                    image={this.state.blog ? this.state.blog['thumbnail_image'] : null}/> */}
+
+        <Helmet>
+            <title>{'oh yeah'}</title>
+            {/* <meta property="url" content={currentURL} /> */}
+            <meta property="title" content={'oh yeah'} />
+            <meta name="description" content={'oh no'} />
+            <meta property="og:description" content={'oh yeah'} />    
+        </Helmet>
+
                 
                 {this.state.isLoading ? <Loader/> : null }
 
