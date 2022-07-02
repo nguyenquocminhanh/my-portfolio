@@ -7,12 +7,11 @@ import axios from 'axios';
 import AppURL from '../api/AppURL';
 import Loader from '../components/common/Loader';
 import { withRouter } from 'react-router-dom';
-import truncate from 'truncate-html';
+
 
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import setTime from '../utility/setTime';
-import Image from '../../src/assets/images/avatar.jpeg'
 
 class BlogSinglePage extends Component {   
     constructor({match}) {
@@ -153,11 +152,11 @@ class BlogSinglePage extends Component {
     render() {
         return (
             <Fragment>
-                <HelmetMetaData 
+                <HelmetMetaData
                     currentURL={window.location.href}
                     title={this.state.blog ? this.state.blog['title'] + ' - ' + this.state.blog['author_name'] : 'My Blog'}
                     description={this.state.blog ? this.state.blog['duration'] + ' read - ' + setTime(this.state.blog['created_at']) + ' - ' + truncate(this.state.blog['description'], 50, { byWords: true }) : null}
-                    image={Image}/>
+                    image={this.state.blog ? this.state.blog['thumbnail_image'] : null}/>
                 
                 {this.state.isLoading ? <Loader/> : null }
 

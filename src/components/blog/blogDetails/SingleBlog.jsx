@@ -151,7 +151,9 @@ export default function SingleBlog(props) {
                             <li className="social-icons">
                                 <a>
                                     <LinkedinShareButton
-                                        url={"https://minhnguyen.us/details/blog/1"}
+                                        url={props.currentURL}
+                                        title={props.blog['title']}
+                                        summary={props.blog['description']}
                                     >
                                         <LinkedinIcon size={25}/>
                                         
