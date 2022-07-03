@@ -76,7 +76,7 @@ class Skill extends Component {
                         </div>
 
                         <div className="col-md-6">
-                            <h5 className="h3 text-center text-lg-left mb-6">Awards</h5>
+                            <h5 className="h3 text-center text-lg-left mb-6">Certification</h5>
                             {awards}
                         </div>
                     </div>
