@@ -70,7 +70,7 @@ class Skill extends Component {
                             {skills}
                         </div>
                         <div className="col-md-6 mb-7 mb-md-0">
-                            <h5 className="h3 text-center text-lg-left mb-6">Programming Language</h5>
+                            <h5 className="h3 text-center text-lg-left mb-6">Programming Languages</h5>
                             {languages}
                         </div>
                     </div>
