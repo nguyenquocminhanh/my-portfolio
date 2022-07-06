@@ -10,6 +10,7 @@ class Skill extends Component {
             educations: [],
             awards: [],
             experiences: [],
+            languages: []
         }
     }
 
@@ -18,6 +19,7 @@ class Skill extends Component {
             if(response.status == 200) {
                 this.setState({
                     skills: response.data['skills'],
+                    languages: response.data['programming_languages'],
                     educations: response.data['educations'],
                     awards: response.data['awards'],
                     experiences: response.data['experiences']
@@ -30,11 +32,15 @@ class Skill extends Component {
 
     render() {
         let skills = this.state.skills.map(skill => {
-            return <div className='col-md-6' key={skill['id']}>
-                    <p className="h6 mb-2">{skill['name']}</p>
-                    <div className="progress mb-5 rounded-0 bg-white" style={{height: "9px", border: 'solid 2px #050CDD', maxWidth: '80%'}}>
+            return <div className='col-md-6 p-0' key={skill['id']}>
+                    <p className="h6 mb-2"><i className='fa fa-check text-success fa-lg'></i>&nbsp;&nbsp;&nbsp;{skill['name']}</p>
+                    {/* <div className="progress mb-5 rounded-0 bg-white" style={{height: "9px", border: 'solid 2px #050CDD', maxWidth: '80%'}}>
                         <div className="progress-bar" role="progressbar" style={{width: skill['percentage']}} aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
+                    </div> */}
+                </div>});
+        let languages = this.state.languages.map(language => {
+            return <div className='col-md-6 p-0' key={language['id']}>
+                    <p className="h6 mb-2"><i className='fa fa-check text-success fa-lg'></i>&nbsp;&nbsp;&nbsp;{language['name']}</p>
                 </div>});
         let educations = this.state.educations.map(edu => {
             return <div className='col-md-12 text-center text-lg-left p-0 mb-6' key={edu['id']}>
@@ -58,14 +64,15 @@ class Skill extends Component {
             // skill
             <section className="py-9 bg-light">
                 <div className="container">
-                    <div className="row mb-3">
-                        <div className="col-lg-9 text-center text-lg-left">
-                            <h2 className="mb-4">Skills</h2>
-                        </div>
-                    </div>
-
                     <div className="row mb-6 mb-xl-9">
-                        {skills}
+                        <div className="col-md-6 mb-7 mb-md-0">
+                         <h5 className="h3 text-center text-lg-left mb-6">Skills</h5>
+                            {skills}
+                        </div>
+                        <div className="col-md-6 mb-7 mb-md-0">
+                            <h5 className="h3 text-center text-lg-left mb-6">Programming Language</h5>
+                            {languages}
+                        </div>
                     </div>
 
 
