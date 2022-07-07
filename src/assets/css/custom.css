@@ -8,6 +8,13 @@
 @import "theme.css";
 @import "utilities.css";
 
+/* Code Container */
+.codeContainer {
+  background-color: rgb(242, 242, 242);
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
 .slick-prev:before,
 .slick-next:before {
   color: #000 !important;

@@ -130,7 +130,7 @@ export default function SingleBlog(props) {
                         </figure>
                         <ul className="blog__post__meta">
                             <li><i className="fa fa-calendar-alt"></i> {setTime(props.blog['created_at'])}</li>
-                            <li><i className="fa fa-comments"></i><span className='text-muted'>Comment ({props.blog['comments'] ? props.blog['comments'].length : '0' })</span></li>
+                            <li><i className="fa fa-comments"></i><span className='text-muted'>Comments ({props.blog['comments'] ? props.blog['comments'].length : '0' })</span></li>
                         </ul>
                         {parse(content)}
                     </article>
