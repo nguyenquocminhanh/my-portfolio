@@ -12,7 +12,7 @@
 .codeContainer {
   background-color: rgb(242, 242, 242);
   padding: 20px;
-  margin-bottom: 25px;
+  margin: 15px 0;
 }
 
 .slick-prev:before,
