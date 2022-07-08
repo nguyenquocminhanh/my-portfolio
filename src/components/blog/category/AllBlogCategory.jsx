@@ -23,7 +23,7 @@ export default function AllBlogCategory(props) {
                     <Link to={"/details/blog/" + blog['id']}>
                         <h2 class="h5"><a href="blog-single.html" rel="bookmark" class="text-dark">{blog['title']}</a></h2>
                     </Link>
-                    {parse(truncate(blog['content'], 35, { byWords: true }))}
+                    {parse(truncate(blog['description'], 35, { byWords: true }))}
                 </div>
                 <div class="card-footer text-gray-700 d-flex justify-content-between">
                     <span><i className='fa fa-calendar-alt'></i> &nbsp;{setTime(blog['created_at'])}</span>
