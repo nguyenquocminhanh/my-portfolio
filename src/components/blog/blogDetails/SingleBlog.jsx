@@ -5,6 +5,7 @@ import Comment from './comment/Comment';
 import setTime from '../../../utility/setTime';
 import removeDuplicate from '../../../utility/removeDuplicate';
 import parse from 'html-react-parser';
+import timeSince from '../../../utility/timeSince';
 import {FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon, FacebookMessengerShareButton, FacebookMessengerIcon} from 'react-share';
 
 export default function SingleBlog(props) {
@@ -35,7 +36,7 @@ export default function SingleBlog(props) {
             </div>
             <div class="rc__post__content">
                 <h5 class="title"><Link to={"/details/blog/" + blog['id']}>{blog['title']}</Link></h5>
-                <span class="post-date"><i class="fa fa-calendar-alt"></i> {setTime(blog['created_at'])}</span>
+                <span class="post-date"><i class="fa fa-calendar-alt"></i> {timeSince(blog['created_at'])}</span>
             </div>
         </li>
   })
@@ -117,10 +118,17 @@ export default function SingleBlog(props) {
                 <div className="col-lg-8">
 
                     <article className="article-content">
-                        <div className="avatar mr-4">
-                            <img src={props.blog['author_image']} alt="" className="avatar-img rounded-circle"/>
+                        <div className='d-flex justify-content-between align-items-center'>
+                            <div>
+                                <div className="avatar mr-4">
+                                    <img src={props.blog['author_image']} alt="" className="avatar-img rounded-circle"/>
+                                </div>
+                                <span>{props.blog['author_name']}</span>
+                            </div>
+
+                            <small className='text-muted font-italic'>Last updated: <strong>{setTime(props.blog['updated_at'])}</strong></small>
                         </div>
-                        <span>{props.blog['author_name']}</span>
+        
                         <figure className='mt-5 w-sm-100'>
                             <div className='p-0 position-relative'>
                                 <img alt="Blog Article Figure" src={props.blog['thumbnail_image']} className="img-fluid rounded-3x"/>

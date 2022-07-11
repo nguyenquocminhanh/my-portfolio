@@ -6,6 +6,7 @@ import truncate from 'truncate-html';
 
 import setTime from '../../../utility/setTime';
 import removeDuplicate from '../../../utility/removeDuplicate';
+import timeSince from '../../../utility/timeSince';
 
 export default function AllBlog(props) {
   // blogs
@@ -71,7 +72,7 @@ export default function AllBlog(props) {
       </div>
       <div class="rc__post__content">
           <h5 class="title"><Link to={"/details/blog/" + blog['id']}>{blog['title']}</Link></h5>
-          <span class="post-date"><i class="fa fa-calendar-alt"></i> {setTime(blog['created_at'])}</span>
+          <span class="post-date"><i class="fa fa-calendar-alt"></i> {timeSince(blog['created_at'])}</span>
       </div>
     </li>
   })
