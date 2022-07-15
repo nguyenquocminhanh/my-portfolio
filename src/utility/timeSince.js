@@ -1,5 +1,5 @@
-export default function timeSince(date) {
-    var dateObj = new Date(date);
+export default function timeSince(fromDate) {
+    var dateObj = new Date(fromDate);
 
     var seconds = Math.floor((new Date() - dateObj) / 1000);
   

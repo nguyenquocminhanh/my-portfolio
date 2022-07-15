@@ -10,7 +10,8 @@
 
 /* Code Container */
 .codeContainer {
-  background-color: rgb(242, 242, 242);
+  background-color: #292D3E;
+  color: #BFC7D5;
   padding: 20px;
   margin: 15px 0;
 }
