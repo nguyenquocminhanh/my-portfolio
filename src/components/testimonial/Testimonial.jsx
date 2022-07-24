@@ -7,8 +7,8 @@ export default function Testimonial(props) {
       return <div class="col-md-6 col-lg-6 px-4 pt-6" key={testimonial['id']}>
           <div class="p-7 shadow-light shadow-lift rounded-3x bg-white">
               <footer class="d-flex align-items-center text-left mb-6">
-                  <div class="avatar" style={{minWidth: "100%"}}>
-                      <img class="avatar-img rounded-circle" src={testimonial['profile_image']} alt=""/>
+                  <div class="avatar">
+                      <img class="avatar-img rounded-circle" style={{minWidth: "100%"}} src={testimonial['profile_image']} alt=""/>
                   </div>
                   <div class="ml-3">
                       <h4 class="h6 mb-0">{testimonial['name']}</h4>
