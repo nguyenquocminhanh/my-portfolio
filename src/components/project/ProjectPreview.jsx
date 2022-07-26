@@ -6,7 +6,7 @@ export default function ProjectPreview(props) {
   let subTitle = props.project ? props.project['sub_title'] : '';
   let imgLink = props.project ? props.project['thumbnail_image'] : '';
   let projectLink = props.project ? props.project['project_link'] : '';
-  let githubLink = props.project ? props.project['github_link'] : '';
+  let githubLink = props.project ? props.project['frontend_link'] : '';
 
   return (
     <div className="col mb-9 masonry-item branding">

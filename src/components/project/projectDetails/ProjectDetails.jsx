@@ -16,7 +16,8 @@ export default function ProjectDetails(props) {
   let client = props.project ? props.project['client'] : '';
   let location = props.project ? props.project['location'] : '';
   let project_link = props.project ? props.project['project_link'] : '';
-  let github_link = props.project ? props.project['github_link'] : '';
+  let frontend_link = props.project ? props.project['frontend_link'] : '';
+  let backend_link = props.project ? props.project['backend_link'] : '';
   // content
   let content = props.project['content'] ? props.project['content'] : '';
   let video_link = props.project ? props.project['demo_video'] : null;
@@ -218,7 +219,8 @@ export default function ProjectDetails(props) {
                                 <li><span>Location :</span> {location}</li>
                                 <li><span>Client :</span> {client}</li>
                                 <li><span>Project Link :</span> <a href={project_link} target="_blank">{project_link}</a></li>
-                                <li><span>Github Link :</span> <a href={github_link != '' ? github_link : null} target="_blank">{github_link}</a></li>
+                                <li><span>Frontend Link :</span> <a href={frontend_link != '' ? frontend_link : null} target="_blank">Visit Here</a></li>
+                                {backend_link ? <li><span>Backend Link :</span> <a href={backend_link} target="_blank">Visit Here</a></li> : null}
                             </ul>
                         </div>
                         
