@@ -33,8 +33,8 @@ class ProjectPage extends Component {
                 this.setState({
                     project_page: response.data['project_page'],
 
-                    projects: response.data['projects'].reverse(),
-                    filteredProjects: response.data['projects'].reverse(),
+                    projects: response.data['projects'],
+                    filteredProjects: response.data['projects'],
                     projectCategories: response.data['project_categories'],
                 });
                 setTimeout(() => {
