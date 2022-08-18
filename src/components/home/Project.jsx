@@ -14,7 +14,7 @@ class Portfolio extends Component {
         <div class="album py-3 bg-light">
           <div class="container" style={{maxWidth: '1320px'}}>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-              {this.props.projects.slice(this.props.projects.length - 6, this.props.projects.length).map(project => {
+              {this.props.projects.reverse().slice(0, 6).map(project => {
                 return <ProjectPreview key={project['id']} project={project}/>
               })}
             </div>
