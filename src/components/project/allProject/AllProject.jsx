@@ -7,7 +7,7 @@ import removeDuplicate from '../../../utility/removeDuplicate';
 
 export default function AllProject(props) {
     // projects
-    const allProjects = props.filteredProjects.length > 0 ? props.filteredProjects.slice(5 * (props.selectedPage - 1), 5 * props.selectedPage).map(project => {
+    const allProjects = props.filteredProjects.length > 0 ? props.filteredProjects.reverse().slice(5 * (props.selectedPage - 1), 5 * props.selectedPage).map(project => {
         return <CSSTransition key={project['id']} timeout={700} classNames="item">
             <article class="col-12 pb-5 px-0 px-lg-3">
                 <div class="card">
