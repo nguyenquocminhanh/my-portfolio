@@ -33,8 +33,8 @@ class ProjectPage extends Component {
                 this.setState({
                     project_page: response.data['project_page'],
 
-                    projects: response.data['projects'],
-                    filteredProjects: response.data['projects'],
+                    projects: response.data['projects'].reverse(),
+                    filteredProjects: response.data['projects'].reverse(),
                     projectCategories: response.data['project_categories'],
                 });
                 setTimeout(() => {
@@ -55,7 +55,7 @@ class ProjectPage extends Component {
         if (keyword !== "") {
             const results = this.state.filteredProjects.filter((project) => {
               return project['title'].toLowerCase().includes(keyword.toLowerCase());
-            })
+            });
             this.setState({filteredProjects: results, selectedPage: 1});
         } else {
             const results = this.state.projects;
@@ -106,7 +106,7 @@ class ProjectPage extends Component {
                 <AllProject
                     allProjects={this.state.projects}
 
-                    filteredProjects={this.state.filteredProjects.reverse()}
+                    filteredProjects={this.state.filteredProjects}
                     filterProject={this.filterProject}
                     searchKeyword={this.state.searchKeyword}
 
