@@ -106,7 +106,7 @@ class ProjectPage extends Component {
                 <AllProject
                     allProjects={this.state.projects}
 
-                    filteredProjects={this.state.filteredProjects}
+                    filteredProjects={this.state.filteredProjects.reverse()}
                     filterProject={this.filterProject}
                     searchKeyword={this.state.searchKeyword}
 
