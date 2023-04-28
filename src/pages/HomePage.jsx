@@ -9,7 +9,7 @@ import Project from '../components/home/Project';
 import axios from 'axios';
 import AppURL from '../api/AppURL';
 import Loader from '../components/common/Loader';
-import Avatar from '../assets/images/avatar.jpeg'
+import Avatar from '../assets/images/avatar.jpg'
 
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
