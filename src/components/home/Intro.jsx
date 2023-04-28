@@ -12,7 +12,7 @@ class Intro extends Component {
           <div className="container align-self-center">
             <div className="row">
               <div className="col-lg-10 col-xl-9 mx-auto text-center text-white">
-                <div className="avatar avatar-xl mb-7">
+                <div className="avatar avatar-lg mb-7">
                   {/* <div className="avatar-shape avatar-shape-rounded mt-n2 mb-n2 mr-n2"></div> */}
                   <img 
                     src={this.props.avatar_image} alt="avatar" style={{border: "3px solid #fff"}} className="avatar-img rounded-circle shadow-light"/>
