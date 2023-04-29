@@ -9,7 +9,8 @@ import Project from '../components/home/Project';
 import axios from 'axios';
 import AppURL from '../api/AppURL';
 import Loader from '../components/common/Loader';
-import Avatar from '../assets/images/avatar.jpg'
+import Avatar from '../assets/images/avatar.jpg';
+import Cover from '../assets/images/cover_home_page.jpeg';
 
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -83,7 +84,7 @@ class HomePage extends Component {
                 {this.state.isLoading ? <Loader/> : null }
 
                 <Intro
-                    cover_image={this.state.home_page ? this.state.home_page['cover_image'] : null}
+                    cover_image={this.state.home_page ? this.state.home_page['cover_image'] : Cover}
                     avatar_image={Avatar}/>
                 <About/>
                 <Skill/>
