@@ -50,7 +50,7 @@ class Footer extends Component {
                                 </a>
                             </li>
                         </ul>
-                        <p class="mb-0">© 2022 Minh Nguyen</p>
+                        <p class="mb-0">© 2023 Minh Nguyen</p>
                     </div>
                     </div>
                 </div>
